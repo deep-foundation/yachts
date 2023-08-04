@@ -12,7 +12,7 @@ export function Login(arg: { onSubmit: (arg: { gqlPath: string, token: string })
     </CardHeader>
     <CardBody>
       <FormControl id="gql-path">
-        <FormLabel>GraphQL Path</FormLabel>
+        {/* <FormLabel>GraphQL Path</FormLabel> */}
         <Input type="text" onChange={(newGqlPath) => {
           setGqlPath(newGqlPath.target.value)
         }} />

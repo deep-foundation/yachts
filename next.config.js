@@ -4,10 +4,11 @@ dotenvLoad();
  
 const withNextEnv = nextEnv();
 
- /** @type {import('next').NextConfig}*/
+ /** @type {import('next').NextConfig} */
 const config =  {
   distDir: 'app',
   strictMode: false,
+  swcMinify: true,
   
   webpack: (config) => {
     const oldEntriesPromise = config.entry();

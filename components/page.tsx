@@ -27,7 +27,7 @@ export function Page({ renderChildren }: PageParam) {
             console.log({ deep });
             return (
               <WithPackagesInstalled
-              deep={deep}
+                deep={deep}
                 packageNames={[]}
                 renderIfError={(error) => <ErrorAlert error={error} />}
                 renderIfNotInstalled={(packageNames) => (
