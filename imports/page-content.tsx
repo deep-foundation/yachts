@@ -1,6 +1,6 @@
 import { QueryStoreProvider } from '@deep-foundation/store/query';
 import { useCallback, useEffect, useRef } from 'react';
-import { ProvidersAndLoginOrContent } from '../components/providers-and-login-or-content';
+import { ProvidersAndLoginOrContent } from './providers-and-login-or-content';
 import { Navbar } from '../components/navigation';
 import { Footer } from '../components/footer';
 import { YachtsGeneration } from '../components/yachts-generation';
