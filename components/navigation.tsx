@@ -19,7 +19,7 @@ const NavigationButton = React.memo(({
   ariaLabel: string; 
   href?: string; 
   variant?: string;
-  onClick?: () => void;  
+  onClick?: (value) => void;  
   onKeyDown?: (event: { key: string }) => void;
   tabIndex?: number;
   textStyle?: {};
@@ -87,27 +87,27 @@ const buttonArray = [
   {
     id: 2,
     ariaLabel: 'yachts button',
-    href: '/yachts',
+    href: 'yachts',
     variant: 'ghost',
     name: 'Yachts'
   },
   {
     id: 3,
     ariaLabel: 'technologies button',
-    href: '/technologies',
+    href: 'technologies',
     variant: 'ghost',
     name: 'Technologies'
   },
   {
     id: 4,
     ariaLabel: 'yachts generation button',
-    href: '/yachts-generation',
+    href: 'yachts-generation',
     variant: 'ghost',
     name: 'Yachts generation'
   },
 ]
 
-export const Navbar = React.memo(() => {
+export const Navbar = React.memo(({setPage}:{setPage?: (value) => void}) => {
   const [selected, setSelected] = useState(1);
   const [hover, setHover] = useState(1);
 
@@ -131,7 +131,11 @@ export const Navbar = React.memo(() => {
               href={button.href}
               variant={button.variant}
               name={button.name}
-              onClick={() => setSelected(button.id)}  
+              onClick={(page) => {
+                setSelected(button.id);
+                setPage(page == button.href);
+                console.log('page', page);
+              }}  
               onKeyDown={(event: { key: string }) => event.key === 'Enter' ? setSelected(button.id) : null} 
               tabIndex={button.id}
               textStyle={{
@@ -139,7 +143,6 @@ export const Navbar = React.memo(() => {
               }}
               onHoverStart={() => {
                 setHover(button.id);
-                console.log('hovering', button.id)
               }}
               onHoverEnd={() => setHover(0)}
               underline={

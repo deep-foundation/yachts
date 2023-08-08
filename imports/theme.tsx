@@ -33,6 +33,25 @@ const themeChakra = extendTheme({
       },
     }),
   },
+  fonts: {
+    body: "'Ysabeau SC', sans-serif",
+    heading: "'Ysabeau SC', sans-serif",
+  },
+  fontSizes: {
+    xs: "calc(0.35rem + 0.5vmax)",
+    sm: 'calc(0.8125rem + 0.5vmax)', //"0.875rem",
+    md: "calc(1rem + 0.5vmax)",
+    lg: "calc(1.125rem + 0.5vmax)",
+    xl: "calc(1.2rem + 0.5vmax)",
+    "2xl": "calc(1.5rem + 0.5vmax)",
+    "3xl": "calc(1.875rem + 0.5vmax)",
+    "4xl": "calc(2.25rem + 0.5vmax)",
+    "5xl": "calc(3rem + 0.5vmax)",
+    "6xl": "3.75rem",
+    "7xl": "4.5rem",
+    "8xl": "6rem",
+    "9xl": "8rem",
+  },
   colors: {
     blue: '#91C9E0',
     button: {
@@ -59,22 +78,21 @@ const themeChakra = extendTheme({
   },
   textStyles: {
     h1: {
-      fontSize: ['48px', '72px'],
+      // fontSize: ['3rem', '4.5rem'],
+      fontSize: '5xl',
       fontWeight: 'bold',
-      lineHeight: '110%',
-      letterSpacing: '-2%',
+      textTransform: 'uppercase',
     },
     h2: {
-      fontSize: ['36px', '48px'],
+      fontSize: '2xl',
       fontWeight: 'semibold',
-      lineHeight: '110%',
-      letterSpacing: '-1%',
+      textTransform: 'uppercase',
     },
     h3: {
       fontWeight: '400',
       lineHeight: '1.2',
       textTransform: 'uppercase',
-      fontSize: '4xl',
+      fontSize: 'xl',
     },
     h4: {
       fontWeight: '400',
@@ -82,6 +100,11 @@ const themeChakra = extendTheme({
       textTransform: 'uppercase',
       fontSize: 'md',
       color: 'textGray',
+    },
+    bold: {
+      fontWeight: 'bold',
+      fontSize: 'xl',
+      lineHeight: '1.7',
     },
   },
   components: {

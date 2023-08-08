@@ -4,7 +4,10 @@ import { ProvidersAndLoginOrContent } from './providers-and-login-or-content';
 import { Navbar } from '../components/navigation';
 import { Footer } from '../components/footer';
 import { YachtsGeneration } from '../components/yachts-generation';
+import { FirstScreen } from '../components/first-screen';
 
+
+const a = [{id: 1, text: 'abs'},{id: 2, text: 'abs'},{id: 3, text: 'abs'}];
 
 export function PageContent({
   children,
@@ -30,6 +33,7 @@ export function PageContent({
     return (<>
           {/* <Navbar /> */}
           <main>
+            <FirstScreen display='flex' />
             <YachtsGeneration />
           </main>
         {/* <Footer /> */}

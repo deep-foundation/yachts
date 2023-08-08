@@ -11,17 +11,20 @@ import {PageContent} from "./page-content";
 import { Navbar } from "../components/navigation";
 import { Footer } from "../components/footer";
 import { useQueryStore } from "@deep-foundation/store/query";
+import { FirstScreen } from "../components/first-screen";
+import { YachtsGeneration } from "../components/yachts-generation";
 
 export function ProvidersAndLoginOrContent({ children }: { children?: JSX.Element }) {
-  const [page, setPage] = useQueryStore('page', 123);
+  const [page, setPage] = useQueryStore('page', '/');
   return (
     <>
-      {page === 123 && <div onClick={() => setPage(234)}>123</div>}
-      {page === 234 && <div onClick={() => setPage(345)}>234</div>}
-      {page === 345 && <div onClick={() => setPage(123)}>345</div>}
       <ChakraProvider theme={themeChakra}>
-        <Navbar />
-          <PageContent />
+        <Navbar setPage={() => setPage(page)} />
+          {/* <PageContent /> */}
+          <main>
+            {page === '/' && <FirstScreen display='flex' />}
+            {page === 'yachts-generation' && <YachtsGeneration />}
+          </main>
         <Footer />
       </ChakraProvider>
     </>
