@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
 import { Box, Button, Link, Text } from '@chakra-ui/react';
 import { AnimatePresence, motion } from 'framer-motion';
+import { buttonArray } from './array-menu-button';
 
 
-const NavigationButton = React.memo(({ 
+export const NavigationButton = React.memo(({ 
   ariaLabel='home button', 
   href = '/', 
   variant = 'ghost',  
   onClick,
   onKeyDown,
   tabIndex = 0,
+  styles,
   textStyle,
   name = 'home',
   underline = null,
@@ -22,7 +24,8 @@ const NavigationButton = React.memo(({
   onClick?: (value) => void;  
   onKeyDown?: (event: { key: string }) => void;
   tabIndex?: number;
-  textStyle?: {};
+  textStyle?: string;
+  styles?: {};
   name?: string; 
   underline?: React.ReactNode;
   onHoverStart?: () => void;
@@ -64,9 +67,9 @@ const NavigationButton = React.memo(({
             damping: 20,
           }}
           color='text'
-          sx={{
-            ...textStyle
-          }}
+          sx={styles}
+          textStyle={textStyle}
+
         >
           {name}
         </Text>
@@ -75,37 +78,6 @@ const NavigationButton = React.memo(({
     </Button>
   )
 })
-
-const buttonArray = [
-  {
-    id: 1,
-    ariaLabel: 'home button',
-    href: '/',
-    variant: 'ghost',
-    name: 'Home'
-  },
-  {
-    id: 2,
-    ariaLabel: 'yachts button',
-    href: 'yachts',
-    variant: 'ghost',
-    name: 'Yachts'
-  },
-  {
-    id: 3,
-    ariaLabel: 'technologies button',
-    href: 'technologies',
-    variant: 'ghost',
-    name: 'Technologies'
-  },
-  {
-    id: 4,
-    ariaLabel: 'yachts generation button',
-    href: 'yachts-generation',
-    variant: 'ghost',
-    name: 'Yachts generation'
-  },
-]
 
 export const Navbar = React.memo(({setPage}:{setPage?: (value) => void}) => {
   const [selected, setSelected] = useState(1);
@@ -138,7 +110,7 @@ export const Navbar = React.memo(({setPage}:{setPage?: (value) => void}) => {
               }}  
               onKeyDown={(event: { key: string }) => event.key === 'Enter' ? setSelected(button.id) : null} 
               tabIndex={button.id}
-              textStyle={{
+              styles={{
                 fontWeight: button.id === selected ? '600' : '300',
               }}
               onHoverStart={() => {

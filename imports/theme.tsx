@@ -10,7 +10,6 @@ const themeChakra = extendTheme({
   config,
   semanticTokens: {
     fontSizes: {
-      
       xxs: '0.55rem',
     },
     colors: {
@@ -106,6 +105,13 @@ const themeChakra = extendTheme({
       fontSize: 'xl',
       lineHeight: '1.7',
     },
+    downMenu: {
+      fontWeight: 'semiBold',
+      fontSize: 'sm',
+      lineHeight: '1.7',
+      color: 'textGray',
+      textTransform: 'uppercase',
+    }
   },
   components: {
     Button: {
