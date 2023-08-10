@@ -37,7 +37,7 @@ const themeChakra = extendTheme({
     heading: "'Ysabeau SC', sans-serif",
   },
   fontSizes: {
-    xs: "calc(0.35rem + 0.5vmax)",
+    xs: "calc(0.5rem + 0.5vmax)",
     sm: 'calc(0.8125rem + 0.5vmax)', //"0.875rem",
     md: "calc(1rem + 0.5vmax)",
     lg: "calc(1.125rem + 0.5vmax)",
@@ -46,10 +46,21 @@ const themeChakra = extendTheme({
     "3xl": "calc(1.875rem + 0.5vmax)",
     "4xl": "calc(2.25rem + 0.5vmax)",
     "5xl": "calc(3rem + 0.5vmax)",
-    "6xl": "3.75rem",
+    "6xl": "calc(3.75rem + 0.5vmax)",
     "7xl": "4.5rem",
     "8xl": "6rem",
     "9xl": "8rem",
+  },
+  fontWeights: {
+    thin: 100,
+    extraLight: 200,
+    light: 300,
+    regular: 400,
+    medium: 500,
+    semiBold: 600,
+    bold: 700,
+    extraBold: 800,
+    black: 900,
   },
   colors: {
     blue: '#91C9E0',
@@ -72,15 +83,15 @@ const themeChakra = extendTheme({
     textGray: '#D7D7D7',
     whiteText: '#ffffff',
   },
-  space: {
-    4.5: '1.125rem',
-  },
+  // space: {
+  //   4.5: '1.125rem',
+  // },
   textStyles: {
     h1: {
-      // fontSize: ['3rem', '4.5rem'],
-      fontSize: '5xl',
-      fontWeight: 'bold',
+      fontSize: '6xl',
+      fontWeight: 'medium',
       textTransform: 'uppercase',
+      lineHeight: '1.2',
     },
     h2: {
       fontSize: '2xl',
@@ -88,7 +99,7 @@ const themeChakra = extendTheme({
       textTransform: 'uppercase',
     },
     h3: {
-      fontWeight: '400',
+      fontWeight: 'regular',
       lineHeight: '1.2',
       textTransform: 'uppercase',
       fontSize: 'xl',
@@ -98,20 +109,56 @@ const themeChakra = extendTheme({
       lineHeight: '1.2',
       textTransform: 'uppercase',
       fontSize: 'md',
+      color: 'text',
+    },
+    h2Generator: {
+      fontSize: 'md',
+      fontWeight: 'regular',
+      textTransform: 'uppercase',
       color: 'textGray',
     },
+    regularTextBlock: {
+      fontWeight: 'regular',
+      fontSize: 'xs',
+      lineHeight: '1.2',
+      color: 'text',
+    },
+    regularTextTitle: {
+      fontWeight: 'semiBold',
+      fontSize: 'xs',
+      lineHeight: '1.7',
+      color: 'text',
+      textTransform: 'uppercase',
+    },
     bold: {
-      fontWeight: 'bold',
+      fontWeight: '900',
       fontSize: 'xl',
       lineHeight: '1.7',
     },
+    semiBoldText: {
+      fontWeight: 'semiBold',
+      fontSize: 'xl',
+      lineHeight: '1.3',
+    },
     downMenu: {
       fontWeight: 'semiBold',
-      fontSize: 'sm',
-      lineHeight: '1.7',
-      color: 'textGray',
+      fontSize: 'xs',
+      lineHeight: '1',
+      color: 'text',
       textTransform: 'uppercase',
-    }
+    },
+    contactsDownMenu: {
+      fontWeight: 'regular',
+      fontSize: 'xs',
+      lineHeight: '1',
+      color: 'text',
+    },
+    generationFormItem: {
+      fontWeight: 'light',
+      fontSize: 'sm',
+      lineHeight: '1.2',
+      color: 'text',
+    },
   },
   components: {
     Button: {
@@ -139,8 +186,8 @@ const themeChakra = extendTheme({
           bg: 'button.100',
           color: 'text', 
           borderRadius: '1.5rem',
-          fontSize: 'lg',
-          fontWeight: '400',
+          fontSize: 'md',
+          fontWeight: 'light',
           textTransform: 'uppercase',
           p: '1rem 2rem',
           _hover: {
@@ -159,7 +206,7 @@ const themeChakra = extendTheme({
           color: 'whiteText',
           borderRadius: '1.5rem',
           fontSize: 'md',
-          fontWeight: '200',
+          fontWeight: 'medium',
           textTransform: 'uppercase',
           _hover: {
             bg: 'black.200',
@@ -176,8 +223,8 @@ const themeChakra = extendTheme({
           bg: 'text',
           color: 'whiteText',
           borderRadius: '0.2rem',
-          fontSize: 'lg',
-          fontWeight: '400',
+          fontSize: 'md',
+          fontWeight: 'medium',
           height: '5rem',
           textTransform: 'uppercase',
           _hover: {
@@ -192,21 +239,21 @@ const themeChakra = extendTheme({
           },
         },
         'grayBgSolid': {
-          bg: 'gray.100',
-          color: 'whiteText',
+          bg: 'gray.200',
+          color: 'text',
           borderRadius: '1.5rem',
-          fontSize: 'md',
-          fontWeight: '400',
+          fontSize: 'xs',
+          fontWeight: 'light',
           textTransform: 'uppercase',
           _hover: {
-            bg: 'gray.200',
+            bg: 'gray.300',
           },
           _active: {
-            bg: 'gray.300',
+            bg: 'gray.400',
           },
           _focusVisible: {
             boxShadow: 'none',
-            bg: 'gray.200',
+            bg: 'gray.300',
           },
         },
         'formButton': {
@@ -214,8 +261,8 @@ const themeChakra = extendTheme({
           color: 'text',
           border: 'thin solid #D7D7D7',
           borderRadius: '0.2rem',
-          fontSize: 'md',
-          fontWeight: '400',
+          fontSize: 'xs',
+          fontWeight: 'light',
           p: '0.5rem 1rem',
           textTransform: 'uppercase',
           _hover: {
@@ -230,6 +277,17 @@ const themeChakra = extendTheme({
           },
         },
       }
+    },
+    Input: {
+      variants: {
+        outline: {
+          color: 'text',
+          borderRadius: '0.2rem',
+          border: 'thin solid #D7D7D7',
+          fontSize: 'xs',
+          fontWeight: 'light',
+        },
+      },
     },
   },
 });

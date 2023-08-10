@@ -3,7 +3,7 @@ import { useCallback, useEffect, useRef } from 'react';
 import { ProvidersAndLoginOrContent } from './providers-and-login-or-content';
 import { Navbar } from '../components/navigation';
 import { Footer } from '../components/footer';
-import { YachtsGeneration } from '../components/yachts-generation';
+import { YachtsGeneration } from '../components/yachys-generation/yachts-generation';
 import { FirstScreen } from '../components/first-screen';
 
 

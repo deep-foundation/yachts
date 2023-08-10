@@ -14,7 +14,7 @@ const Arrow = React.memo(() => {
 const Poster = React.memo(() => {
   return (<Box w='100%' position='relative' height='100%'>
       <AspectRatio maxW='100%' ratio={16 / 8} height='100%'>
-        <Img src='/first.png' alt='yacht' width='100%' height='calc(100% - 7rem)' />
+        <Img src='/first.webp' alt='yacht' width='100%' height='calc(100% - 7rem)' />
       </AspectRatio>
       <SimpleGrid templateColumns='0.5fr 1fr' spacing={10} position='absolute' top={0} left={0} pl='5%' pt='5%' width='calc(100% - 5%)'>
         <Flex direction='column' align='center' justify='center' w='100%' textAlign='center'>
@@ -55,7 +55,7 @@ export const FirstScreen = React.memo(({
 
           <Flex direction='column' align='center' justify='flex-start'>
             <TextBlock 
-              textStyles='bold' 
+              textStyles='semiBoldText' 
               propsText={{
                 sx: {
                   textAlign: 'center',
@@ -65,7 +65,7 @@ export const FirstScreen = React.memo(({
               text='Discover a new era of responsible luxury, where cutting-edge technology meets environmental consciousness' />
             <Img src='/line.svg' alt='line' sx={{mb: '1.5rem'}} />
             <TextBlock 
-              textStyles='bold' 
+              textStyles='semiBoldText' 
               propsText={{
                 sx: {
                   textAlign: 'center',
@@ -75,7 +75,7 @@ export const FirstScreen = React.memo(({
               text='We envisioned yacht to be a blend of cutting-edge technology, innovative design, and sustainable features' />
             <Img src='/line.svg' alt='line' sx={{mb: '1.5rem'}} />
             <TextBlock 
-              textStyles='bold' 
+              textStyles='semiBoldText' 
               propsText={{
                 sx: {
                   textAlign: 'center',

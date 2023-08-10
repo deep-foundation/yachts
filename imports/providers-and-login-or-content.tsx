@@ -1,4 +1,4 @@
-import { ChakraProvider } from "@chakra-ui/react";
+import { ChakraProvider, SimpleGrid } from "@chakra-ui/react";
 import { DeepContext, DeepProvider } from "@deep-foundation/deeplinks/imports/client";
 import { TokenProvider } from "@deep-foundation/deeplinks/imports/react-token";
 import { useLocalStore } from "@deep-foundation/store/local";
@@ -12,20 +12,23 @@ import { Navbar } from "../components/navigation";
 import { Footer } from "../components/footer";
 import { useQueryStore } from "@deep-foundation/store/query";
 import { FirstScreen } from "../components/first-screen";
-import { YachtsGeneration } from "../components/yachts-generation";
+import { YachtsGeneration } from "../components/yachys-generation/yachts-generation";
 
 export function ProvidersAndLoginOrContent({ children }: { children?: JSX.Element }) {
   const [page, setPage] = useQueryStore('page', '/');
   return (
     <>
       <ChakraProvider theme={themeChakra}>
-        <Navbar setPage={() => setPage(page)} />
-          {/* <PageContent /> */}
-          <main>
-            {page === '/' && <FirstScreen display='flex' />}
-            {page === 'yachts-generation' && <YachtsGeneration />}
-          </main>
-        <Footer />
+        <SimpleGrid templateRows='0.1fr 100% 0.1fr'>
+          <Navbar setPage={() => setPage(page)} />
+            {/* <PageContent /> */}
+            <main>
+              {/* {page === '/' && <FirstScreen display='flex' />}
+              {page === 'yachts-generation' && <YachtsGeneration />} */}
+              <YachtsGeneration />
+            </main>
+          <Footer />
+        </SimpleGrid>
       </ChakraProvider>
     </>
   );

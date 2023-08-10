@@ -1,71 +1,11 @@
-import React, { useEffect } from 'react';
-import {
-  Text,
-  Link,
-  Stack,
-  Card,
-  CardBody,
-  Heading,
-  CardHeader,
-} from '@chakra-ui/react';
-import {
-  DeepClient,
-} from '@deep-foundation/deeplinks/imports/client';
-import NextLink from 'next/link';
+import { YachtsGeneration } from '../components/yachys-generation/yachts-generation';
+import { Provider } from '../imports/provider';
 
-
-import { defineCustomElements } from '@ionic/pwa-elements/loader';
-import { Page } from '../components/page';
-
-interface ContentParam {
-  deep: DeepClient;
-}
-
-function Content({ deep }: ContentParam) {
-  useEffect(() => {
-    defineCustomElements(window);
-  }, []);
-
-  useEffect(() => {
-    new Promise(async () => {
-      if (deep.linkId !== 0) {
-        return;
-      }
-      await deep.guest();
-    });
-  }, [deep]);
-
-  const generalInfoCard = (
-    <Card>
-      <CardHeader>
-        <Heading as={'h2'}>General Info</Heading>
-      </CardHeader>
-      <CardBody>
-        <Text suppressHydrationWarning>
-          Authentication Link Id: {deep.linkId ?? ' '}
-        </Text>
-      </CardBody>
-    </Card>
-  );
-
-  return (
-    <Stack alignItems={'center'}>
-      <Heading as={'h1'}>Sdk</Heading>
-      {generalInfoCard}
-      <>
-        
-      </>
-    </Stack>
-  );
-}
 
 export default function IndexPage() {
   return (
-    <Page
-      renderChildren={({ deep }) => (
-        <Content deep={deep} />
-      )}
-    />
+    <Provider>
+      <YachtsGeneration />
+    </Provider>
   );
 }
-

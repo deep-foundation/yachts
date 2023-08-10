@@ -12,6 +12,7 @@ export const NavigationButton = React.memo(({
   onKeyDown,
   tabIndex = 0,
   styles,
+  stylesButton,
   textStyle,
   name = 'home',
   underline = null,
@@ -26,6 +27,7 @@ export const NavigationButton = React.memo(({
   tabIndex?: number;
   textStyle?: string;
   styles?: {};
+  stylesButton?: {};
   name?: string; 
   underline?: React.ReactNode;
   onHoverStart?: () => void;
@@ -40,6 +42,7 @@ export const NavigationButton = React.memo(({
       tabIndex={tabIndex}
       sx={{
         position: 'relative',
+        ...stylesButton,
       }}
     >
       <AnimatePresence>
@@ -48,15 +51,15 @@ export const NavigationButton = React.memo(({
           onHoverStart={onHoverStart}
           onHoverEnd={onHoverEnd}
           whileHover={{
-            fontWeight: '600',
+            fontWeight: '800',
             scale: 1.05,
           }}
           initial={{
-            fontWeight: '300',
+            fontWeight: '600',
             scale: 1,
           }}
           exit={{
-            fontWeight: '300',
+            fontWeight: '600',
             scale: 1,
             origin: 1,
           }}
@@ -111,7 +114,7 @@ export const Navbar = React.memo(({setPage}:{setPage?: (value) => void}) => {
               onKeyDown={(event: { key: string }) => event.key === 'Enter' ? setSelected(button.id) : null} 
               tabIndex={button.id}
               styles={{
-                fontWeight: button.id === selected ? '600' : '300',
+                scale: button.id === selected ? 1.05 : 1,
               }}
               onHoverStart={() => {
                 setHover(button.id);
