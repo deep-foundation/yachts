@@ -35,9 +35,7 @@ export const NavigationButton = React.memo(({
 }) => {
   return (<Button
       aria-label={ariaLabel}
-      as='a' 
       variant={variant}
-      href={href}
       onClick={onClick}
       tabIndex={tabIndex}
       sx={{
@@ -86,7 +84,7 @@ export const Navbar = React.memo(({setPage}:{setPage?: (value) => void}) => {
   const [selected, setSelected] = useState(1);
   const [hover, setHover] = useState(1);
 
-  return (<Box as='header' w='100%' h='100%' boxShadow='0 2px 2px 0 #f3f3f3'>
+  return (<Box as='header' w='100%' h='max-content' boxShadow='0 2px 2px 0 #f3f3f3'>
       <Box display='flex' justifyContent='space-between' alignItems='center' w='100%' h='max-content' p='1rem 4rem'>
         <Box>
           <img
@@ -108,7 +106,7 @@ export const Navbar = React.memo(({setPage}:{setPage?: (value) => void}) => {
               name={button.name}
               onClick={(page) => {
                 setSelected(button.id);
-                setPage(page == button.href);
+                setPage(button.href);
                 console.log('page', page);
               }}  
               onKeyDown={(event: { key: string }) => event.key === 'Enter' ? setSelected(button.id) : null} 

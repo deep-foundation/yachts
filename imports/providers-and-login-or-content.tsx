@@ -1,4 +1,4 @@
-import { ChakraProvider, SimpleGrid } from "@chakra-ui/react";
+import { Box, ChakraProvider, SimpleGrid } from "@chakra-ui/react";
 import { DeepContext, DeepProvider } from "@deep-foundation/deeplinks/imports/client";
 import { TokenProvider } from "@deep-foundation/deeplinks/imports/react-token";
 import { useLocalStore } from "@deep-foundation/store/local";
@@ -19,16 +19,16 @@ export function ProvidersAndLoginOrContent({ children }: { children?: JSX.Elemen
   return (
     <>
       <ChakraProvider theme={themeChakra}>
-        <SimpleGrid templateRows='0.1fr 100% 0.1fr'>
-          <Navbar setPage={() => setPage(page)} />
-            {/* <PageContent /> */}
-            <main>
-              {/* {page === '/' && <FirstScreen display='flex' />}
-              {page === 'yachts-generation' && <YachtsGeneration />} */}
-              <YachtsGeneration />
-            </main>
+        <Box w='100vw' h='100%' position='relative'>
+          <Navbar setPage={setPage} />
+          {/* <PageContent /> */}
+          <Box as='main' h='100%' w='100%' p='5.6rem'>
+            {page === '/' && <FirstScreen display='flex' />}
+            {page === 'yachts-generation' && <YachtsGeneration />}
+            {/* <YachtsGeneration /> */}
+          </Box>
           <Footer />
-        </SimpleGrid>
+        </Box>
       </ChakraProvider>
     </>
   );
