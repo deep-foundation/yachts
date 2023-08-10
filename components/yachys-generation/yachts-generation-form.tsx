@@ -47,6 +47,7 @@ export const GenerationForm = React.memo(({ onClick, containerProps }:{ onClick?
         // flexDir={ max620 ? 'column' : 'row' }
         // flexDir='row'
         flexDir={{ sm: 'column', md: 'row' }}
+        justifyContent='space-between'
         w='100%'
         sx={{
           // '&>*:nth-of-type(1)': {

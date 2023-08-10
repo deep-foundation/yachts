@@ -8,7 +8,7 @@ export const YachtsGeneration = React.memo(({ onClick }:{ onClick?: () => void; 
   const [startCreate, setStartCreate] = useState(false);
   const [startGen, setStartGen] = useState(false);
 
-  return (<Center display='flex' flexDir='column'>
+  return (<Center display='flex' flexDir='column' p='5.6rem'>
       <Box 
         display='flex' 
         flexDir='column'
@@ -22,7 +22,7 @@ export const YachtsGeneration = React.memo(({ onClick }:{ onClick?: () => void; 
         </Box>
         <Box as='h2' textStyle='h2Generator' mb='3rem'>Crystal Yachts - Future is here</Box>
       </Box>
-      <Box display='grid' gridTemplateColumns='0.1fr 1fr 0.1fr' w='100%'>
+      <Box display='grid' gridTemplateColumns='0.1fr 1fr 0.1fr' w='100%' justifyItems='center'>
         {
           startCreate === false
           ? <GenerationButton 
@@ -30,6 +30,7 @@ export const YachtsGeneration = React.memo(({ onClick }:{ onClick?: () => void; 
                 setStartCreate(true);
                 console.log('start creating', startCreate);
               }} 
+              buttonProps={{ gridColumn: '2/3', width: '30%' }}
             />
           : startGen === false 
           ? <GenerationForm 

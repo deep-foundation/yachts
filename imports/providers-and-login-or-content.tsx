@@ -22,10 +22,9 @@ export function ProvidersAndLoginOrContent({ children }: { children?: JSX.Elemen
         <Box w='100vw' h='100%' position='relative'>
           <Navbar setPage={setPage} />
           {/* <PageContent /> */}
-          <Box as='main' h='100%' w='100%' p='5.6rem'>
+          <Box as='main' h='100%' w='100%'>
             {page === '/' && <FirstScreen display='flex' />}
             {page === 'yachts-generation' && <YachtsGeneration />}
-            {/* <YachtsGeneration /> */}
           </Box>
           <Footer />
         </Box>
