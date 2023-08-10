@@ -62,8 +62,14 @@ const themeChakra = extendTheme({
     extraBold: 800,
     black: 900,
   },
+  breakpoints: {
+    xs: '20em',
+  },
   colors: {
-    blue: '#91C9E0',
+    blue: {
+      100: '#acadaf',
+      300: '#91C9E0'
+    },
     button: {
       100: '#91C9E0',
       200: '#73BBD9',
@@ -205,7 +211,7 @@ const themeChakra = extendTheme({
           bg: 'text',
           color: 'whiteText',
           borderRadius: '1.5rem',
-          fontSize: 'md',
+          fontSize: 'xs',
           fontWeight: 'medium',
           textTransform: 'uppercase',
           _hover: {
