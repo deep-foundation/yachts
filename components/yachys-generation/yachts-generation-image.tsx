@@ -1,59 +1,81 @@
-import { Box, Button, Center, HStack, Image, Img, Skeleton, Text, Textarea, VStack, useRadioGroup } from '@chakra-ui/react';
-import React, { useCallback, useState } from 'react';
-import { InputGeneration, SelectGeneration } from './input-generation';
-import { RadioCard } from './radio-button';
-import { GenerationForm } from './yachts-generation-form';
+import { Box, Button, HStack, Img, Skeleton, Text } from '@chakra-ui/react';
+import React from 'react';
+import { IoIosShareAlt, IoIosArrowForward } from "react-icons/io";
 
 
 export const GenerationButton = React.memo(({ 
   onClick,
   variant='blackBgSquareSolid', 
   text = 'start creating',
+  buttonProps = {},
   textProps = {},
+  rightIcon = null,
 }:{ 
   onClick?: () => void;
   variant?: string; 
   text?: string;
+  buttonProps?: {};
   textProps?: {};
+  rightIcon?: any;
 }) => {
   return (<Button 
-      variant={variant}
-      w='100%'
-      onClick={onClick} 
+    variant={variant}
+    w='100%'
+    onClick={onClick} 
+    size='sm'
+    rightIcon={rightIcon}
+    {...buttonProps}
     >
       <Text {...textProps}>{text}</Text>
     </Button>
   )
 })
 
-export const GenerationImage = React.memo(({src = '/first.webp'}:{src?: string;}) => {
+export const GenerationImage = React.memo(({
+  src = '/first.webp',
+  containerProps = {},
+}:{
+  src?: string;
+  containerProps?: {};
+}) => {
   const [isLoaded, setIsLoaded] = React.useState(false);
+  console.log('isLoaded', isLoaded);
 
-  return (<Box display='flex' flexDir='column' justifyContent='center' alignItems='center' w='60vw' h='100%' border='thin solid #d7d7d7' p='2rem' borderRadius='0.2rem'>
-      <Skeleton
-        height='100%'
-        width='100%'
-        isLoaded={isLoaded}
-        startColor='pink.500' endColor='orange.500'
-        fadeDuration={1}
-        mb='1.5rem'
-      >
-        <Img
-          src={src} 
-          alt='generation image' 
-          w='100%' 
-          sx={{opacity: isLoaded ? 1 : 0}}
-          onLoad={() => setIsLoaded(true)}
-          borderRadius='0.2rem'
-        />
-        {/* <Box>123</Box> */}
-      </Skeleton>
-      <Box w='100%' h='100%' display='flex' alignItems='center' justifyContent='center'>
-        <HStack>
-          <GenerationButton variant='grayBgSolid' text='download on your device' textProps={{ px: '3rem' }} />
-          <GenerationButton variant='grayBgSolid' text='save to our gallery' />
-        </HStack>
+  return (<><Box display='flex' flexDir='column' justifyContent='center' alignItems='center' w='calc(100% - 4rem)' h='100%' border='thin solid #d7d7d7' p='2rem' borderRadius='0.2rem' mb='1rem' {...containerProps}>
+      <Box position='relative' w='100%' h='100%'>
+        <Skeleton
+          height='100%'
+          width='100%'
+          isLoaded={isLoaded}
+          startColor='blue.100' endColor='blue.300'
+          fadeDuration={1}
+          speed={2}
+          mb='1.5rem'
+        >
+          <Img
+            src={src} 
+            alt='generation image' 
+            w='100%' 
+            sx={{opacity: isLoaded ? 1 : 0}}
+            onLoad={() => setIsLoaded(true)}
+            borderRadius='0.2rem'
+          />
+          {/* <Box w='100%' h='5rem' bg='blue'>123</Box> */}
+        </Skeleton>
+        <Box w='100%' h='100%' display='flex' alignItems='center' justifyContent='center' flexDir='column'>
+          <Box display='flex' flexDir='row' mb='0.5rem'>
+            <GenerationButton variant='grayBgSolid' text='download on your device' textProps={{ px: '3rem', mr: '0.5rem' }} buttonProps={{ mr: '0.5rem' }} onClick={() => console.log(true)} />
+            <GenerationButton variant='grayBgSolid' text='save to our gallery' onClick={() => console.log(true)} />
+          </Box>
+          <Box display='flex' flexDir='row'>
+            <GenerationButton variant='grayBgSolid' text='share' buttonProps={{ mr: '0.5rem' }} onClick={() => console.log(true)} rightIcon={<IoIosShareAlt />} />
+            <GenerationButton variant='blackBgSolid' text='write a new description' textProps={{ px: '5rem' }} onClick={() => console.log(true)} />
+          </Box>
+        </Box>
       </Box>
     </Box>
+    <Box textAlign='center'>
+      <Button rightIcon={<IoIosArrowForward />} onClick={() => console.log(true)}>go to gallery</Button>
+    </Box></>
   ) 
 })

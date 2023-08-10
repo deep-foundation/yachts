@@ -1,4 +1,4 @@
-import { Flex, HStack, Input, Select, Text } from "@chakra-ui/react";
+import { Box, Flex, HStack, Input, Select, Text } from "@chakra-ui/react";
 import React from "react";
 import _ from 'lodash';
 
@@ -24,8 +24,8 @@ export const InputGeneration = React.memo(({
   textProps?: {};
 }) => {
     
-    return (<Flex direction='row' align='center' {...stackProps}>
-      <Text textStyle='generationFormItem' {...textProps} mr='0.5rem'>{title}</Text>
+    return (<Box display='flex' flexDir='row' alignItems='center' {...stackProps}>
+      {!!title ? <Text textStyle='generationFormItem' mr='0.5rem' {...textProps}>{title}</Text> : null}
       <Input
         variant='outline'
         value={value}
@@ -33,7 +33,8 @@ export const InputGeneration = React.memo(({
         placeholder={placeholder}
         size='md'
         type={type}
-        focusBorderColor='blue'
+        focusBorderColor='blue.300'
+        mr={select ? '1rem' : '0'}
         {...inputProps}
       />
       {select ? <Select>
@@ -41,15 +42,17 @@ export const InputGeneration = React.memo(({
         <option value="foot">ft</option>
         <option value="yard">yd</option>
       </Select> : null}
-    </Flex>
+    </Box>
   )
 })
 
 export const SelectGeneration = React.memo(({
+  stackProps,
   placeholder,
   value,
   handleChange,
 }:{
+  stackProps?: {};
   placeholder?: string;
   value?: string;
   handleChange?: (event) => void;
@@ -58,8 +61,8 @@ export const SelectGeneration = React.memo(({
 let nums = _.rangeRight(10, 0);
   console.log(nums);
       
-  return (<HStack alignSelf='normal'>
-      <Text textStyle='generationFormItem'>number of decks</Text>
+  return (<Box display='flex' flexDir='row' alignSelf='normal' {...stackProps}>
+      <Text textStyle='generationFormItem' mr='0.5rem'>number of decks</Text>
       <Select
         variant='outline'
         value={value}
@@ -72,6 +75,6 @@ let nums = _.rangeRight(10, 0);
           return <option value={num}>{num}</option>
         })}
       </Select>
-    </HStack>
+    </Box>
   )
 })
