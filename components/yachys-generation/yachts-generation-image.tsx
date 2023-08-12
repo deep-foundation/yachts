@@ -1,6 +1,6 @@
-import { Box, Button, HStack, Img, Skeleton, Text } from '@chakra-ui/react';
+import { Box, Button, Img, Skeleton, Text } from '@chakra-ui/react';
 import React from 'react';
-import { IoIosShareAlt, IoIosArrowForward } from "react-icons/io";
+import { IoIosArrowForward, IoIosShareAlt } from "react-icons/io";
 
 
 export const GenerationButton = React.memo(({ 
@@ -34,9 +34,11 @@ export const GenerationButton = React.memo(({
 export const GenerationImage = React.memo(({
   src = '/first.webp',
   containerProps = {},
+  onClickToGallery,
 }:{
   src?: string;
   containerProps?: {};
+  onClickToGallery?: () => void;
 }) => {
   const [isLoaded, setIsLoaded] = React.useState(false);
   console.log('isLoaded', isLoaded);
@@ -76,7 +78,7 @@ export const GenerationImage = React.memo(({
         </Box>
       </Box>
       <Box textAlign='center'>
-        <Button rightIcon={<IoIosArrowForward />} onClick={() => console.log(true)}>go to gallery</Button>
+        <Button rightIcon={<IoIosArrowForward />} onClick={onClickToGallery}>go to gallery</Button>
       </Box>
     </Box>
   ) 

@@ -2,11 +2,14 @@ import { Box, Center, Image } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import { GenerationForm } from './yachts-generation-form';
 import { GenerationButton, GenerationImage } from './yachts-generation-image';
+import { GenerationImageGallery } from './yachts-generation-image-gallery';
+
 
 
 export const YachtsGeneration = React.memo(({ onClick }:{ onClick?: () => void; }) => {
   const [startCreate, setStartCreate] = useState(false);
   const [startGen, setStartGen] = useState(false);
+  const [imgGen, setImgGen] = useState(false);
 
   return (<Center display='flex' flexDir='column' p='5.6rem'>
       <Box 
@@ -37,7 +40,9 @@ export const YachtsGeneration = React.memo(({ onClick }:{ onClick?: () => void; 
               onClick={() => setStartGen(true)} 
               containerProps={{gridColumn: '2/3'}}
             />
-          : <GenerationImage containerProps={{gridColumn: '2/3'}} />
+          : imgGen === false
+          ? <GenerationImage containerProps={{gridColumn: '2/3'}} onClickToGallery={() => setImgGen(true)} />
+          : <GenerationImageGallery />
         }
       </Box>
     </Center>
