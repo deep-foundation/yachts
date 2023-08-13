@@ -30,12 +30,13 @@ export const YachtsGeneration = React.memo(({ onClick }:{ onClick?: () => void; 
       <Box display='grid' gridTemplateColumns='0.1fr 1fr 0.1fr' w='100%' justifyItems='center' mb={isSmallerThan800 ? '2rem' : '4rem'}>
         {
           startCreate === false
-          ? <GenerationButton 
+          ? <><GenerationButton 
               onClick={() => {
                 setStartCreate(true);
               }} 
               buttonProps={{ gridColumn: '2/3', width: isSmallerThan800 ? '100%' : '30%', mb: isSmallerThan800 ? '2rem' : '4rem' }}
             />
+            {isSmallerThan800 ? <GenerationImageGallery /> : null}</>
           : startGen === false 
           ? <GenerationForm 
               onClick={() => setStartGen(true)} 
