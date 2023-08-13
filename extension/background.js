@@ -104,19 +104,16 @@ chrome.runtime.onMessage.addListener(async (message, sender, sendResponse) => {
       // Add code to execute when a tab is activated
       await executeDeactivateTabs();
       await executeActivateTab(activeInfo.tabId);
-      console.log("Tab activated:", activeInfo.tabId);
     });
   
     chrome.tabs.onCreated.addListener(async (tab) => {
       // Add code to execute when a new tab is created
       await executeInsertTabs([tab]);
-      console.log("Tab created:", tab.id);
     });
   
     chrome.tabs.onRemoved.addListener(async (tabId, removeInfo) => {
       // Add code to execute when a tab is deleted
       await executeDeleteTab(tabId);
-      console.log("Tab removed:", tabId);
     });
   }
 });

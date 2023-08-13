@@ -54,7 +54,6 @@ export const executeDeleteTab = async (tabId) => {
   });
 
   const responseData = await response.json();
-  console.log(responseData);
 
   return responseData.data.delete_links.returning;
 };

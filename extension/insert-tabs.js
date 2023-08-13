@@ -92,11 +92,10 @@ export const executeInsertTabs = async (tabs) => {
   const newTabs = tabsData.filter(
     (tab) => !existingTabs.some((existingTab) => existingTab.number.value === tab.number.data.value)
   );
-  console.log({newTabs})
   if (newTabs.length) {
     await insertTabs(newTabs);
   } else {
-    console.log("No new tabs to insert.");
+    console.log("No new tabs to insert");
   }
 };
 

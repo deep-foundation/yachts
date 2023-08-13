@@ -50,7 +50,6 @@ export const executeActivateTab = async (tabId) => {
     });
   
     const responseData = await response.json();
-    console.log(responseData);
   
     return responseData.data.update_strings.returning;
   };

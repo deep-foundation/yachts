@@ -58,8 +58,7 @@ export const SelectGeneration = React.memo(({
   handleChange?: (event) => void;
 }) => {
 
-let nums = _.rangeRight(10, 0);
-  console.log(nums);
+  let nums = _.rangeRight(10, 0);
       
   return (<Box display='flex' flexDir='row' alignSelf='normal' {...stackProps}>
       <Text textStyle='generationFormItem' mr='0.5rem'>number of decks</Text>
