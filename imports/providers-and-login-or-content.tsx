@@ -19,7 +19,7 @@ export function ProvidersAndLoginOrContent({ children }: { children?: JSX.Elemen
   return (
     <>
       <ChakraProvider theme={themeChakra}>
-        <Box w='100vw' h='100%' position='relative'>
+        {/* <Box w='100vw' h='100%' position='relative'> */}
           <Navbar setPage={setPage} />
           {/* <PageContent /> */}
           <Box as='main' h='100%' w='100%'>
@@ -27,7 +27,7 @@ export function ProvidersAndLoginOrContent({ children }: { children?: JSX.Elemen
             {page === 'yachts-generation' && <YachtsGeneration />}
           </Box>
           <Footer />
-        </Box>
+        {/* </Box> */}
       </ChakraProvider>
     </>
   );

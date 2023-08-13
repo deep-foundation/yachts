@@ -62,9 +62,6 @@ const themeChakra = extendTheme({
     extraBold: 800,
     black: 900,
   },
-  breakpoints: {
-    xs: '20em',
-  },
   colors: {
     blue: {
       100: '#acadaf',
@@ -111,10 +108,17 @@ const themeChakra = extendTheme({
       fontSize: 'xl',
     },
     h4: {
-      fontWeight: '400',
+      fontWeight: 'regular',
       lineHeight: '1.2',
       textTransform: 'uppercase',
       fontSize: 'md',
+      color: 'text',
+    },
+    upperMenu: {
+      fontWeight: 'regular',
+      lineHeight: '1.2',
+      textTransform: 'uppercase',
+      fontSize: 'xs',
       color: 'text',
     },
     h2Generator: {

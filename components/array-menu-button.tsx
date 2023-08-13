@@ -25,6 +25,6 @@ export const buttonArray = [
     ariaLabel: 'yachts generation button',
     href: 'yachts-generation',
     variant: 'ghost',
-    name: 'Yachts generation'
+    name: 'Custom design'
   },
 ];

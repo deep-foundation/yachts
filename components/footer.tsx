@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, Divider, Flex, HStack, IconButton, Img, Link, Spacer, Text } from '@chakra-ui/react';
+import { Box, Divider, Flex, HStack, IconButton, Img, Link, Spacer, Text, useMediaQuery } from '@chakra-ui/react';
 import { buttonArray } from './array-menu-button';
 import { NavigationButton } from './navigation';
 import { motion } from 'framer-motion';
@@ -8,21 +8,24 @@ import { motion } from 'framer-motion';
 export const Footer = React.memo(() => {
   const [selected, setSelected] = useState(1);
   const [hover, setHover] = useState(1);
+  const [isSmallerThan800] = useMediaQuery('(max-width: 800px)');
+  const [isSmallerThan600] = useMediaQuery('(max-width: 600px)');
 
   return (<Box as='footer' w='100%' boxShadow='0 2px 2px 0 #f3f3f3' bg='gray.100'>
-      <Flex direction='column' align='flex-start' p='2rem 12rem'>
+      <Flex direction='column' align='flex-start' p={isSmallerThan800 ? '2rem 2rem': '2rem 12rem'}>
         <Img
           src="/logo.svg"
           alt="Cristal Yacht Logo"
           sx={{mb: '1rem'}}
         />
         <Box w='100%' h='0.06rem' bg='text' sx={{mb: '1rem'}} />
-        <Flex direction='row' align='flex-start' justify='space-between' w='100%'>
+        <Flex direction={isSmallerThan600 ? 'column' : 'row'} align='flex-start' justify='space-between' w='100%'>
           <Flex 
             direction='column' 
             align='flex-start'
             sx={{
-              mr: '1rem', 
+              mr: isSmallerThan600 ? 0 : '1rem', 
+              mb: isSmallerThan600 ? '1.5rem' : 0, 
               '&>*:not(:last-of-type)': {
                 mb: '1rem',
               }
@@ -37,8 +40,6 @@ export const Footer = React.memo(() => {
                 name={button.name}
                 onClick={(page) => {
                   setSelected(button.id);
-                  // setPage(page == button.href);
-                  // console.log('page', page);
                 }}  
                 onKeyDown={(event: { key: string }) => event.key === 'Enter' ? setSelected(button.id) : null} 
                 tabIndex={button.id}
@@ -71,9 +72,9 @@ export const Footer = React.memo(() => {
             ))}
           </Flex>
           <Flex direction='column'>
-            <Text textStyle='downMenu' sx={{mb: '1rem'}}>Contact</Text>
+            <Text textStyle='downMenu' sx={{mb: isSmallerThan600 ? '0.5rem' : '1rem'}}>Contact</Text>
             <Link href='mailto:crystalyachtuae@gmail.com' sx={{mb: '0.3rem'}}>
-              Crystalyachtuae@gmail.com
+              <Text>Crystalyachtuae@gmail.com</Text>
             </Link>
             <Link href='tel:+971 58 575 7979'>
               +971 58 575 7979

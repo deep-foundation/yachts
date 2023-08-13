@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, Button, Link, Text } from '@chakra-ui/react';
+import { Box, Button, Hide, Link, Show, Text, useMediaQuery } from '@chakra-ui/react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { buttonArray } from './array-menu-button';
 
@@ -13,7 +13,7 @@ export const NavigationButton = React.memo(({
   tabIndex = 0,
   styles,
   stylesButton,
-  textStyle,
+  textStyle = 'upperMenu',
   name = 'home',
   underline = null,
   onHoverStart = () => {},
@@ -45,7 +45,7 @@ export const NavigationButton = React.memo(({
     >
       <AnimatePresence>
         <Text
-          as={motion.div}
+          as={motion.h2}
           onHoverStart={onHoverStart}
           onHoverEnd={onHoverEnd}
           whileHover={{
@@ -83,19 +83,22 @@ export const NavigationButton = React.memo(({
 export const Navbar = React.memo(({setPage}:{setPage?: (value) => void}) => {
   const [selected, setSelected] = useState(1);
   const [hover, setHover] = useState(1);
+  const [isSmallerThan800] = useMediaQuery('(max-width: 800px)');
+  const [isSmallerThan1350] = useMediaQuery('(max-width: 1350px)');
 
   return (<Box as='header' w='100%' h='max-content' boxShadow='0 2px 2px 0 #f3f3f3'>
-      <Box display='flex' justifyContent='space-between' alignItems='center' w='100%' h='max-content' p='1rem 4rem'>
+      <Box display='flex' justifyContent='space-between' alignItems='center' w='100%' h='max-content' p={isSmallerThan800 ? '1rem 1rem' : isSmallerThan1350 ? '1rem 2rem' : '1rem 4rem'}>
         <Box>
           <img
-            src="/logo.svg"
+            src={isSmallerThan800 ? "/mob-logo.svg" : "/logo.svg"}
             alt="Cristal Yacht Logo"
           />
         </Box>
         <Box 
           display='flex' 
-          justifyContent='center' 
+          justifyContent='flex-end'
           alignItems='center'
+          width='100%'
         >
           {buttonArray.map((button) => (
             <NavigationButton
@@ -107,7 +110,6 @@ export const Navbar = React.memo(({setPage}:{setPage?: (value) => void}) => {
               onClick={(page) => {
                 setSelected(button.id);
                 setPage(button.href);
-                console.log('page', page);
               }}  
               onKeyDown={(event: { key: string }) => event.key === 'Enter' ? setSelected(button.id) : null} 
               tabIndex={button.id}

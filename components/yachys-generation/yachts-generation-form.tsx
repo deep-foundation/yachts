@@ -4,22 +4,15 @@ import { InputGeneration, SelectGeneration } from './input-generation';
 
 
 export const GenerationForm = React.memo(({ onClick, containerProps }:{ onClick?: () => void; containerProps?: {}; }) => {
-  const max820 = useMediaQuery('(max-width: 820px)');
-  const max767 = useMediaQuery('(max-width: 767px)', {
+  
+  const [isSmallerThan767] = useMediaQuery('(max-width: 767px)', {
     ssr: true,
     fallback: false,
   });
-  console.log('max767', max767);
   const [button, setButton] = useState('monohull');
-  console.log('max820', max820);
-  const breackpoint = theme.breakpoints.sm;
-  const breackpointMd = theme.breakpoints.md;
-  console.log('breackpoint', breackpoint);
-  console.log('breackpointMd', breackpointMd);
 
   const handleChange = useCallback((value) => {
     setButton(value);
-    console.log('value', value);
   }, []);
 
   return (<Box display='flex' flexDir='column' alignItems='center' justifyContent='center' w='100%' {...containerProps}>
@@ -44,23 +37,17 @@ export const GenerationForm = React.memo(({ onClick, containerProps }:{ onClick?
       </Box>
       <Box 
         display='flex'
-        // flexDir={ max620 ? 'column' : 'row' }
-        // flexDir='row'
-        flexDir={{ sm: 'column', md: 'row' }}
+        flexDir={ isSmallerThan767 ? 'column' : 'row' }
         justifyContent='space-between'
         w='100%'
         sx={{
-          // '&>*:nth-of-type(1)': {
-          //   mr: max767 ? '2rem' : '10rem'
-          // },
           mb: '1rem',
         }}
       >
         <InputGeneration title="color" type='text' 
-          // stackProps={{mr: max767 ? '2rem' : '10rem'}} 
           stackProps={{
-            mr: {sm: '0rem', md: '2rem'},
-            mb: {sm: '1rem', md: '0rem'}
+            mr: isSmallerThan767 ? '0rem' : '2rem',
+            mb: isSmallerThan767 ? '1rem' : '0rem',
           }} 
         />
         <InputGeneration title="material" type='text' />
