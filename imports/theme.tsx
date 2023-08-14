@@ -188,7 +188,7 @@ const themeChakra = extendTheme({
     yachtsDescription: {
       fontWeight: 'regular',
       fontSize: 'xs',
-      lineHeight: '1.2',
+      lineHeight: '1.5',
       color: 'text',
       textTransform: 'uppercase',
     },
@@ -322,6 +322,9 @@ const themeChakra = extendTheme({
         },
       },
     },
+    Img: {
+      
+    }
   },
 });
 export default themeChakra;

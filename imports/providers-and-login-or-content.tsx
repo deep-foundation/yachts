@@ -13,7 +13,7 @@ import { Footer } from "../components/footer";
 import { useQueryStore } from "@deep-foundation/store/query";
 import { FirstScreen } from "../components/first-screen";
 import { YachtsGeneration } from "../components/yachts-generation/yachts-generation";
-import { YachtsList } from "../components/yachts-list";
+import { YachtsList } from "../components/yachts-list/yachts-list";
 
 export function ProvidersAndLoginOrContent({ children }: { children?: JSX.Element }) {
   const [page, setPage] = useQueryStore('page', '/');
