@@ -4,7 +4,7 @@ import { InputGeneration, SelectGeneration } from './input-generation';
 
 
 export const GenerationForm = React.memo(({ onClick, containerProps }:{ onClick?: () => void; containerProps?: {}; }) => {
-  
+
   const [isSmallerThan767] = useMediaQuery('(max-width: 767px)', {
     ssr: true,
     fallback: false,
@@ -52,15 +52,15 @@ export const GenerationForm = React.memo(({ onClick, containerProps }:{ onClick?
         />
         <InputGeneration title="material" type='text' />
       </Box>
-      <Stack h='max-content' align='flex-start' spacing='1.5rem' mb='2rem'
-        direction={{ sm: 'column', md: 'row' }}
+      <Stack h='max-content' align={isSmallerThan767 ? 'center' : 'flex-start'} spacing='1.5rem' mb='2rem'
+        direction={isSmallerThan767 ? 'column' : 'row' }
       >
         <VStack>
           <InputGeneration title="height" select />
           <InputGeneration title="width" select textProps={{ pr: '0.4rem' }} />
           <SelectGeneration />
         </VStack>
-        <Textarea placeholder='enter your description...' h='8.7rem' />
+        <Textarea placeholder='enter your description...' h='8.7rem' w='100%' />
       </Stack>
       <Button 
         variant='solid' 

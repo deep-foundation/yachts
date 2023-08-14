@@ -1,4 +1,4 @@
-import { YachtsGeneration } from '../components/yachys-generation/yachts-generation';
+import { YachtsGeneration } from '../components/yachts-generation/yachts-generation';
 import { Provider } from '../imports/provider';
 
 

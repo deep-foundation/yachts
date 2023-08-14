@@ -12,7 +12,8 @@ import { Navbar } from "../components/navigation";
 import { Footer } from "../components/footer";
 import { useQueryStore } from "@deep-foundation/store/query";
 import { FirstScreen } from "../components/first-screen";
-import { YachtsGeneration } from "../components/yachys-generation/yachts-generation";
+import { YachtsGeneration } from "../components/yachts-generation/yachts-generation";
+import { YachtsList } from "../components/yachts-list";
 
 export function ProvidersAndLoginOrContent({ children }: { children?: JSX.Element }) {
   const [page, setPage] = useQueryStore('page', '/');
@@ -25,6 +26,7 @@ export function ProvidersAndLoginOrContent({ children }: { children?: JSX.Elemen
           <Box as='main' h='100%' w='100%'>
             {page === '/' && <FirstScreen display='flex' />}
             {page === 'yachts-generation' && <YachtsGeneration />}
+            {page === 'yachts' && <YachtsList />}
           </Box>
           <Footer />
         {/* </Box> */}

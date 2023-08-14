@@ -14,7 +14,7 @@ const invitationForm = {
   active: {
     scale: 1,
     opacity: 1,
-    display: 'block',
+    display: 'flex',
     transition: spring 
   },
   inactive: {
@@ -64,40 +64,40 @@ export const Backdrop = React.memo(({
     }
   }, [control, portalOpen]);
   
-  return (
-    <Portal>
-      <AnimatePresence>
-        <Center 
-          as={motion.div}
-          animate={control}
-          initial={portalOpen ? 'active' : 'inactive'}
-          variants={backdrop}
-          exit={'inactive'}
-          width='100vw' 
-          height='100vh'
-          position='fixed'
-          top={0}
-          left={0}
-          zIndex={3}
-          backdropFilter={portalOpen ? `
-            blur(2px) 
-            contrast(1.2)` : ''}
-          backdropInvert='25%'
-        >
-          {portalOpen && <AnimatePresence>
-              <Box 
-                as={motion.div} 
-                animate={control} 
-                exit={'inactive'}
-                variants={invitationForm} 
-                ref={ref}
-              >
-                {children}
-              </Box>
-            </AnimatePresence>
-          }
-        </Center>
-      </AnimatePresence>
-    </Portal>
-    )
+return (<AnimatePresence>
+      <Center 
+        as={motion.div}
+        animate={control}
+        initial={portalOpen ? 'active' : 'inactive'}
+        variants={backdrop}
+        exit={'inactive'}
+        width='100%' 
+        height='100%'
+        position='absolute'
+        top={0}
+        left={0}
+        zIndex={3}
+        backdropFilter={portalOpen ? `
+          blur(3px) 
+          contrast(1.2)` : ''}
+        backdropInvert='25%'
+      >
+        {portalOpen && <AnimatePresence>
+            <Box 
+              as={motion.div} 
+              animate={control} 
+              exit={'inactive'}
+              variants={invitationForm} 
+              overflow='hidden'
+              ref={ref}
+              flexDir='column'
+              alignItems='center'
+              justifyContent='center'
+            >
+              {children}
+            </Box>
+          </AnimatePresence>
+        }
+      </Center>
+    </AnimatePresence>)
   })

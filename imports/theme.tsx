@@ -37,6 +37,7 @@ const themeChakra = extendTheme({
     heading: "'Ysabeau SC', sans-serif",
   },
   fontSizes: {
+    '2xs': "calc(0.3rem + 0.5vmax)",
     xs: "calc(0.5rem + 0.5vmax)",
     sm: 'calc(0.8125rem + 0.5vmax)', //"0.875rem",
     md: "calc(1rem + 0.5vmax)",
@@ -169,6 +170,28 @@ const themeChakra = extendTheme({
       lineHeight: '1.2',
       color: 'text',
     },
+    whiteTextShadow: {
+      fontWeight: 'light',
+      fontSize: 'sm',
+      lineHeight: '1.2',
+      color: 'whiteText',
+      textTransform: 'uppercase',
+      textShadow: '0px 1px 1px rgba(0, 0, 0, 0.35)',
+    },
+    yachtsBlueTitle: {
+      fontWeight: 'semiBold',
+      fontSize: 'sm',
+      lineHeight: '1.2',
+      color: 'blue.300',
+      textTransform: 'uppercase',
+    },
+    yachtsDescription: {
+      fontWeight: 'regular',
+      fontSize: 'xs',
+      lineHeight: '1.2',
+      color: 'text',
+      textTransform: 'uppercase',
+    },
   },
   components: {
     Button: {
@@ -196,7 +219,7 @@ const themeChakra = extendTheme({
           bg: 'button.100',
           color: 'text', 
           borderRadius: '1.5rem',
-          fontSize: 'md',
+          fontSize: 'xs',
           fontWeight: 'light',
           textTransform: 'uppercase',
           p: '1rem 2rem',
@@ -215,7 +238,7 @@ const themeChakra = extendTheme({
           bg: 'text',
           color: 'whiteText',
           borderRadius: '1.5rem',
-          fontSize: 'xs',
+          fontSize: '2xs',
           fontWeight: 'medium',
           textTransform: 'uppercase',
           _hover: {
@@ -252,7 +275,7 @@ const themeChakra = extendTheme({
           bg: 'gray.200',
           color: 'text',
           borderRadius: '1.5rem',
-          fontSize: 'xs',
+          fontSize: '2xs',
           fontWeight: 'light',
           textTransform: 'uppercase',
           _hover: {

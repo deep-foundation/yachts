@@ -25,4 +25,29 @@ export const TextBlock = React.memo(({
       <Text textStyle={textStyles} {...propsText}>{text}</Text>
     </Box>
   )
+});
+
+export const TextBlockYachtDescription = React.memo(({
+  mb = '0rem',
+  title,
+  text,
+  textStyles = 'yachtsDescription',
+  textStylesTitle = 'yachtsBlueTitle',
+  propsTitle,
+  propsText,
+}:{
+  mb?: string;
+  title?: string;
+  text: string;
+  textStyles?: string;
+  textStylesTitle?: string;
+  propsTitle?: {};
+  propsText?: {};
+}) => {
+  
+  return (<Box mb={mb}>
+      <Text textStyle={textStylesTitle} mb='1rem' casing='uppercase' {...propsTitle}>{title}</Text>
+      <Text textStyle={textStyles} {...propsText}>{text}</Text>
+    </Box>
+  )
 })
