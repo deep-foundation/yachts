@@ -1,4 +1,4 @@
-import { AspectRatio, Box, Button, Img, Skeleton, Text, useMediaQuery } from '@chakra-ui/react';
+import { AspectRatio, Box, Button, CircularProgress, CircularProgressLabel, Img, Skeleton, Text, useMediaQuery } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import { IoIosArrowForward, IoIosShareAlt } from "react-icons/io";
 import { Backdrop } from './backdrop';
@@ -36,12 +36,17 @@ export const GenerationImage = React.memo(({
   src = '/first.webp',
   containerProps = {},
   onClickToGallery,
+  progress,
+  saveToGalleryHandler,
 }:{
   src?: string;
   containerProps?: {};
   onClickToGallery?: () => void;
+  progress: number;
+  saveToGalleryHandler: () => void;
 }) => {
   const [isLoaded, setIsLoaded] = useState(false);
+  const [isSaved, setIsSaved] = useState(false);
   const [portalOpen, setPortal] = useState(false);
   const [isSmallerThan800] = useMediaQuery('(max-width: 800px)');
   const [isSmallerThan500] = useMediaQuery('(max-width: 500px)');
@@ -66,7 +71,7 @@ export const GenerationImage = React.memo(({
                 alt='generation image' 
                 w='100%' 
                 sx={{opacity: isLoaded ? 1 : 0}}
-                onLoad={() => setIsLoaded(true)}
+                onLoad={() => setIsLoaded(progress===100)}
                 borderRadius='0.2rem'
               />
             </AspectRatio>
@@ -75,17 +80,45 @@ export const GenerationImage = React.memo(({
               <Box w='100%' h='100%' display='flex' alignItems='center' justifyContent='center' bg='blue.300' p='1rem 1.5rem' overflow='hidden'>
                 <Text textStyle='whiteTextShadow' align='center'>congrats art saved to gallery!</Text>
               </Box>
+              <Box display='flex' flexDirection='row'>
+                {progress<100 ?
+                  <CircularProgress isIndeterminate color='green.400'>
+                    <CircularProgressLabel>{progress}%</CircularProgressLabel>
+                  </CircularProgress>:<></>
+                }
+              </Box>
               <Button onClick={onClickToGallery} size='sm' alignSelf='flex-end' position='absolute' bottom='0.5rem' right='0.5rem'>regenerate image</Button></>
             </Backdrop>
           </Skeleton>
           <Box w='100%' display='flex' alignItems='center' justifyContent='center' flexDir='column'>
             <Box display='flex' flexDir='row' mb='0.5rem'>
               <GenerationButton variant='grayBgSolid' text='download on your device' textProps={{ px: isSmallerThan500 ? '2rem' : '3rem', mr: '0.5rem' }} buttonProps={{ mr: '0.5rem' }} onClick={() => console.log(true)} />
-              <GenerationButton variant='grayBgSolid' text='save to our gallery' onClick={() => setPortal(true)} />
+              <GenerationButton 
+                buttonProps={{isDisabled: isSaved}} 
+                variant='grayBgSolid' text='save to our gallery' 
+                onClick={() => {
+                  saveToGalleryHandler(); 
+                  setIsSaved(true); 
+                  setPortal(true)}
+                } 
+              />
             </Box>
             <Box display='flex' flexDir='row'>
-              <GenerationButton variant='grayBgSolid' text='share' buttonProps={{ mr: '0.5rem' }} onClick={() => console.log(true)} rightIcon={<IoIosShareAlt />} />
-              <GenerationButton variant='blackBgSolid' text='write a new description' textProps={{ px: isSmallerThan500 ? '2.5rem' : '5rem' }} onClick={() => console.log(true)} />
+              <GenerationButton 
+                variant='grayBgSolid' 
+                text='share' 
+                buttonProps={{ mr: '0.5rem' }} 
+                onClick={() => console.log(true)} 
+                rightIcon={<IoIosShareAlt />} 
+              />
+              <GenerationButton 
+                variant='blackBgSolid' 
+                text='write a new description' 
+                textProps={{ 
+                  px: isSmallerThan500 ? '2.5rem' : '5rem' 
+                }} 
+                onClick={() => console.log(true)} 
+              />
             </Box>
           </Box>
         </Box>
