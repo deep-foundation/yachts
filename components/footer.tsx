@@ -8,11 +8,11 @@ import { motion } from 'framer-motion';
 export const Footer = React.memo(() => {
   const [selected, setSelected] = useState(1);
   const [hover, setHover] = useState(1);
-  const [isSmallerThan800] = useMediaQuery('(max-width: 800px)');
+  const [isSmallerThan945] = useMediaQuery('(max-width: 945px)');
   const [isSmallerThan600] = useMediaQuery('(max-width: 600px)');
 
   return (<Box as='footer' w='100%' boxShadow='0 2px 2px 0 #f3f3f3' bg='gray.100'>
-      <Flex direction='column' align='flex-start' p={isSmallerThan800 ? '2rem 2rem': '2rem 12rem'}>
+      <Flex direction='column' align='flex-start' p={isSmallerThan945 ? '2rem 2rem': '2rem 12rem'}>
         <Img
           src="/logo.svg"
           alt="Cristal Yacht Logo"

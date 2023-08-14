@@ -12,6 +12,7 @@ export const YachtsGeneration = React.memo(({ onClick }:{ onClick?: () => void; 
   const [imgGen, setImgGen] = useState(false);
 
   const [isSmallerThan800] = useMediaQuery('(max-width: 800px)');
+  const [isSmallerThan945] = useMediaQuery('(max-width: 945px)');
 
   return (<Center display='flex' flexDir='column' p={isSmallerThan800 ? '2rem 1rem' : '5.6rem'}>
       <Box 
@@ -34,7 +35,11 @@ export const YachtsGeneration = React.memo(({ onClick }:{ onClick?: () => void; 
               onClick={() => {
                 setStartCreate(true);
               }} 
-              buttonProps={{ gridColumn: '2/3', width: isSmallerThan800 ? '100%' : '30%', mb: isSmallerThan800 ? '2rem' : '4rem' }}
+              buttonProps={{ 
+                gridColumn: '2/3', 
+                width: isSmallerThan945 ? '100%' : '30%', 
+                mb: isSmallerThan800 ? '2rem' : '4rem' 
+              }}
             />
             {isSmallerThan800 ? <GenerationImageGallery /> : null}</>
           : startGen === false 

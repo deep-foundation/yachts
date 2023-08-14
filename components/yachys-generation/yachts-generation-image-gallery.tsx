@@ -19,6 +19,18 @@ const items = [
   { id: '64', src: 'first1.webp', alt: 'alt' },
 ];
 
+const itemVariants = {
+  hidden: {
+    opacity: 0,
+    scale: 0.5
+  },
+  visible: delayRef => ({
+    opacity: 1,
+    scale: 1,
+    transition: { delay: delayRef.current }
+  })
+};
+
 export const GenerationImageGallery = React.memo(({ 
   delayPerPixel = 0.0008, 
   photos = items, 
@@ -29,39 +41,42 @@ export const GenerationImageGallery = React.memo(({
   const originOffset = useRef({ top: 0, left: 0 });
   const controls = useAnimation();
   const [selected, setSelected] = useState(null);
+  const [isSmallerThan800] = useMediaQuery('(max-width: 800px)');
 
   useEffect(() => {
     controls.start("visible");
   }, []);
 
   return (<>
-      <Box as={motion.div} initial="hidden" animate={controls} variants={{}} gridColumn='2 / 3' textAlign='center'
+      <Box as={motion.div} initial="hidden" animate={controls} variants={{}} gridColumn={isSmallerThan800 ? '1 / 4' : '2 / 3'} textAlign='center' overflowY={isSmallerThan800 ? 'hidden' : 'unset'} height={isSmallerThan800 ? '40vh' : '60vh'}
       >
-        {photos.map((photo, i) => {
-          return (<>
-            <Thumbnail 
-              key={photo.id} 
-              setSelected={setSelected} 
-              i={i}
-              originIndex={26}
-              delayPerPixel={delayPerPixel}
-              originOffset={originOffset}
-              id={photo.id}
-              src={photo.src}
-              alt={photo.alt}
-            />
-
-            {selected 
-            ? (<DetailView 
-                photos={photos}
-                selected={selected} 
-                onClose={() => setSelected(null)} 
+        <Box overflowY='scroll' height='100%'>
+          {photos.map((photo, i) => {
+            return (<>
+              <Thumbnail 
+                key={photo.id} 
+                setSelected={setSelected} 
+                i={i}
+                originIndex={26}
+                delayPerPixel={delayPerPixel}
+                originOffset={originOffset}
+                id={photo.id}
                 src={photo.src}
                 alt={photo.alt}
-              />) 
-            : null}
-          </>)
-        })}
+              />
+
+              {selected 
+              ? (<DetailView 
+                  photos={photos}
+                  selected={selected} 
+                  onClose={() => setSelected(null)} 
+                  src={photo.src}
+                  alt={photo.alt}
+                />) 
+              : null}
+            </>)
+          })}
+        </Box>
       </Box>
     </>
   );
@@ -209,15 +224,3 @@ const DetailView = React.memo(({
     </>
   );
 })
-
-const itemVariants = {
-  hidden: {
-    opacity: 0,
-    scale: 0.5
-  },
-  visible: delayRef => ({
-    opacity: 1,
-    scale: 1,
-    transition: { delay: delayRef.current }
-  })
-};
