@@ -40,7 +40,7 @@ const backdrop = {
   }
 }
 
-export const Backdrop = React.memo<any>(({
+export const Backdrop = React.memo(({
   portalOpen = false, 
   onClosePortal,
   children,
