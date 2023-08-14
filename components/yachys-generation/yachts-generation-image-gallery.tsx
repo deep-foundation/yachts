@@ -4,28 +4,28 @@ import React, { useState } from 'react';
 import { Grid } from './grid-gallery';
 
 
-const items = [
-  { id: '1', src: 'first1.webp', alt: 'alt' },
-  { id: '2', src: 'first1.webp', alt: 'alt' },
-  { id: '3', src: 'first1.webp', alt: 'alt' },
-  { id: '5', src: 'first1.webp', alt: 'alt' },
-  { id: '6', src: 'first1.webp', alt: 'alt' },
-  { id: '7', src: 'first1.webp', alt: 'alt' },
-  { id: '8', src: 'first1.webp', alt: 'alt' },
-  { id: '9', src: 'first1.webp', alt: 'alt' },
-  { id: '14', src: 'first1.webp', alt: 'alt' },
-  { id: '24', src: 'first1.webp', alt: 'alt' },
-  { id: '34', src: 'first1.webp', alt: 'alt' },
-  { id: '44', src: 'first1.webp', alt: 'alt' },
-  { id: '54', src: 'first1.webp', alt: 'alt' },
-  { id: '64', src: 'first1.webp', alt: 'alt' },
-];
+// const items = [
+//   { id: '1', src: 'first1.webp', alt: 'alt' },
+//   { id: '2', src: 'first1.webp', alt: 'alt' },
+//   { id: '3', src: 'first1.webp', alt: 'alt' },
+//   { id: '5', src: 'first1.webp', alt: 'alt' },
+//   { id: '6', src: 'first1.webp', alt: 'alt' },
+//   { id: '7', src: 'first1.webp', alt: 'alt' },
+//   { id: '8', src: 'first1.webp', alt: 'alt' },
+//   { id: '9', src: 'first1.webp', alt: 'alt' },
+//   { id: '14', src: 'first1.webp', alt: 'alt' },
+//   { id: '24', src: 'first1.webp', alt: 'alt' },
+//   { id: '34', src: 'first1.webp', alt: 'alt' },
+//   { id: '44', src: 'first1.webp', alt: 'alt' },
+//   { id: '54', src: 'first1.webp', alt: 'alt' },
+//   { id: '64', src: 'first1.webp', alt: 'alt' },
+// ];
 
 export const GenerationImageGallery = React.memo(({
-  // items,
+  items,
   containerProps = {},
 }:{
-  // items: any;
+  items: any;
   containerProps?: {};
 }) => {
   const [selectedId, setSelectedId] = useState(null);
