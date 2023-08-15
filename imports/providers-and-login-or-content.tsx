@@ -14,6 +14,7 @@ import { useQueryStore } from "@deep-foundation/store/query";
 import { FirstScreen } from "../components/first-screen";
 import { YachtsGeneration } from "../components/yachts-generation/yachts-generation";
 import { YachtsList } from "../components/yachts-list/yachts-list";
+import { Technologies } from "../components/technologies/technologies";
 
 export function ProvidersAndLoginOrContent({ children }: { children?: JSX.Element }) {
   const [page, setPage] = useQueryStore('page', '/');
@@ -27,6 +28,7 @@ export function ProvidersAndLoginOrContent({ children }: { children?: JSX.Elemen
             {page === '/' && <FirstScreen display='flex' />}
             {page === 'yachts-generation' && <YachtsGeneration />}
             {page === 'yachts' && <YachtsList />}
+            {page === 'technologies' && <Technologies />}
           </Box>
           <Footer />
         {/* </Box> */}

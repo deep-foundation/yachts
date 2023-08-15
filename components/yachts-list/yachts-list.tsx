@@ -4,7 +4,6 @@ import { TextBlockYachtDescription } from "../text-block";
 import { yachtsList } from "./list";
 
 export const YachtsList = React.memo(() => {
-  const [isSmallerThan500] = useMediaQuery('(max-width: 500px)');
   const [isSmallerThan800] = useMediaQuery('(max-width: 800px)');
   const [isSmallerThan945] = useMediaQuery('(max-width: 945px)');
 

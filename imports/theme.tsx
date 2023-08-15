@@ -45,9 +45,9 @@ const themeChakra = extendTheme({
     xl: "calc(1.2rem + 0.5vmax)",
     "2xl": "calc(1.5rem + 0.5vmax)",
     "3xl": "calc(1.875rem + 0.5vmax)",
-    "4xl": "calc(2.25rem + 0.5vmax)",
+    "4xl": "calc(2.3rem + 0.5vmax)",
     "5xl": "calc(3rem + 0.5vmax)",
-    "6xl": "calc(3.75rem + 0.5vmax)",
+    "6xl": "calc(3.25rem + 0.5vmax)",
     "7xl": "4.5rem",
     "8xl": "6rem",
     "9xl": "8rem",
@@ -92,7 +92,7 @@ const themeChakra = extendTheme({
   // },
   textStyles: {
     h1: {
-      fontSize: '6xl',
+      fontSize: '4xl',
       fontWeight: 'medium',
       textTransform: 'uppercase',
       lineHeight: '1.2',
@@ -188,6 +188,27 @@ const themeChakra = extendTheme({
     yachtsDescription: {
       fontWeight: 'regular',
       fontSize: 'xs',
+      lineHeight: '1.5',
+      color: 'text',
+      textTransform: 'uppercase',
+    },
+    technologiesUppercaseText: {
+      fontWeight: 'medium',
+      fontSize: 'sm',
+      lineHeight: '1.5',
+      color: 'text',
+      textTransform: 'uppercase',
+    },
+    technologiesUppercaseSB24Text: {
+      fontWeight: 'bold',
+      fontSize: 'sm',
+      lineHeight: '1.5',
+      color: 'text',
+      textTransform: 'uppercase',
+    },
+    technologiesUppercaseSB36Text: {
+      fontWeight: 'semiBold',
+      fontSize: 'md',
       lineHeight: '1.5',
       color: 'text',
       textTransform: 'uppercase',
