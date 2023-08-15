@@ -1,8 +1,10 @@
 import { Box, Center, Image, useMediaQuery } from '@chakra-ui/react';
-import React, { useState } from 'react';
+import React, { useState, useMemo, useEffect} from 'react';
 import { GenerationForm } from './yachts-generation-form';
 import { GenerationButton, GenerationImage } from './yachts-generation-image';
 import { GenerationImageGallery } from './yachts-generation-image-gallery';
+import { useDeep, useDeepSubscription } from "@deep-foundation/deeplinks/imports/client";
+import { Link } from '@deep-foundation/deeplinks/imports/minilinks';
 
 
 
@@ -14,6 +16,89 @@ export const YachtsGeneration = React.memo(({ onClick }:{ onClick?: () => void; 
   const [isSmallerThan500] = useMediaQuery('(max-width: 500px)');
   const [isSmallerThan800] = useMediaQuery('(max-width: 800px)');
   const [isSmallerThan945] = useMediaQuery('(max-width: 945px)');
+
+  // deep types
+  const [drawResultTypeId, setDrawResultTypeId] = useState(0);
+  const [drawRequestTypeId, setDrawRequestTypeId] = useState(0);
+  const [settingsId, setSettingsId] = useState(0);
+  const [midjourneyRequestTypeId, setMidjourneyRequestTypeId] = useState(0);
+  const [isPublishedTypeId, setIsPublishedTypeId] = useState(0);
+  // deep links
+  const [requestId, setRequestId] = useState(0);
+
+  const deep = useDeep();
+  
+  useEffect(() => {
+    // load deep types
+    const f = async () => {
+      setDrawResultTypeId(await deep.id("@agsagds/yacht-co", "DrawResult"));
+      setDrawRequestTypeId(await deep.id("@agsagds/yacht-co", "DrawRequest"));
+      setIsPublishedTypeId(await deep.id("@agsagds/yacht-co", "IsPublished"));
+      const settingsTypeId = await deep.id("@agsagds/yacht-co", "MidjourneySettings");
+      setSettingsId((await deep.select({type_id: {_eq: settingsTypeId}})).data[0]?.id);
+      setMidjourneyRequestTypeId(await deep.id("@agsagds/midjourney", "MidjourneyRequest"));
+    }
+
+    f();
+  }, []);
+
+  function getDrawResultLink() : Link<number> | undefined {
+    return deep.minilinks.query({
+      _and: [
+        {type_id: {_eq:drawResultTypeId }},
+        {from_id: {_eq: requestId}}
+      ]
+    })[0];
+  }
+
+  async function saveToGalleryHandler() {
+    const drawResultLinkId = getDrawResultLink()?.id;
+
+    const isPublishedLink = deep.minilinks.query({
+      _and: [
+        {type_id: {_eq:isPublishedTypeId }},
+        {from_id: {_eq: drawResultLinkId}}
+      ]
+    })[0];
+    if (isPublishedLink) 
+      return;
+    
+    const {data: [isPublishedLinkId] } = await deep.insert({
+        type_id: isPublishedTypeId,
+        from_id: drawResultLinkId,
+        to_id: drawResultLinkId
+      });
+    // console.log(`iPublishedLink: ${isPublishedLinkId}`)
+  }
+
+  function getPublishedLinks(): Link<number>[]{
+    const links = deep.minilinks.query(
+      { 
+        _and: [
+          {type_id: {_eq: drawResultTypeId }},
+          {in: {type_id: {_eq: isPublishedTypeId}}}
+        ]
+      });
+    // console.log('published links:')
+    // console.log(links);
+    return links;
+  }
+
+  // subscribe on deep DrawResult links
+  const { loading, data, error } = useDeepSubscription(useMemo(() => ({
+    _or: [
+      {
+        type_id: { _in: [drawResultTypeId, isPublishedTypeId] }
+      },
+      {
+        id: {
+          _eq: settingsId
+        }
+      }
+    ]
+  }),[drawResultTypeId, settingsId]));
+
+  // console.log(`settingsId: ${settingsId}`)
 
   return (<Center display='flex' flexDir='column' p={isSmallerThan945 ? '2rem 1rem' : '5.6rem'}>
       <Box 
@@ -47,10 +132,27 @@ export const YachtsGeneration = React.memo(({ onClick }:{ onClick?: () => void; 
           ? <GenerationForm 
               onClick={() => setStartGen(true)} 
               containerProps={{gridColumn: isSmallerThan800 ? '1 / 4' : '2/3', mb: '5rem'}}
+              setRequestId={setRequestId}
+              deep={deep}
+              drawRequestTypeId={drawRequestTypeId}
+              midjourneyRequestTypeId={midjourneyRequestTypeId}
+              settingsId={settingsId}
             />
           : imgGen === false
-          ? <GenerationImage containerProps={{gridColumn: isSmallerThan945 ? '1 / 4' : '2/3', mb: '2rem'}} onClickToGallery={() => setImgGen(true)} />
-          : <GenerationImageGallery />
+          ? <GenerationImage 
+              src={getDrawResultLink()?.value?.value.img_url} 
+              progress={getDrawResultLink()?.value?.value.progress}
+              saveToGalleryHandler={saveToGalleryHandler}
+              containerProps={{gridColumn: '2/3'}} onClickToGallery={() => setImgGen(true)} />
+          : <GenerationImageGallery photos={
+            getPublishedLinks().map((item) => {
+              return {
+                id: item.value.value.id,
+                src: item.value.value.img_url,
+                alt: item.value.value.error
+              }
+            })
+          }/>
         }
       </Box>
     </Center>
