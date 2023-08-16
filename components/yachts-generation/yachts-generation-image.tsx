@@ -80,11 +80,11 @@ export const GenerationImage = React.memo(({
               <Box w='100%' h='100%' display='flex' alignItems='center' justifyContent='center' bg='blue.300' p='1rem 1.5rem' overflow='hidden'>
                 <Text textStyle='whiteTextShadow' align='center'>congrats art saved to gallery!</Text>
               </Box>
-              <Box display='flex' flexDirection='row'>
+              <Box display='flex' flexDirection='row' position='absolute' bottom='0.5rem' right='0.5rem'>
                 {progress<100 ?
                   <CircularProgress isIndeterminate color='green.400'>
                     <CircularProgressLabel>{progress}%</CircularProgressLabel>
-                  </CircularProgress>:<></>
+                  </CircularProgress> : null
                 }
               </Box>
               <Button onClick={onClickToGallery} size='sm' alignSelf='flex-end' position='absolute' bottom='0.5rem' right='0.5rem'>regenerate image</Button></>

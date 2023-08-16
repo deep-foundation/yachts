@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, Button, Hide, Link, Show, Text, useMediaQuery } from '@chakra-ui/react';
+import { Box, Button, Hide, Link, Menu, MenuButton, MenuItem, MenuItemOption, MenuList, MenuOptionGroup, Show, Text, useMediaQuery } from '@chakra-ui/react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { buttonArray } from './array-menu-button';
 
@@ -33,6 +33,7 @@ export const NavigationButton = React.memo(({
   onHoverStart?: () => void;
   onHoverEnd?: () => void;
 }) => {
+  
   return (<Button
       aria-label={ariaLabel}
       variant={variant}
@@ -83,6 +84,7 @@ export const NavigationButton = React.memo(({
 export const Navbar = React.memo(({setPage}:{setPage?: (value) => void}) => {
   const [selected, setSelected] = useState(1);
   const [hover, setHover] = useState(1);
+  const [isSmallerTha600] = useMediaQuery('(max-width: 600px)');
   const [isSmallerThan800] = useMediaQuery('(max-width: 800px)');
   const [isSmallerThan1350] = useMediaQuery('(max-width: 1350px)');
 
@@ -94,51 +96,68 @@ export const Navbar = React.memo(({setPage}:{setPage?: (value) => void}) => {
             alt="Cristal Yacht Logo"
           />
         </Box>
-        <Box 
-          display='flex' 
-          justifyContent='flex-end'
-          alignItems='center'
-          width='100%'
-        >
-          {buttonArray.map((button) => (
-            <NavigationButton
-              key={button.id}
-              ariaLabel={button.ariaLabel}
-              href={button.href}
-              variant={button.variant}
-              name={button.name}
-              onClick={(page) => {
-                setSelected(button.id);
-                setPage(button.href);
-              }}  
-              onKeyDown={(event: { key: string }) => event.key === 'Enter' ? setSelected(button.id) : null} 
-              tabIndex={button.id}
-              styles={{
-                scale: button.id === selected ? 1.05 : 1,
-              }}
-              onHoverStart={() => {
-                setHover(button.id);
-              }}
-              onHoverEnd={() => setHover(0)}
-              underline={
-                (button.id === selected) || button.id === hover ? 
-                  <Box
-                    as={motion.div}
-                    layoutId="underline"
-                    sx={{ 
-                      width: '100%',
-                      height: '0.02rem',
-                      borderRadius: '0.2rem',
-                      position: 'absolute',
-                      bottom: 0, 
-                      bg: 'text',
-                    }}
-                  /> 
-                : null
-              }
-            />
-          ))}
-        </Box>
+        <Show below='sm'>
+          <Menu>
+            <MenuButton>menu</MenuButton>
+            <MenuList>
+            {buttonArray.map((button) => (
+              <MenuItem as='button' 
+                key={button.id}
+                onClick={() => {
+                  setSelected(button.id);
+                  setPage(button.href);
+                }}
+              >{button.name}</MenuItem>))}
+            </MenuList>
+          </Menu>
+        </Show>
+        <Hide below='sm'>
+          <Box 
+            display='flex' 
+            justifyContent='flex-end'
+            alignItems='center'
+            width='100%'
+          >
+            {buttonArray.map((button) => (
+              <NavigationButton
+                key={button.id}
+                ariaLabel={button.ariaLabel}
+                href={button.href}
+                variant={button.variant}
+                name={button.name}
+                onClick={(page) => {
+                  setSelected(button.id);
+                  setPage(button.href);
+                }}  
+                onKeyDown={(event: { key: string }) => event.key === 'Enter' ? setSelected(button.id) : null} 
+                tabIndex={button.id}
+                styles={{
+                  scale: button.id === selected ? 1.05 : 1,
+                }}
+                onHoverStart={() => {
+                  setHover(button.id);
+                }}
+                onHoverEnd={() => setHover(0)}
+                underline={
+                  (button.id === selected) || button.id === hover ? 
+                    <Box
+                      as={motion.div}
+                      layoutId="underline"
+                      sx={{ 
+                        width: '100%',
+                        height: '0.02rem',
+                        borderRadius: '0.2rem',
+                        position: 'absolute',
+                        bottom: 0, 
+                        bg: 'text',
+                      }}
+                    /> 
+                  : null
+                }
+              />
+            ))}
+          </Box>
+        </Hide>
       </Box>
     </Box>
   )
