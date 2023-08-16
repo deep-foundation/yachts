@@ -92,7 +92,7 @@ export const GenerationImage = React.memo(({
           </Skeleton>
           <Box w='100%' display='flex' alignItems='center' justifyContent='center' flexDir='column'>
             <Box display='flex' flexDir='row' mb='0.5rem'>
-              <GenerationButton variant='grayBgSolid' text='download on your device' textProps={{ px: isSmallerThan500 ? '2rem' : '3rem', mr: '0.5rem' }} buttonProps={{ mr: '0.5rem' }} onClick={() => console.log(true)} />
+              {/* <GenerationButton variant='grayBgSolid' text='download on your device' textProps={{ px: isSmallerThan500 ? '2rem' : '3rem', mr: '0.5rem' }} buttonProps={{ mr: '0.5rem' }} onClick={() => console.log(true)} /> */}
               <GenerationButton 
                 buttonProps={{isDisabled: isSaved}} 
                 variant='grayBgSolid' text='save to our gallery' 
