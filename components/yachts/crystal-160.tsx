@@ -13,7 +13,7 @@ export const Crystal160 = React.memo(() => {
       <Text as='h2' textStyle='yachtBlueSubtitle' align='left' mb={isSmallerThan900 ? '2rem' : '4rem'}>CRYSTAL MEGAYACHT</Text>
 
       <Box display='grid' gridTemplateColumns={isSmallerThan500 ? '1fr' : '1fr 1fr'} columnGap={isSmallerThan500 ? 0 : isSmallerThan900 ? '2rem' : '4rem'} mb={isSmallerThan900 ? '2rem' : '4rem'}>
-        <Box>
+        <Box mb={isSmallerThan500 ? '1rem' : 0}>
           <TextBlock 
             mb={isSmallerThan900 ? '0.5rem' : '1.5rem'}
             title='EXTERIOR' 
@@ -46,7 +46,7 @@ export const Crystal160 = React.memo(() => {
         >
           <Img src='/first2.webp' alt='crystal160' />
         </AspectRatio>
-        <Box>
+        <Box mt={isSmallerThan500 ? '1rem' : 0}>
           <TextBlock 
             title='INTERIOR' 
             textStylesTitle='yachtBlockTitle'
@@ -59,15 +59,16 @@ export const Crystal160 = React.memo(() => {
       </Box>
 
       <Box display='grid' gridTemplateColumns={isSmallerThan500 ? '1fr' : '1fr 1fr'} columnGap={isSmallerThan500 ? 0 : isSmallerThan900 ? '2rem' : '4rem'} mb={isSmallerThan900 ? '2rem' : '7rem'}>
-        <Box>
+        <Box mb={isSmallerThan500 ? '1rem' : 0}>
           <TextBlock 
             mb={isSmallerThan900 ? '1.5rem' : '2rem'}
             title='TECHNOLOGIES' 
             textStylesTitle='yachtBlockTitle'
             text="The catamaran is technologically and structurally suitable for the installation of hydrogen-based fuel cells. The ventilation system allows a significant reduction of energy consumption for air conditioning, as well as improved air quality in all interior spaces. The use of these energy systems, and the optimization of energy consumption on yacht, gives enormous autonomy. You will be able to travel and live aboard in remote parts of the world without having to worry about where to refuel or dock." 
-          />
+            />
           <TextBlock 
             title='NATURAL STABILIZATION'
+            textStylesTitle='yachtBlockTitle'
             text="The large beam of a catamaran gives natural stabilization, which is less in amplitude than a monohull. Excellent stabilization at anchor and underway, plus a large interior volume, make this catamaran a real big, comfortable residence for the whole family, where you'll forget you're in open seas." 
           />
         </Box>

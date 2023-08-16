@@ -34,7 +34,8 @@ export const Crystal130 = React.memo(() => {
       </Box>
 
       <Box 
-        display='grid' 
+        display={isSmallerThan500 ? 'flex' : 'grid'}
+        flexDirection={isSmallerThan500 ? 'column-reverse' : 'unset'}
         gridTemplateColumns={isSmallerThan500 ? '1fr' : '1fr 1fr'} 
         columnGap={isSmallerThan500 ? 0 : isSmallerThan900 ? '2rem' : '4rem'}
         mb={isSmallerThan900 ? '2rem' : '4rem'}>
@@ -47,10 +48,11 @@ export const Crystal130 = React.memo(() => {
           <Img src='/first2.webp' alt='crystal160' />
         </AspectRatio>
         <Box 
-          display='grid' 
+          display='grid'
           gridTemplateColumns={isSmallerThan500 ? '1fr' : '1fr 1fr'}
           columnGap={isSmallerThan500 ? 0 : isSmallerThan900 ? '2rem' : '3rem'}
           rowGap={isSmallerThan500 ? 0 : isSmallerThan900 ? '2rem' : '3rem'}
+          mb={isSmallerThan500 ? '1rem' : '0'}
         >
           <TextBlock
             propsTitle={{align: 'center'}}
@@ -130,7 +132,7 @@ export const Crystal130 = React.memo(() => {
         columnGap={isSmallerThan500 ? 0 : isSmallerThan900 ? '2rem' : '4rem'}  
         mb={isSmallerThan900 ? '2rem' : '4rem'}
       >
-        <AspectRatio ratio={isSmallerThan900 ? 1.5 : 1.8} maxW='100%'>
+        <AspectRatio ratio={isSmallerThan900 ? 1.5 : 1.8} maxW='100%' mb={isSmallerThan500 ? '1rem' : 0}>
           <Img src='/first2.webp' alt='crystal160' />
         </AspectRatio>
         <Box>

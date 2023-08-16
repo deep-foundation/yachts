@@ -7,7 +7,6 @@ import { useDeep, useDeepSubscription } from "@deep-foundation/deeplinks/imports
 import { Link } from '@deep-foundation/deeplinks/imports/minilinks';
 
 
-
 export const YachtsGeneration = React.memo(({ onClick }:{ onClick?: () => void; }) => {
   const [startCreate, setStartCreate] = useState(false);
   const [startGen, setStartGen] = useState(false);
@@ -98,7 +97,7 @@ export const YachtsGeneration = React.memo(({ onClick }:{ onClick?: () => void; 
     ]
   }),[drawResultTypeId, settingsId]));
 
-  // console.log(`settingsId: ${settingsId}`)
+  console.log(`settingsId: ${settingsId}`)
 
   return (<Center display='flex' flexDir='column' p={isSmallerThan945 ? '2rem 1rem' : '5.6rem'}>
       <Box 
