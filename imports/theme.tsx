@@ -38,7 +38,7 @@ const themeChakra = extendTheme({
   },
   fontSizes: {
     '2xs': "calc(0.3rem + 0.5vmax)",
-    xs: "calc(0.5rem + 0.5vmax)",
+    xs: "calc(0.55rem + 0.5vmax)",
     sm: 'calc(0.8125rem + 0.5vmax)', //"0.875rem",
     md: "calc(1rem + 0.5vmax)",
     lg: "calc(1.125rem + 0.5vmax)",
@@ -131,7 +131,7 @@ const themeChakra = extendTheme({
     regularTextBlock: {
       fontWeight: 'regular',
       fontSize: 'xs',
-      lineHeight: '1.2',
+      lineHeight: '1.4',
       color: 'text',
       textAlign: 'justify',
     },
@@ -211,7 +211,7 @@ const themeChakra = extendTheme({
     yachtBlockTitle: {
       fontWeight: 'semiBold',
       fontSize: 'sm',
-      lineHeight: '1.2',
+      lineHeight: '1.4',
       color: 'text',
       textTransform: 'uppercase',
     },

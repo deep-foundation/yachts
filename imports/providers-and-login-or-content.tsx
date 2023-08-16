@@ -8,6 +8,7 @@ import { YachtsGeneration } from "../components/yachts-generation/yachts-generat
 import { YachtsList } from "../components/yachts-list/yachts-list";
 import { Crystal160 } from "../components/yachts/crystal-160";
 import themeChakra from "./theme";
+import { Crystal130 } from "../components/yachts/crystal-130";
 
 export function ProvidersAndLoginOrContent({ children }: { children?: JSX.Element }) {
   const [page, setPage] = useQueryStore('page', '/');
@@ -23,6 +24,7 @@ export function ProvidersAndLoginOrContent({ children }: { children?: JSX.Elemen
             {page === 'yachts' && <YachtsList setPage={setPage} />}
             {page === 'technologies' && <Technologies />}
             {page === 'yachts/navigator 160' && <Crystal160 />}
+            {page === 'yachts/navigator 130' && <Crystal130 />}
           </Box>
           <Footer />
         {/* </Box> */}

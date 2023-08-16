@@ -14,23 +14,25 @@ export const Crystal160 = React.memo(() => {
 
       <Box display='grid' gridTemplateColumns={isSmallerThan500 ? '1fr' : '1fr 1fr'} columnGap={isSmallerThan500 ? 0 : isSmallerThan900 ? '2rem' : '4rem'} mb={isSmallerThan900 ? '2rem' : '4rem'}>
         <Box>
-          <TextBlockYachtDescription 
+          <TextBlock 
+            mb={isSmallerThan900 ? '0.5rem' : '1.5rem'}
             title='EXTERIOR' 
-            textStylesTitle='semiBoldText'
+            textStylesTitle='yachtBlockTitle'
             text="We went further in size and created a 50-meter concept. Super catamaran, which by its internal and external areas is comparable to a 70-80-meter yacht." 
-          />
-          <TextBlockYachtDescription 
+            />
+          <TextBlock 
+            mb={isSmallerThan900 ? '0.5rem' : '1.5rem'}
             text="The exterior design style is dictated by maximum efficiency and beauty. The exterior design strongly influences the power consumption of the main engines, so our main objective was to seamlessly combine aerodynamics, many solar panels and impressive open decks. The number of protruding structural elements has been reduced to a minimum." 
-          />
-          <TextBlockYachtDescription 
+            />
+          <TextBlock 
             text="The catamaran has ideal proportions between the hull and the superstructure. The superstructure is integrated into the hull volume for efficient aerodynamics The superstructure is glazed around the perimeter to the full height of the deck. The roof of the superstructure is visually separated from the hull, fully solar-paneled and sloped on the perimeter to reduce wind resistance both on the sides and on the stern. This catamaran is a large autonomous yacht that is ready to move you anywhere in the world in comfort." 
           />
         </Box>
         <Box>
-          <AspectRatio ratio={isSmallerThan900 ? 1.5 : 1.8} maxW='100%'>
+          <AspectRatio ratio={isSmallerThan900 ? 1.5 : 1.8} maxW='100%' mb={isSmallerThan900 ? '1.5rem' : '2rem'}>
             <Img src='/first2.webp' alt='crystal160' />
           </AspectRatio>
-          <TextBlockYachtDescription
+          <TextBlock
             text="This will waste less energy in keeping the catamaran on course in headwinds and maneuvering, allowing for more precise and efficient steering. Such a solution reduces the noise created by strong winds. All external ladders are hidden as much as possible for better visibility and cleaner design. The stern consists of three open decks which give the impression of solidity and comfort at the same time" />
         </Box>
       </Box>
@@ -45,12 +47,12 @@ export const Crystal160 = React.memo(() => {
           <Img src='/first2.webp' alt='crystal160' />
         </AspectRatio>
         <Box>
-          <TextBlockYachtDescription 
+          <TextBlock 
             title='INTERIOR' 
-            textStylesTitle='semiBoldText'
+            textStylesTitle='yachtBlockTitle'
             text="The most important advantage of a catamaran over a monohull is its beam, since a catamaran can be almost twice as wide as a monohull for the same length. A catamaran consists of two hulls connected by a bridge. Interiors will include more than 10 000 square feet or 1000 square meters and huge amount of deck space which can be configured to owner’s needs." 
           />
-          <TextBlockYachtDescription 
+          <TextBlock 
             text="There are 6 suites on the catamaran, it is already wrong to call such premises as cabins.Master suit 120m2 with 50m2 of open deck area.VIP suit 100m2 with 80m2 of open deck area.4 Guest suits 40m2.All suits have walk-in wardrobe.Salon with dining area, luxury lounge zone and etc. 200m2 +" 
           />
         </Box>
@@ -58,12 +60,13 @@ export const Crystal160 = React.memo(() => {
 
       <Box display='grid' gridTemplateColumns={isSmallerThan500 ? '1fr' : '1fr 1fr'} columnGap={isSmallerThan500 ? 0 : isSmallerThan900 ? '2rem' : '4rem'} mb={isSmallerThan900 ? '2rem' : '7rem'}>
         <Box>
-          <TextBlockYachtDescription 
+          <TextBlock 
+            mb={isSmallerThan900 ? '1.5rem' : '2rem'}
             title='TECHNOLOGIES' 
-            textStylesTitle='semiBoldText'
+            textStylesTitle='yachtBlockTitle'
             text="The catamaran is technologically and structurally suitable for the installation of hydrogen-based fuel cells. The ventilation system allows a significant reduction of energy consumption for air conditioning, as well as improved air quality in all interior spaces. The use of these energy systems, and the optimization of energy consumption on yacht, gives enormous autonomy. You will be able to travel and live aboard in remote parts of the world without having to worry about where to refuel or dock." 
           />
-          <TextBlockYachtDescription 
+          <TextBlock 
             title='NATURAL STABILIZATION'
             text="The large beam of a catamaran gives natural stabilization, which is less in amplitude than a monohull. Excellent stabilization at anchor and underway, plus a large interior volume, make this catamaran a real big, comfortable residence for the whole family, where you'll forget you're in open seas." 
           />
@@ -101,6 +104,7 @@ export const Crystal160 = React.memo(() => {
       <Text textStyle='technologiesUppercaseText' as='h4' mb={isSmallerThan500 ? '0.8rem' : '1.5rem'}>MAIN SPECIFICATION</Text>
       <Box display='grid' gridTemplateColumns={isSmallerThan500 ? '1fr' : '1fr 1fr'} columnGap={isSmallerThan500 ? 0 : isSmallerThan1200 ? '2rem' : '4rem'}>
         <TextBlock 
+          mb={isSmallerThan500 ? '0.8rem' : '0'}
           text={
             <List spacing={3}>
               <ListItem>
