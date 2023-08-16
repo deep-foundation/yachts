@@ -1,7 +1,6 @@
-import { AspectRatio, Box, Flex, Image, useMediaQuery, Text, SimpleGrid, IconButton, Heading, Hide, Show } from '@chakra-ui/react';
+import { AspectRatio, Box, Flex, Hide, IconButton, Image, Img, Show, SimpleGrid, Text, useMediaQuery } from '@chakra-ui/react';
 import React from 'react';
 import { TextBlock } from './text-block';
-import { Img } from '@chakra-ui/react';
 
 
 const Arrow = React.memo(() => {  

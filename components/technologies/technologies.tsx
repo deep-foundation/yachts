@@ -7,9 +7,15 @@ import { technologies, text, text2 } from './technologies-card-array';
 export const Technologies = React.memo(() => {
   const [isSmallerThan500] = useMediaQuery('(max-width: 500px)');
   const [isSmallerThan800] = useMediaQuery('(max-width: 800px)');
-  const [isSmallerThan945] = useMediaQuery('(max-width: 945px)');
+  const [isSmallerThan1200] = useMediaQuery('(max-width: 1200px)');
 
-  return (<Box display='flex' flexDir='column' p={isSmallerThan945 ? '1rem' : '5rem'} mb={isSmallerThan500 ? '2rem' : '4rem'}>
+  const refText1 = React.useRef<HTMLDivElement>(null);
+  const refText2 = React.useRef<HTMLDivElement>(null);
+  const heightBlockText1 = refText1.current?.clientHeight;
+  const heightBlockText2 = refText2.current?.offsetHeight;
+  console.log('heightBlockText1', heightBlockText1);
+
+  return (<Box display='flex' flexDir='column' p={isSmallerThan1200 ? '1rem' : '5rem'} mb={isSmallerThan500 ? '2rem' : '4rem'}>
       <Box>
         <Text as='h1' textStyle='h1' p='1rem' color='text' align={isSmallerThan800 ? 'center' : 'left'}>Technologies</Text>
       </Box>
@@ -34,12 +40,12 @@ export const Technologies = React.memo(() => {
           display={isSmallerThan500 ? 'flex' : 'grid' }
           flexDirection={isSmallerThan500 ? 'column' : 'unset'}
           gridTemplateColumns='1fr 1fr'
-          rowGap={isSmallerThan800 ? '1rem' : '4rem'}
-          columnGap={isSmallerThan800 ? '2rem' : '8rem'}
+          rowGap={isSmallerThan1200 ? '1rem' : '4rem'}
+          columnGap={isSmallerThan1200 ? '2rem' : '8rem'}
           alignItems='center' 
           mb={isSmallerThan800 ? '2rem' : '8rem'}
         >
-          {technologies.map(t => <TechnologiesCard title={t.title} description={t.description} key={t.id} />)}
+          {technologies.map(t => <TechnologiesCard title={t.title} description={t.description} key={t.id} textStylesTitle='yachtBlockTitle' />)}
         </Box>
 
         <Text 
@@ -51,17 +57,29 @@ export const Technologies = React.memo(() => {
 
         <Text textStyle={isSmallerThan500 ? 'technologiesUppercaseText' : 'technologiesUppercaseSB24Text'} align={isSmallerThan500 ? 'justify' : 'center'} mb={isSmallerThan800 ? '2rem' : '5rem'} px={isSmallerThan800 ? '0.5rem' : '4rem'}>Advanced Energy Management Systems: Implementing advanced energy management systems can optimize the energy consumption of a yacht. These systems use algorithms and sensors to monitor and control the power distribution, reducing energy waste and improving efficiency. Waste heat recovery, could be the option to generate extra electricity using ORC cycle. This solution can increase efficiency by another 6-10%.</Text> 
 
-        <Box display={isSmallerThan500 ? 'flex' : 'grid'} gridTemplateColumns={isSmallerThan500 ? '1fr' : '1fr 1fr'} columnGap={isSmallerThan800 ? '2rem' : '4rem'} mb={isSmallerThan500 ? '2rem' : '4rem'} flexDirection='column-reverse'>
+        <Box 
+          display={isSmallerThan500 ? 'flex' : 'grid'} 
+          gridTemplateColumns={isSmallerThan500 ? '1fr' : '1fr 1fr'} 
+          columnGap={isSmallerThan800 ? '2rem' : '4rem'}
+          mb={isSmallerThan500 ? '2rem' : '4rem'} 
+          flexDirection='column-reverse'
+        >
           <Box display='flex' flexDirection='column'
+            ref={refText1}
             sx={{
               '& > *:not(:last-of-type)': {
                 mb: isSmallerThan500 ? '1.5rem' : '3rem',
               }
             }}
           >
-            {text.map(t => <Text textStyle='upperMenu' key={t.id}>{t.text}</Text>)}
+            {text.map(t => <Text textStyle='upperMenu' textAlign='justify' lineHeight='1.5' key={t.id}>{t.text}</Text>)}
           </Box>
-          <AspectRatio ratio={isSmallerThan500 ? 16 / 9 : 2 / 3} maxH={isSmallerThan500 ? '30vmax' : '100%'} w='100%' mb={isSmallerThan500 ? '1.5rem' : 0}>
+          <AspectRatio 
+            ratio={isSmallerThan500 ? 16 / 9 : 2 / 3} 
+            height={isSmallerThan500 ? '30vmax' : '100%'}
+            w='100%' 
+            mb={isSmallerThan500 ? '1.5rem' : 0}
+          >
             <Img src='/tech2.webp' alt='technologies yacht photo' width='100%' objectFit='scale-down' />
           </AspectRatio>
         </Box>
@@ -71,13 +89,14 @@ export const Technologies = React.memo(() => {
             <Img src='/tech3.webp' alt='technologies yacht photo' width='100%' objectFit='scale-down' />
           </AspectRatio>
           <Box display='flex' flexDirection='column'
+            ref={refText2}
             sx={{
               '& > *:not(:last-of-type)': {
                 mb: isSmallerThan500 ? '1.5rem' : '3rem',
               }
             }}
           >
-            {text2.map(t => <Text textStyle='upperMenu' key={t.id}>{t.text}</Text>)}
+            {text2.map(t => <Text textStyle='upperMenu' lineHeight='1.5' textAlign='justify' key={t.id}>{t.text}</Text>)}
           </Box>
         </Box>
       </Box>

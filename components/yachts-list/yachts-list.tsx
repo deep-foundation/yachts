@@ -3,7 +3,7 @@ import React from "react";
 import { TextBlockYachtDescription } from "../text-block";
 import { yachtsList } from "./list";
 
-export const YachtsList = React.memo(() => {
+export const YachtsList = React.memo(({setPage}:{setPage?: (value) => void}) => {
   const [isSmallerThan800] = useMediaQuery('(max-width: 800px)');
   const [isSmallerThan945] = useMediaQuery('(max-width: 945px)');
 
@@ -41,7 +41,7 @@ export const YachtsList = React.memo(() => {
               <Img src={yacht.src} alt={yacht.alt} width='100%' objectFit='scale-down' />
             </AspectRatio>
             <Box gridArea={`desc${index + 1}`} display='flex' alignItems='center' mb={isSmallerThan800 ? '2rem' : 0}>
-              <TextBlockYachtDescription title={yacht.name} text={yacht.description} />
+              <TextBlockYachtDescription title={yacht.name} text={yacht.description} onClick={() => setPage(`yachts/${yacht.name}`)} />
             </Box>
           </>
         ))}

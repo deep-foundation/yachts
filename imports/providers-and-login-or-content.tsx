@@ -1,20 +1,13 @@
-import { Box, ChakraProvider, SimpleGrid } from "@chakra-ui/react";
-import { DeepContext, DeepProvider } from "@deep-foundation/deeplinks/imports/client";
-import { TokenProvider } from "@deep-foundation/deeplinks/imports/react-token";
-import { useLocalStore } from "@deep-foundation/store/local";
-import { CapacitorStoreKeys } from "./capacitor-store-keys";
-import { ApolloClientTokenizedProvider } from '@deep-foundation/react-hasura/apollo-client-tokenized-provider';
-import { useContext } from "react";
-import themeChakra from "./theme";
-import RootLayout from "./layout";
-import {PageContent} from "./page-content";
-import { Navbar } from "../components/navigation";
-import { Footer } from "../components/footer";
+import { Box, ChakraProvider } from "@chakra-ui/react";
 import { useQueryStore } from "@deep-foundation/store/query";
 import { FirstScreen } from "../components/first-screen";
+import { Footer } from "../components/footer";
+import { Navbar } from "../components/navigation";
+import { Technologies } from "../components/technologies/technologies";
 import { YachtsGeneration } from "../components/yachts-generation/yachts-generation";
 import { YachtsList } from "../components/yachts-list/yachts-list";
-import { Technologies } from "../components/technologies/technologies";
+import { Crystal160 } from "../components/yachts/crystal-160";
+import themeChakra from "./theme";
 
 export function ProvidersAndLoginOrContent({ children }: { children?: JSX.Element }) {
   const [page, setPage] = useQueryStore('page', '/');
@@ -27,8 +20,9 @@ export function ProvidersAndLoginOrContent({ children }: { children?: JSX.Elemen
           <Box as='main' h='100%' w='100%'>
             {page === '/' && <FirstScreen display='flex' />}
             {page === 'yachts-generation' && <YachtsGeneration />}
-            {page === 'yachts' && <YachtsList />}
+            {page === 'yachts' && <YachtsList setPage={setPage} />}
             {page === 'technologies' && <Technologies />}
+            {page === 'yachts/navigator 160' && <Crystal160 />}
           </Box>
           <Footer />
         {/* </Box> */}
