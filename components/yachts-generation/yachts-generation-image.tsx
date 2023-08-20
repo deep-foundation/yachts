@@ -63,7 +63,7 @@ export const GenerationImage = React.memo(({
             fadeDuration={1}
             overflow='hidden'
             speed={2}
-            mb='1.5rem'
+            mb={isSmallerThan500 ? '0.5rem' : '1.5rem'}
           >
             <AspectRatio ratio={16 / 9} w='100%' h='100%' overflow='hidden'>
               <Img
