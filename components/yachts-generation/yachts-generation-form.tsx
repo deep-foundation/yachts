@@ -87,32 +87,90 @@ export const GenerationForm = React.memo((
       <InputGeneration value={yachtAuthor} handleChange={(event) => setYachtAuthor(event.target.value)} type='text' placeholder='enter your name' stackProps={{ mb: '2rem', width: '100%'}} />
       <Box display='flex' alignItems='center' justifyContent='center' w='100%' mb='1rem'>
         <Button 
-          variant={yachtType==='monohull'?'outline':'formButton'}
+          variant='outline'
+          sx={{ 
+            bg: yachtType==='monohull' ? 'white' : 'gray.100', 
+            fontWeight: yachtType==='monohull' ? 'bold' : 'light', 
+            _hover: {
+              bg: yachtType==='monohull' ? 'gray.100' : 'white',
+              fontWeight: yachtType==='monohull' ? 'light' : 'bold', 
+            }
+          }}
           w='100%' mr='2rem' 
-          onClick={() => {handleChange('monohull'); setYachtType('monohull');}}
+          onClick={() => {
+            handleChange('monohull'); 
+            setYachtType('monohull');
+          }}
         >monohull</Button>
-        <Button variant={yachtType==='catamaran'?'outline':'formButton'} w='100%' onClick={() => {handleChange('catamaran'); setYachtType('catamaran');}}>catamaran</Button>
+        <Button 
+          variant='outline'
+          sx={{ 
+            bg: yachtType==='catamaran' ? 'white' : 'gray.100', 
+            fontWeight: yachtType==='catamaran' ? 'bold' : 'light', 
+            _hover: {
+              bg: yachtType==='catamaran' ? 'gray.100' : 'white',
+              fontWeight: yachtType==='catamaran' ? 'light' : 'bold', 
+            }
+          }} 
+          w='100%' 
+          onClick={() => {
+            handleChange('catamaran'); 
+            setYachtType('catamaran');
+          }}>catamaran</Button>
       </Box>
       <Box display='flex' alignItems='center' justifyContent='center' w='100%' mb='1rem' >
         <Box display='flex' alignItems='center' justifyContent='center' w='100%' mr='2rem'>
           <Button isDisabled={yachtType!=='monohull'} 
-            variant={yachtType2==='power'?'outline':'formButton'}
+            variant='outline'
+            sx={{ 
+              bg: yachtType2==='power' ? 'white' : 'gray.100', 
+              fontWeight: yachtType2==='power' ? 'bold' : 'light', 
+              _hover: {
+                bg: yachtType2==='power' ? 'gray.100' : 'white',
+                fontWeight: yachtType2==='power' ? 'light' : 'bold', 
+              }
+            }} 
             w='100%'  mr='0.5rem' 
             onClick={() => {handleChange('power'); setYachtType2('power');}}>power</Button>
           <Button isDisabled={yachtType!=='monohull'} 
-            variant={yachtType2==='sail'?'outline':'formButton'}
+            variant='outline'
+            sx={{ 
+              bg: yachtType2==='sail' ? 'white' : 'gray.100', 
+              fontWeight: yachtType2==='sail' ? 'bold' : 'light', 
+              _hover: {
+                bg: yachtType2==='sail' ? 'gray.100' : 'white',
+                fontWeight: yachtType2==='sail' ? 'light' : 'bold', 
+              }
+            }} 
             w='100%' 
             onClick={() => {handleChange('sail'); setYachtType2('sail');}}>sail</Button>
         </Box>
         <Box display='flex' alignItems='center' justifyContent='center' w='100%'>
-          <Button isDisabled={yachtType!=='catamaran'} 
-            variant={yachtType2==='power'?'outline':'formButton'}
+          <Button isDisabled={yachtType!=='catamaran'}
+            variant='outline'
+            sx={{ 
+              bg: yachtType2==='power' ? 'white' : 'gray.100', 
+              fontWeight: yachtType2==='power' ? 'bold' : 'light', 
+              _hover: {
+                bg: yachtType2==='power' ? 'gray.100' : 'white',
+                fontWeight: yachtType2==='power' ? 'light' : 'bold', 
+              }
+            }} 
             w='100%' mr='0.5rem' 
             onClick={() => {handleChange('power'); setYachtType2('power');}}>power</Button>
           <Button isDisabled={yachtType!=='catamaran'} 
-          variant={yachtType2==='sail'?'outline':'formButton'}
-          w='100%' 
-          onClick={() => {handleChange('sail'); setYachtType2('sail');}}>sail</Button>
+            variant='outline'
+            sx={{ 
+              bg: yachtType2==='sail' ? 'white' : 'gray.100', 
+              fontWeight: yachtType2==='sail' ? 'bold' : 'light', 
+              _hover: {
+                bg: yachtType2==='sail' ? 'gray.100' : 'white',
+                fontWeight: yachtType2==='sail' ? 'light' : 'bold', 
+              }
+            }} 
+            w='100%' 
+            onClick={() => {handleChange('sail'); setYachtType2('sail');}}>sail
+          </Button>
         </Box>
       </Box>
       <Box 

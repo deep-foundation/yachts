@@ -32,29 +32,3 @@ export const RadioCard = React.memo(({children, item}:{children?: any; item?: an
     </Box>
   )
 })
-
-// Step 2: Use the `useRadioGroup` hook to control a group of custom radios.
-// export const RadioButton = React.memo(() => {
-//   const options = ['monohull', 'catamaran']
-
-//   const { getRootProps, getRadioProps } = useRadioGroup({
-//     name: 'yachts generation',
-//     defaultValue: 'generation button',
-//     onChange: console.log,
-//   })
-
-//   const group = getRootProps()
-
-//   return (
-//     <HStack {...group}>
-//       {options.map((value) => {
-//         const radio = getRadioProps({ value })
-//         return (
-//           <RadioCard key={value} {...radio}>
-//             {value}
-//           </RadioCard>
-//         )
-//       })}
-//     </HStack>
-//   )
-// })

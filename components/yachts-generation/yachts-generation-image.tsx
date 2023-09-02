@@ -38,12 +38,14 @@ export const GenerationImage = React.memo(({
   onClickToGallery,
   progress,
   saveToGalleryHandler,
+  onWriteNewDescription,
 }:{
   src?: string;
   containerProps?: {};
   onClickToGallery?: () => void;
   progress: number;
   saveToGalleryHandler: () => void;
+  onWriteNewDescription?: () => void;
 }) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isSaved, setIsSaved] = useState(false);
@@ -54,6 +56,13 @@ export const GenerationImage = React.memo(({
   return (<Box display='flex' flexDir='column' alignItems='center' justifyContent='flex-start' w='100%' h='100%' {...containerProps}>
       <Box w={isSmallerThan800 ? '100%' : 'calc(100% - 4rem)'} h='max-content' border='thin solid #d7d7d7' p={isSmallerThan500 ? '0.5rem' : '2rem'} borderRadius='0.2rem' mb='1rem' position='relative'>
         <Box position='relative' w='100%' h='100%'>
+          <Box display='flex' flexDirection='row' position='absolute' bottom='0.5rem' right='0.5rem'>
+            {progress<100 ?
+              <CircularProgress value={progress} isIndeterminate color='button.100' thickness='0.1rem'>
+                <CircularProgressLabel>{progress}%</CircularProgressLabel>
+              </CircularProgress> : null
+            }
+          </Box>
           <Skeleton
             position='relative'
             height='max-content'
@@ -77,15 +86,8 @@ export const GenerationImage = React.memo(({
             </AspectRatio>
             <Backdrop onClosePortal={() => setPortal(false)} portalOpen={portalOpen}>
               <>
-              <Box w='100%' h='100%' display='flex' alignItems='center' justifyContent='center' bg='blue.300' p='1rem 1.5rem' overflow='hidden'>
+              <Box w='100%' h='100%' display='flex' alignItems='center' justifyContent='center' bg='blue.300' p='1rem 1.5rem' overflow='hidden' borderRadius='0.2rem'>
                 <Text textStyle='whiteTextShadow' align='center'>congrats art saved to gallery!</Text>
-              </Box>
-              <Box display='flex' flexDirection='row' position='absolute' bottom='0.5rem' right='0.5rem'>
-                {progress<100 ?
-                  <CircularProgress isIndeterminate color='green.400'>
-                    <CircularProgressLabel>{progress}%</CircularProgressLabel>
-                  </CircularProgress> : null
-                }
               </Box>
               <Button onClick={onClickToGallery} size='sm' alignSelf='flex-end' position='absolute' bottom='0.5rem' right='0.5rem'>regenerate image</Button></>
             </Backdrop>
@@ -117,7 +119,7 @@ export const GenerationImage = React.memo(({
                 textProps={{ 
                   px: isSmallerThan500 ? '2.5rem' : '5rem' 
                 }} 
-                onClick={() => console.log(true)} 
+                onClick={onWriteNewDescription} 
               />
             </Box>
           </Box>

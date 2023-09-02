@@ -334,7 +334,7 @@ const themeChakra = extendTheme({
           },
         },
         'formButton': {
-          bg: 'gray.100',
+          bg: 'white',
           color: 'text',
           border: 'thin solid #D7D7D7',
           borderRadius: '0.2rem',
@@ -344,14 +344,17 @@ const themeChakra = extendTheme({
           textTransform: 'uppercase',
           _hover: {
             bg: 'gray.200',
+            fontWeight: 'semibold',
           },
-          _active: {
-            bg: 'gray.300',
-          },
-          _focusVisible: {
-            boxShadow: 'none',
-            bg: 'gray.200',
-          },
+          // _active: {
+          //   bg: 'white',
+          //   fontWeight: 'medium',
+          // },
+          // _focusVisible: {
+          //   boxShadow: 'none',
+          //   fontWeight: 'medium',
+          //   bg: 'white',
+          // },
         },
       }
     },
