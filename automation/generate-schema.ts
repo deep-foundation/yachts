@@ -1,4 +1,4 @@
-import * as TJS from 'typescript-json-schema';
+/*import * as TJS from 'typescript-json-schema';
 import * as path from 'path'
 import * as fs from 'fs'
 import _ from 'lodash';
@@ -68,3 +68,4 @@ async function parseCliOptions(): Promise<Options> {
  }
 
 
+*/
