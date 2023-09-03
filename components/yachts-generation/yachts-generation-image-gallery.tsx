@@ -2,22 +2,6 @@ import React, { useRef, useLayoutEffect, useEffect, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { Box, Img, useMediaQuery } from "@chakra-ui/react";
 
-const items = [
-  { id: '1', src: 'first1.webp', alt: 'alt' },
-  { id: '2', src: 'first1.webp', alt: 'alt' },
-  { id: '3', src: 'first1.webp', alt: 'alt' },
-  { id: '5', src: 'first1.webp', alt: 'alt' },
-  { id: '6', src: 'first1.webp', alt: 'alt' },
-  { id: '7', src: 'first1.webp', alt: 'alt' },
-  { id: '8', src: 'first1.webp', alt: 'alt' },
-  { id: '9', src: 'first1.webp', alt: 'alt' },
-  { id: '14', src: 'first1.webp', alt: 'alt' },
-  { id: '24', src: 'first1.webp', alt: 'alt' },
-  { id: '34', src: 'first1.webp', alt: 'alt' },
-  { id: '44', src: 'first1.webp', alt: 'alt' },
-  { id: '54', src: 'first1.webp', alt: 'alt' },
-  { id: '64', src: 'first1.webp', alt: 'alt' },
-];
 
 const itemVariants = {
   hidden: {
@@ -33,7 +17,7 @@ const itemVariants = {
 
 export const GenerationImageGallery = React.memo(({ 
   delayPerPixel = 0.0008, 
-  photos = items, 
+  photos, 
 }:{
   delayPerPixel?: number;
   photos?: any;
@@ -48,7 +32,7 @@ export const GenerationImageGallery = React.memo(({
   }, []);
 
   return (<>
-      <Box as={motion.div} initial="hidden" animate={controls} variants={{}} gridColumn={isSmallerThan800 ? '1 / 4' : '2 / 3'} textAlign='center' overflowY={isSmallerThan800 ? 'hidden' : 'unset'} height={isSmallerThan800 ? '40vh' : '60vh'}
+      <Box as={motion.div} initial="hidden" animate={controls} variants={{}} gridColumn={isSmallerThan800 ? '1 / 4' : '2 / 3'} textAlign='center' overflowY={isSmallerThan800 ? 'hidden' : 'unset'} height='60vh'
       >
         <Box overflowY='scroll' height='100%'>
           {photos.map((photo, i) => {
