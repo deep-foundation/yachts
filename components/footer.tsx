@@ -5,7 +5,7 @@ import { NavigationButton } from './navigation';
 import { motion } from 'framer-motion';
 
 
-export const Footer = React.memo(() => {
+export const Footer = React.memo(({setPage}:{setPage?: (value) => void}) => {
   const [selected, setSelected] = useState(1);
   const [hover, setHover] = useState(1);
   const [isSmallerThan945] = useMediaQuery('(max-width: 945px)');
@@ -40,6 +40,7 @@ export const Footer = React.memo(() => {
                 name={button.name}
                 onClick={(page) => {
                   setSelected(button.id);
+                  setPage(button.href);
                 }}  
                 onKeyDown={(event: { key: string }) => event.key === 'Enter' ? setSelected(button.id) : null} 
                 tabIndex={button.id}
@@ -52,22 +53,6 @@ export const Footer = React.memo(() => {
                   setHover(button.id);
                 }}
                 onHoverEnd={() => setHover(0)}
-                // underline={
-                //   (button.id === selected) || button.id === hover ? 
-                //     <Box
-                //       as={motion.div}
-                //       layoutId="underline"
-                //       sx={{ 
-                //         width: '100%',
-                //         height: '0.02rem',
-                //         borderRadius: '0.2rem',
-                //         position: 'absolute',
-                //         bottom: 0, 
-                //         bg: 'text',
-                //       }}
-                //     /> 
-                //   : null
-                // }
               />
             ))}
           </Flex>
