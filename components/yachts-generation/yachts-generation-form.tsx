@@ -68,6 +68,7 @@ export const GenerationForm = React.memo((
       "height_type": yachtHeightType,
       "length_type": yachtLengthType,
     }
+    console.log('drawRequestObj', drawRequestObj);
     
     const {data: [drawRequestLink] } = await deep.insert({
       type_id: drawRequestTypeId,
@@ -81,7 +82,7 @@ export const GenerationForm = React.memo((
 
     setRequestId(drawRequestLink.id);
     onClick();
-  }
+  } 
 
   return (<Box display='flex' flexDir='column' alignItems='center' justifyContent='center' w='100%' {...containerProps}>
       <InputGeneration value={yachtAuthor} handleChange={(event) => setYachtAuthor(event.target.value)} type='text' placeholder='enter your name' stackProps={{ mb: '2rem', width: '100%'}} />
@@ -143,7 +144,10 @@ export const GenerationForm = React.memo((
               }
             }} 
             w='100%' 
-            onClick={() => {handleChange('sail'); setYachtType2('sail');}}>sail</Button>
+            onClick={() => {
+              handleChange('sail'); 
+              setYachtType2('sail');
+            }}>sail</Button>
         </Box>
         <Box display='flex' alignItems='center' justifyContent='center' w='100%'>
           <Button isDisabled={yachtType!=='catamaran'}

@@ -41,6 +41,8 @@ export const YachtsGeneration = React.memo(({ onClick }:{ onClick?: () => void; 
     f();
   }, []);
 
+  console.log('requestId', requestId);
+  console.log('isPublishedTypeId', isPublishedTypeId);
   function getDrawResultLink() : Link<number> | undefined {
     const add = deep.minilinks.query({
 
@@ -49,8 +51,7 @@ export const YachtsGeneration = React.memo(({ onClick }:{ onClick?: () => void; 
         {from_id: {_eq: requestId}}
       ]
     })[0];
-    return add 
-    console.log('add:', add);
+    return add;
   }
   async function saveToGalleryHandler() {
     const drawResultLinkId = getDrawResultLink()?.id;
@@ -79,11 +80,8 @@ export const YachtsGeneration = React.memo(({ onClick }:{ onClick?: () => void; 
           {type_id: {_eq: drawResultTypeId }},
           {in: {type_id: {_eq: isPublishedTypeId}}}
         ]
-      });
-    console.log('published links:')
-    console.log(links);
+      }); 
     return links;
-    console.log('links:', links);  
   }
 
   // subscribe on deep DrawResult links
@@ -120,7 +118,6 @@ export const YachtsGeneration = React.memo(({ onClick }:{ onClick?: () => void; 
           ? <><GenerationButton 
               onClick={() => {
                 setStartCreate(true);
-                console.log('startCreate:', startCreate);
               }} 
               buttonProps={{ 
                 gridColumn: '2/3', 
@@ -136,8 +133,9 @@ export const YachtsGeneration = React.memo(({ onClick }:{ onClick?: () => void; 
             ? <GenerationImageGallery 
                 photos={
                   getPublishedLinks().map((item) => {
+                    console.log('item:', item);
                     return {
-                      id: item.value.value.id,
+                      id: item.id,
                       src: item.value.value.img_url,
                       alt: item.value.value.error
                     }
@@ -148,7 +146,6 @@ export const YachtsGeneration = React.memo(({ onClick }:{ onClick?: () => void; 
           ? <GenerationForm 
               onClick={() => {
                 setStartGen(true);
-                console.log('startGen:', startGen);
               }} 
               containerProps={{gridColumn: isSmallerThan800 ? '1 / 4' : '2/3', mb: '5rem'}}
               setRequestId={setRequestId}
@@ -167,15 +164,13 @@ export const YachtsGeneration = React.memo(({ onClick }:{ onClick?: () => void; 
               onClickToGallery={() => {
                 setStartGen(false);
                 setStartCreate(false);
-                console.log('startCreate:', startCreate);
-                console.log('startGen:', startGen);
               }} 
             />
           : <GenerationImageGallery photos={
             getPublishedLinks().map((item) => {
               return {
                 key: item.id,
-                id: item.value.value.id,
+                id: item.id,
                 src: item.value.value.img_url,
                 alt: item.value.value.error
               }

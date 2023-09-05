@@ -1,10 +1,8 @@
 import { AspectRatio, Box, Button, CircularProgress, CircularProgressLabel, Img, Skeleton, Text, useMediaQuery } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import { IoIosArrowForward, IoIosShareAlt } from "react-icons/io";
-import { Backdrop } from './backdrop';import {
-  TelegramShareButton,
-  TelegramIcon,
-} from 'next-share'
+import { Backdrop } from './backdrop';
+import { TelegramShareButton } from 'next-share'
 
 
 export const GenerationButton = React.memo(({ 
@@ -14,6 +12,7 @@ export const GenerationButton = React.memo(({
   buttonProps = {},
   textProps = {},
   rightIcon = null,
+  as,
 }:{ 
   onClick?: () => void;
   variant?: string; 
@@ -21,8 +20,10 @@ export const GenerationButton = React.memo(({
   buttonProps?: {};
   textProps?: {};
   rightIcon?: any;
+  as?: any;
 }) => {
   return (<Button 
+    as={as}
     variant={variant}
     w='100%'
     onClick={onClick} 
@@ -104,14 +105,14 @@ export const GenerationImage = React.memo(({
                 onClick={() => {
                   saveToGalleryHandler(); 
                   setIsSaved(true); 
-                  setPortal(true)
+                  setPortal(true);
                 }} 
               />
             </Box>
             <Box display='flex' flexDir='row'>
 
-            
               <GenerationButton 
+                as={Box}
                 variant='grayBgSolid' 
                 buttonProps={{ mr: '0.5rem' }} 
                 onClick={() => console.log(true)} 
