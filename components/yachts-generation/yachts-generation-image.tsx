@@ -117,7 +117,6 @@ export const GenerationImage = React.memo(({
                 onClick={() => console.log(true)} 
                 rightIcon={<TelegramShareButton
                     url={src}
-                    title={'next-share is a social share buttons for your next React apps.'}
                   >
                     <IoIosShareAlt size={16} />
                   </TelegramShareButton>

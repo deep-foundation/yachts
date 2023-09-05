@@ -43,6 +43,7 @@ export const YachtsGeneration = React.memo(({ onClick }:{ onClick?: () => void; 
 
   function getDrawResultLink() : Link<number> | undefined {
     const add = deep.minilinks.query({
+
       _and: [
         {type_id: {_eq:drawResultTypeId }},
         {from_id: {_eq: requestId}}
