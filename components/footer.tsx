@@ -12,7 +12,7 @@ export const Footer = React.memo(({setPage}:{setPage?: (value) => void}) => {
   const [isSmallerThan600] = useMediaQuery('(max-width: 600px)');
 
   return (<Box as='footer' w='100%' boxShadow='0 2px 2px 0 #f3f3f3' bg='gray.100'>
-      <Flex direction='column' align='flex-start' p={isSmallerThan945 ? '2rem 2rem': '2rem 12rem'}>
+      <Flex direction='column' align='flex-start' p={isSmallerThan600 ? '2rem 1rem' : isSmallerThan945 ? '2rem 2rem': '2rem 12rem'}>
         <Img
           src="/logo.svg"
           alt="Cristal Yacht Logo"
@@ -56,7 +56,7 @@ export const Footer = React.memo(({setPage}:{setPage?: (value) => void}) => {
               />
             ))}
           </Flex>
-          <Flex direction='column'>
+          <Flex direction='column' sx={{mb: isSmallerThan600 ? '1rem' : 0}}>
             <Text textStyle='downMenu' sx={{mb: isSmallerThan600 ? '0.5rem' : '1rem'}}>Contact</Text>
             <Link href='mailto:crystalyachtuae@gmail.com' sx={{mb: '0.3rem'}}>
               <Text>Crystalyachtuae@gmail.com</Text>

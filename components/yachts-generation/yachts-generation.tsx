@@ -119,6 +119,7 @@ export const YachtsGeneration = React.memo(({ onClick }:{ onClick?: () => void; 
           ? <><GenerationButton 
               onClick={() => {
                 setStartCreate(true);
+                console.log('startCreate:', startCreate);
               }} 
               buttonProps={{ 
                 gridColumn: '2/3', 
@@ -146,6 +147,7 @@ export const YachtsGeneration = React.memo(({ onClick }:{ onClick?: () => void; 
           ? <GenerationForm 
               onClick={() => {
                 setStartGen(true);
+                console.log('startGen:', startGen);
               }} 
               containerProps={{gridColumn: isSmallerThan800 ? '1 / 4' : '2/3', mb: '5rem'}}
               setRequestId={setRequestId}
@@ -160,10 +162,18 @@ export const YachtsGeneration = React.memo(({ onClick }:{ onClick?: () => void; 
               progress={getDrawResultLink()?.value?.value.progress}
               saveToGalleryHandler={saveToGalleryHandler}
               onWriteNewDescription={() => setStartGen(false)}
-              containerProps={{gridColumn: isSmallerThan800 ? '1 / 4' : '2/3'}} onClickToGallery={() => setImgGen(true)} />
+              containerProps={{gridColumn: isSmallerThan800 ? '1 / 4' : '2/3'}} 
+              onClickToGallery={() => {
+                setStartGen(false);
+                setStartCreate(false);
+                console.log('startCreate:', startCreate);
+                console.log('startGen:', startGen);
+              }} 
+            />
           : <GenerationImageGallery photos={
             getPublishedLinks().map((item) => {
               return {
+                key: item.id,
                 id: item.value.value.id,
                 src: item.value.value.img_url,
                 alt: item.value.value.error

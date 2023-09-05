@@ -56,9 +56,9 @@ export const GenerationImage = React.memo(({
   return (<Box display='flex' flexDir='column' alignItems='center' justifyContent='flex-start' w='100%' h='100%' {...containerProps}>
       <Box w={isSmallerThan800 ? '100%' : 'calc(100% - 4rem)'} h='max-content' border='thin solid #d7d7d7' p={isSmallerThan500 ? '0.5rem' : '2rem'} borderRadius='0.2rem' mb='1rem' position='relative'>
         <Box position='relative' w='100%' h='100%'>
-          <Box display='flex' flexDirection='row' position='absolute' bottom='0.5rem' right='0.5rem'>
+          <Box display='flex' flexDirection='row' position='absolute' bottom={isSmallerThan500 ? '2.5rem' : '2rem'} right='0.5rem'>
             {progress<100 ?
-              <CircularProgress value={progress} isIndeterminate color='button.100' thickness='0.1rem'>
+              <CircularProgress value={progress} size={isSmallerThan500 ? '2rem' : '3rem'} isIndeterminate color='button.100' thickness='0.1rem'>
                 <CircularProgressLabel>{progress}%</CircularProgressLabel>
               </CircularProgress> : null
             }

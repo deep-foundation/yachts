@@ -71,7 +71,7 @@ export const SelectGeneration = React.memo(({
         focusBorderColor='blue'
       >
         {nums.map((num) => {
-          return <option value={num}>{num}</option>
+          return <option key={num} value={num}>{num}</option>
         })}
       </Select>
     </Box>
