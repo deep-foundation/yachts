@@ -1,8 +1,7 @@
 import { AspectRatio, Box, Button, CircularProgress, CircularProgressLabel, Img, Skeleton, Text, useMediaQuery } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import { IoIosArrowForward, IoIosShareAlt } from "react-icons/io";
-import { Backdrop } from './backdrop';
-import {
+import { Backdrop } from './backdrop';import {
   TelegramShareButton,
   TelegramIcon,
 } from 'next-share'
@@ -18,7 +17,7 @@ export const GenerationButton = React.memo(({
 }:{ 
   onClick?: () => void;
   variant?: string; 
-  text?: string;
+  text?: any;
   buttonProps?: {};
   textProps?: {};
   rightIcon?: any;
@@ -110,19 +109,22 @@ export const GenerationImage = React.memo(({
               />
             </Box>
             <Box display='flex' flexDir='row'>
-              {/* <GenerationButton 
+
+            
+              <GenerationButton 
                 variant='grayBgSolid' 
-                text='share' 
                 buttonProps={{ mr: '0.5rem' }} 
                 onClick={() => console.log(true)} 
-                rightIcon={<IoIosShareAlt />} 
-              /> */} 
-              <TelegramShareButton
-                url={'https://github.com/next-share'}
-                title={'next-share is a social share buttons for your next React apps.'}
-              >
-                <TelegramIcon size={32} round />
-              </TelegramShareButton>
+                rightIcon={<TelegramShareButton
+                    url={src}
+                    title={'next-share is a social share buttons for your next React apps.'}
+                  >
+                    <IoIosShareAlt size={16} />
+                  </TelegramShareButton>
+                } 
+                text='share'
+              />
+              
               <GenerationButton 
                 variant='blackBgSolid' 
                 text='write a new description' 
