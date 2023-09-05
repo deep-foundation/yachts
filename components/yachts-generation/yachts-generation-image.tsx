@@ -2,6 +2,10 @@ import { AspectRatio, Box, Button, CircularProgress, CircularProgressLabel, Img,
 import React, { useState } from 'react';
 import { IoIosArrowForward, IoIosShareAlt } from "react-icons/io";
 import { Backdrop } from './backdrop';
+import {
+  TelegramShareButton,
+  TelegramIcon,
+} from 'next-share'
 
 
 export const GenerationButton = React.memo(({ 
@@ -101,18 +105,24 @@ export const GenerationImage = React.memo(({
                 onClick={() => {
                   saveToGalleryHandler(); 
                   setIsSaved(true); 
-                  setPortal(true)}
-                } 
+                  setPortal(true)
+                }} 
               />
             </Box>
             <Box display='flex' flexDir='row'>
-              <GenerationButton 
+              {/* <GenerationButton 
                 variant='grayBgSolid' 
                 text='share' 
                 buttonProps={{ mr: '0.5rem' }} 
                 onClick={() => console.log(true)} 
                 rightIcon={<IoIosShareAlt />} 
-              />
+              /> */} 
+              <TelegramShareButton
+                url={'https://github.com/next-share'}
+                title={'next-share is a social share buttons for your next React apps.'}
+              >
+                <TelegramIcon size={32} round />
+              </TelegramShareButton>
               <GenerationButton 
                 variant='blackBgSolid' 
                 text='write a new description' 

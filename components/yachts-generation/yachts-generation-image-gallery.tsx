@@ -51,12 +51,12 @@ export const GenerationImageGallery = React.memo(({
 
               {selected 
               ? (<DetailView 
-                  photos={photos}
-                  selected={selected} 
-                  onClose={() => setSelected(null)} 
-                  src={photo.src}
-                  alt={photo.alt}
-                />) 
+                    photos={photos}
+                    selected={selected} 
+                    onClose={() => setSelected(null)} 
+                    src={photo.src}
+                    alt={photo.alt}
+                  />) 
               : null}
             </>)
           })}
@@ -83,7 +83,7 @@ const Thumbnail = React.memo(({
   const offset = useRef({ top: 0, left: 0 });
   const ref = useRef(null);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const element = ref.current;
     if (!element) return;
 
@@ -127,7 +127,7 @@ const Thumbnail = React.memo(({
     >
       <Img as={motion.img}
         layoutId={props.id}
-        src={props.src}  //`https://picsum.photos/id/${i}/800`
+        src={props.src}
         alt={props.alt}
         onTap={() => props.setSelected(props.id)}
         sx={{
@@ -177,6 +177,7 @@ const DetailView = React.memo(({
         sx={{
           zIndex: 1,
           width: '500px',
+          maxWidth: '100%',
           height: '281px',
           position: 'fixed',
           top: 'calc(50% - 140px)',
