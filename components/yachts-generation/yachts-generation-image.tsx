@@ -57,8 +57,22 @@ export const GenerationImage = React.memo(({
   const [isSmallerThan800] = useMediaQuery('(max-width: 800px)');
   const [isSmallerThan500] = useMediaQuery('(max-width: 500px)');
 
-  return (<Box display='flex' flexDir='column' alignItems='center' justifyContent='flex-start' w='100%' h='100%' {...containerProps}>
-      <Box w={isSmallerThan800 ? '100%' : 'calc(100% - 4rem)'} h='max-content' border='thin solid #d7d7d7' p={isSmallerThan500 ? '0.5rem' : '2rem'} borderRadius='0.2rem' mb='1rem' position='relative'>
+  return (<Box 
+      display='flex' flexDir='column' 
+      alignItems='center' 
+      justifyContent='flex-start' 
+      w='100%' h='100%' 
+      {...containerProps}
+    >
+      <Box 
+        w={isSmallerThan800 ? '100%' : 'calc(100% - 4rem)'} 
+        h='max-content' 
+        border='thin solid #d7d7d7' 
+        p={isSmallerThan800 ? '0.5rem' : '2rem'} 
+        borderRadius='0.2rem' 
+        mb='1rem' 
+        position='relative'
+      >
         <Box position='relative' w='100%' h='100%'>
           <Box display='flex' flexDirection='row' position='absolute' bottom={isSmallerThan500 ? '2.5rem' : '2rem'} right='0.5rem'>
             {progress<100 ?
@@ -76,7 +90,7 @@ export const GenerationImage = React.memo(({
             fadeDuration={1}
             overflow='hidden'
             speed={2}
-            mb={isSmallerThan500 ? '0.5rem' : '1.5rem'}
+            mb={isSmallerThan800 ? '0.5rem' : '1.5rem'}
           >
             <AspectRatio ratio={16 / 9} w='100%' h='100%' overflow='hidden'>
               <Img

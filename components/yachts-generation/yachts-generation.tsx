@@ -129,11 +129,11 @@ export const YachtsGeneration = React.memo(({ onClick }:{ onClick?: () => void; 
                 fontSize: isSmallerThan500 ? 'sm' : 'md',
               }}
             />
-            {isSmallerThan800 
+            {isSmallerThan800 === true
             ? <GenerationImageGallery 
+                hidden={true}
                 photos={
                   getPublishedLinks().map((item) => {
-                    console.log('item:', item);
                     return {
                       id: item.id,
                       src: item.value.value.img_url,
@@ -162,20 +162,21 @@ export const YachtsGeneration = React.memo(({ onClick }:{ onClick?: () => void; 
               onWriteNewDescription={() => setStartGen(false)}
               containerProps={{gridColumn: isSmallerThan800 ? '1 / 4' : '2/3'}} 
               onClickToGallery={() => {
-                setStartGen(false);
-                setStartCreate(false);
+                setImgGen(true);
               }} 
             />
           : <GenerationImageGallery photos={
-            getPublishedLinks().map((item) => {
-              return {
-                key: item.id,
-                id: item.id,
-                src: item.value.value.img_url,
-                alt: item.value.value.error
-              }
-            })
-          }/>
+              getPublishedLinks().map((item) => {
+                return {
+                  key: item.id,
+                  id: item.id,
+                  src: item.value.value.img_url,
+                  alt: item.value.value.error
+                }
+              })
+            }
+            onWriteNewDescription={() => setImgGen(true)} 
+          />
         }
       </Box>
     </Center>

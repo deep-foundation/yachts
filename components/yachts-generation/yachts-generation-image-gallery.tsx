@@ -1,6 +1,8 @@
-import React, { useRef, useLayoutEffect, useEffect, useState } from "react";
-import { motion, useAnimation } from "framer-motion";
 import { Box, Img, useMediaQuery } from "@chakra-ui/react";
+import { motion, useAnimation } from "framer-motion";
+import React, { useEffect, useRef, useState } from "react";
+import { GenerationButton } from "./yachts-generation-image";
+import { OpenGallery } from "./open-gallery";
 
 
 const itemVariants = {
@@ -18,15 +20,19 @@ const itemVariants = {
 export const GenerationImageGallery = React.memo(({ 
   delayPerPixel = 0.0008, 
   photos, 
+  onWriteNewDescription,
+  hidden = false,
 }:{
   delayPerPixel?: number;
   photos?: any;
+  onWriteNewDescription?: () => void;
+  hidden?: boolean;
 }) => {
   const originOffset = useRef({ top: 0, left: 0 });
   const controls = useAnimation();
   const [selected, setSelected] = useState(null);
   const [isSmallerThan800] = useMediaQuery('(max-width: 800px)');
-
+console.log('photos', photos);
   useEffect(() => {
     controls.start("visible");
   }, []);
@@ -34,6 +40,15 @@ export const GenerationImageGallery = React.memo(({
   return (<>
       <Box as={motion.div} initial="hidden" animate={controls} variants={{}} gridColumn={isSmallerThan800 ? '1 / 4' : '2 / 3'} textAlign='center' overflowY={isSmallerThan800 ? 'hidden' : 'unset'} height='60vh'
       >
+       {hidden === false ? <GenerationButton 
+          variant='blackBgSolid' 
+          text='write a new description' 
+          buttonProps={{ 
+            mb: '2rem',
+            width: isSmallerThan800 ? '80%' : '30%',
+          }} 
+          onClick={onWriteNewDescription} 
+        /> : null}
         <Box overflowY='scroll' height='100%'>
           {photos.map((photo, i) => {
             return (<>
@@ -50,6 +65,15 @@ export const GenerationImageGallery = React.memo(({
               />
 
               {selected 
+              ? (<OpenGallery 
+                    photos={photos}
+                    selectedImage={selected} 
+                    // onClose={() => setSelected(null)} 
+                    src={photo.src}
+                    alt={photo.alt}
+                  />) 
+              : null}
+              {/* {selected 
               ? (<DetailView 
                     photos={photos}
                     selected={selected} 
@@ -57,7 +81,7 @@ export const GenerationImageGallery = React.memo(({
                     src={photo.src}
                     alt={photo.alt}
                   />) 
-              : null}
+              : null} */}
             </>)
           })}
         </Box>
@@ -141,7 +165,7 @@ const Thumbnail = React.memo(({
   )
 })
 
-const DetailView = React.memo(({
+export const DetailView = React.memo(({
   photos, 
   ...props
 }:{
