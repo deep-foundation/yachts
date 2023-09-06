@@ -12,6 +12,7 @@ export const InputGeneration = React.memo(({
   stackProps,
   inputProps,
   textProps,
+  inputSize = 'md',
 }:{
   title?: string;
   placeholder?: string;
@@ -22,6 +23,7 @@ export const InputGeneration = React.memo(({
   stackProps?: {};
   inputProps?: {};
   textProps?: {};
+  inputSize?: string;
 }) => {
     
     return (<Box display='flex' flexDir='row' alignItems='center' {...stackProps}>
@@ -31,7 +33,7 @@ export const InputGeneration = React.memo(({
         value={value}
         onChange={handleChange}
         placeholder={placeholder}
-        size='md'
+        size={inputSize}
         type={type}
         focusBorderColor='blue.300'
         mr={select ? '1rem' : '0'}

@@ -32,7 +32,7 @@ export const GenerationImageGallery = React.memo(({
   const controls = useAnimation();
   const [selected, setSelected] = useState(null);
   const [isSmallerThan800] = useMediaQuery('(max-width: 800px)');
-console.log('photos', photos);
+
   useEffect(() => {
     controls.start("visible");
   }, []);
@@ -66,9 +66,10 @@ console.log('photos', photos);
 
               {selected 
               ? (<OpenGallery 
+                    key={photo.id}
                     photos={photos}
                     selectedImage={selected} 
-                    // onClose={() => setSelected(null)} 
+                    onClose={() => setSelected(null)} 
                     src={photo.src}
                     alt={photo.alt}
                   />) 

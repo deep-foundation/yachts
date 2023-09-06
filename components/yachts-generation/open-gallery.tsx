@@ -54,6 +54,11 @@ export const OpenGallery = React.memo(({
     setPhoto([photo + newDirection, newDirection]);
   };
 
+  // const { src, alt } = photos.find(
+  //   (photo) => photo.id === props.selectedImage
+  // );
+  // console.log('src123', src);
+
   return (<><Box as={motion.div}
       sx={{
         zIndex: 1,

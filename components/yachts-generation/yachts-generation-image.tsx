@@ -1,8 +1,9 @@
-import { AspectRatio, Box, Button, CircularProgress, CircularProgressLabel, Img, Skeleton, Text, useMediaQuery } from '@chakra-ui/react';
-import React, { useState } from 'react';
+import { AspectRatio, Box, Button, Checkbox, CircularProgress, CircularProgressLabel, HStack, Img, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Skeleton, Text, useDisclosure, useMediaQuery } from '@chakra-ui/react';
+import React, { useRef, useState } from 'react';
 import { IoIosArrowForward, IoIosShareAlt } from "react-icons/io";
 import { Backdrop } from './backdrop';
 import { TelegramShareButton } from 'next-share'
+import { useDebounceCallback } from "@react-hook/debounce";
 
 
 export const GenerationButton = React.memo(({ 
@@ -56,6 +57,16 @@ export const GenerationImage = React.memo(({
   const [portalOpen, setPortal] = useState(false);
   const [isSmallerThan800] = useMediaQuery('(max-width: 800px)');
   const [isSmallerThan500] = useMediaQuery('(max-width: 500px)');
+
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [youtube, setYoutube] = useState('');
+  const [telegram, setTelegram] = useState('');
+  const [instagram, setInstagram] = useState('');
+  
+
+  const initialRef = useRef(null);
+
+  const [isSmallerThan400] = useMediaQuery('(max-width: 400px)');
 
   return (<Box 
       display='flex' flexDir='column' 
@@ -152,7 +163,59 @@ export const GenerationImage = React.memo(({
         </Box>
       </Box>
       <Box textAlign='center'>
-        <Button rightIcon={<IoIosArrowForward />} onClick={onClickToGallery}>go to gallery</Button>
+        <Button rightIcon={<IoIosArrowForward />} onClick={onClickToGallery} mr='1rem'>go to gallery</Button>
+        <Button variant='link' onClick={onOpen}><Text textStyle='downMenu'>Leave contacts</Text></Button>
+        <Modal isOpen={isOpen} onClose={onClose} size={isSmallerThan400 ? 'xs' : 'md'} initialFocusRef={initialRef} >
+          <ModalOverlay />
+          <ModalContent>
+            <ModalHeader sx={{pt: '2rem'}}>
+              <Text textStyle='regularTextBlock' align='center'>Enter your name and email address or a link to your account on any social network</Text>
+            </ModalHeader>
+            <ModalCloseButton />
+            <ModalBody 
+              display='flex' 
+              flexDirection='column'
+              sx={{
+                '&>*:not(:last-child)': {
+                  mb: '1rem',
+                }
+              }}
+            >
+              <HStack>
+                <Text textStyle='contactsDownMenu'>YouTube</Text>
+                <Input focusBorderColor='button.100' variant='outline' ref={initialRef} fontSize='1rem' placeholder='@youTubeNickName' value={youtube} 
+                  onChange={(event) => setYoutube(event.target.value)} size='sm' />
+              </HStack>
+              <HStack>
+                <Text textStyle='contactsDownMenu'>Telegram</Text>
+                <Input focusBorderColor='button.100' variant='outline' fontSize='1rem' placeholder='@telegramNickName' value={telegram} onChange={(event) => setTelegram(event.target.value)} size='sm' />
+              </HStack>
+              <HStack>
+                <Text textStyle='contactsDownMenu'>Instagram</Text>
+                <Input focusBorderColor='button.100' variant='outline' fontSize='1rem' placeholder='@instagramNickName' value={instagram} onChange={(event) => setInstagram(event.target.value)} size='sm' />
+              </HStack>
+            </ModalBody>
+
+            <ModalFooter>
+              <Checkbox 
+                aria-label='Consent to the processing of personal data' 
+                size='md' 
+                colorScheme='button' 
+                defaultChecked sx={{mr: '2rem'}}
+              >
+                <Text textStyle='contactsDownMenu'>Consent to the processing of personal data</Text>
+              </Checkbox>
+              <GenerationButton 
+                variant='blackBgSolid' 
+                text='send' 
+                buttonProps={{ 
+                  width: '30%',
+                }} 
+                onClick={() => console.log('send')} 
+              />
+            </ModalFooter>
+          </ModalContent>
+        </Modal>
       </Box>
     </Box>
   ) 

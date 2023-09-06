@@ -71,7 +71,8 @@ const themeChakra = extendTheme({
     button: {
       100: '#91C9E0',
       200: '#73BBD9',
-      300: '#5BB1D4', 
+      300: '#5BB1D4',  
+      600: '#91C9E0',
     },
     gray: {
       100: '#F8F8F8',
@@ -369,8 +370,12 @@ const themeChakra = extendTheme({
         },
       },
     },
-    Img: {
-      
+    Modal: {
+      sizes: {
+        xs: {
+          maxW: '20rem',
+        }
+      }
     }
   },
 });
