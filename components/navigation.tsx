@@ -139,7 +139,7 @@ export const Navbar = React.memo(({setPage}:{setPage?: (value) => void}) => {
                 }}
                 onHoverEnd={() => setHover(0)}
                 underline={
-                  (button.id === selected) || button.id === hover ? 
+                  (button.id === selected) || (button.id === hover) ? 
                     <Box
                       as={motion.div}
                       layoutId="underline"
