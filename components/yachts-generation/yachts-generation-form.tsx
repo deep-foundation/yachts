@@ -68,7 +68,6 @@ export const GenerationForm = React.memo((
       "height_type": yachtHeightType,
       "length_type": yachtLengthType,
     }
-    console.log('drawRequestObj', drawRequestObj);
     
     const {data: [drawRequestLink] } = await deep.insert({
       type_id: drawRequestTypeId,

@@ -13,7 +13,6 @@ export const Technologies = React.memo(() => {
   const refText2 = React.useRef<HTMLDivElement>(null);
   const heightBlockText1 = refText1.current?.clientHeight;
   const heightBlockText2 = refText2.current?.offsetHeight;
-  console.log('heightBlockText1', heightBlockText1);
 
   return (<Box display='flex' flexDir='column' p={isSmallerThan1200 ? '1rem' : '5rem'} mb={isSmallerThan500 ? '2rem' : '4rem'}>
       <Box>
