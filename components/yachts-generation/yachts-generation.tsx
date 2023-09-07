@@ -19,11 +19,15 @@ export const YachtsGeneration = React.memo(({ onClick }:{ onClick?: () => void; 
   // deep types
   const [drawResultTypeId, setDrawResultTypeId] = useState(0);
   const [drawRequestTypeId, setDrawRequestTypeId] = useState(0);
-  const [settingsId, setSettingsId] = useState(0);
   const [midjourneyRequestTypeId, setMidjourneyRequestTypeId] = useState(0);
   const [isPublishedTypeId, setIsPublishedTypeId] = useState(0);
+  const [sendEmailTypeId, setSendEmailTypeId] = useState(0);
   // deep links
   const [requestId, setRequestId] = useState(0);
+  const [settingsId, setSettingsId] = useState(0);
+  const [sendToId, setSendToId] = useState(0);
+  const [letterSubjectId, setLetterSubjectId] = useState(0);
+  const [letterTextId, setLetterTextId] = useState(0);
 
   const deep = useDeep();
   
@@ -36,6 +40,14 @@ export const YachtsGeneration = React.memo(({ onClick }:{ onClick?: () => void; 
       const settingsTypeId = await deep.id("@agsagds/yacht-co", "MidjourneySettings");
       setSettingsId((await deep.select({type_id: {_eq: settingsTypeId}})).data[0]?.id);
       setMidjourneyRequestTypeId(await deep.id("@agsagds/midjourney", "MidjourneyRequest"));
+      
+      setSendEmailTypeId(await deep.id("@suenot/mail-sender", "SendEmail"));
+      const sendToTypeId = await deep.id("@suenot/mail-sender", "SendTo");
+      const letterSubjectTypeId = await deep.id("@suenot/mail-sender", "LetterSubject");
+      const letterTextTypeId = await deep.id("@suenot/mail-sender", "LetterText");
+      setSendToId((await deep.select({type_id: {_eq: sendToTypeId}})).data[0]?.id);
+      setLetterSubjectId((await deep.select({type_id: {_eq: letterSubjectTypeId}})).data[0]?.id);
+      setLetterTextId((await deep.select({type_id: {_eq: letterTextTypeId}})).data[0]?.id);
     }
 
     f();
@@ -68,7 +80,6 @@ export const YachtsGeneration = React.memo(({ onClick }:{ onClick?: () => void; 
         from_id: drawResultLinkId,
         to_id: drawResultLinkId
       });
-    console.log(`iPublishedLink: ${isPublishedLinkId}`)
   }
 
   function getPublishedLinks(): Link<number>[]{
@@ -80,6 +91,17 @@ export const YachtsGeneration = React.memo(({ onClick }:{ onClick?: () => void; 
         ]
       }); 
     return links;
+  }
+
+  async function sendMailHandler(msg: string): Promise<void> {
+    
+    await deep.update({link_id: letterTextId}, {value: msg}, {table: 'strings'});
+
+    const {data: [sendEMailLinkId] } = await deep.insert({
+      type_id: sendEmailTypeId,
+      from_id: letterSubjectId,
+      to_id: sendToId
+    });
   }
 
   // subscribe on deep DrawResult links
@@ -162,6 +184,7 @@ export const YachtsGeneration = React.memo(({ onClick }:{ onClick?: () => void; 
               onClickToGallery={() => {
                 setImgGen(true);
               }} 
+              sendMail={sendMailHandler}
             />
           : <GenerationImageGallery photos={
               getPublishedLinks().map((item) => {

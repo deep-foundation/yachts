@@ -37,6 +37,7 @@ export const GenerationButton = React.memo(({
   )
 })
 
+
 export const GenerationImage = React.memo(({
   src = '/first.webp',
   containerProps = {},
@@ -44,6 +45,7 @@ export const GenerationImage = React.memo(({
   progress,
   saveToGalleryHandler,
   onWriteNewDescription,
+  sendMail,
 }:{
   src?: string;
   containerProps?: {};
@@ -51,6 +53,7 @@ export const GenerationImage = React.memo(({
   progress: number;
   saveToGalleryHandler: () => void;
   onWriteNewDescription?: () => void;
+  sendMail: any;
 }) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isSaved, setIsSaved] = useState(false);
@@ -211,7 +214,25 @@ export const GenerationImage = React.memo(({
                 buttonProps={{ 
                   width: '30%',
                 }} 
-                onClick={() => console.log('send')} 
+                onClick={
+                  async () => {
+                    if(youtube.trim()+telegram.trim()+instagram.trim()=== '') 
+                      return;
+                    
+                    let msg = " Received contacts for communication: "
+                    if (youtube.trim()) {
+                      msg += `YouTube: ${youtube.trim()}`
+                    }
+                    if (telegram.trim()) {
+                      msg += `Telegram: ${telegram.trim()}`
+                    }
+                    if (instagram.trim()) {
+                      msg += `Instagram: ${instagram.trim()}`
+                  }
+                  await sendMail(msg);
+                  onClose();
+                } 
+              }
               />
             </ModalFooter>
           </ModalContent>
