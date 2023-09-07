@@ -219,15 +219,15 @@ export const GenerationImage = React.memo(({
                     if(youtube.trim()+telegram.trim()+instagram.trim()=== '') 
                       return;
                     
-                    let msg = " Received contacts for communication: "
+                    let msg = " Received contacts for communication:\n"
                     if (youtube.trim()) {
-                      msg += `YouTube: ${youtube.trim()}`
+                      msg += ` YouTube: ${youtube.trim()}\n`
                     }
                     if (telegram.trim()) {
-                      msg += `Telegram: ${telegram.trim()}`
+                      msg += ` Telegram: ${telegram.trim()}\n`
                     }
                     if (instagram.trim()) {
-                      msg += `Instagram: ${instagram.trim()}`
+                      msg += ` Instagram: ${instagram.trim()}\n`
                   }
                   await sendMail(msg);
                   onClose();
