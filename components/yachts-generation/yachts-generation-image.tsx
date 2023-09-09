@@ -44,7 +44,8 @@ export const GenerationButton = React.memo(({
 export const GenerationImage = React.memo(({
   src = '/first.webp',
   containerProps = {},
-  onClickToGallery,
+  onClickToGalleryFromGenerate,
+  onClickToGalleryAfterSave,
   progress,
   saveToGalleryHandler,
   onWriteNewDescription,
@@ -52,7 +53,8 @@ export const GenerationImage = React.memo(({
 }:{
   src?: string;
   containerProps?: {};
-  onClickToGallery?: () => void;
+  onClickToGalleryFromGenerate?: () => void;
+  onClickToGalleryAfterSave?: () => void;
   progress: number;
   saveToGalleryHandler: () => void;
   onWriteNewDescription?: () => void;
@@ -91,9 +93,24 @@ export const GenerationImage = React.memo(({
         position='relative'
       >
         <Box position='relative' w='100%' h='100%'>
-          <Box display='flex' flexDirection='row' position='absolute' bottom={isSmallerThan500 ? '2.5rem' : '2rem'} right='0.5rem'>
+          <Box 
+            // display='flex' 
+            // flexDirection='row' 
+            position='absolute' 
+            sx={{
+              top:'calc(50% - 5rem)', 
+              left:'calc(50% - 2.5rem)',
+              zIndex: 2,
+            }}>
             {progress<100 ?
-              <CircularProgress value={progress} size={isSmallerThan500 ? '2rem' : '3rem'} isIndeterminate color='button.100' thickness='0.1rem'>
+              <CircularProgress 
+                value={progress} 
+                size='5rem' 
+                isIndeterminate 
+                color='blue.500' 
+                trackColor='#656565' 
+                thickness='0.2rem'
+              >
                 <CircularProgressLabel>{progress}%</CircularProgressLabel>
               </CircularProgress> : null
             }
@@ -124,7 +141,7 @@ export const GenerationImage = React.memo(({
               <Box w='100%' h='100%' display='flex' alignItems='center' justifyContent='center' bg='blue.300' p='1rem 1.5rem' overflow='hidden' borderRadius='0.2rem'>
                 <Text textStyle='whiteTextShadow' align='center'>congrats art saved to gallery!</Text>
               </Box>
-              <Button onClick={onClickToGallery} size='sm' alignSelf='flex-end' position='absolute' bottom='0.5rem' right='0.5rem'>regenerate image</Button></>
+              <Button onClick={onClickToGalleryAfterSave} size='sm' alignSelf='flex-end' position='absolute' bottom='0.5rem' right='0.5rem'>regenerate image</Button></>
             </Backdrop>
           </Skeleton>
           <Box w='100%' display='flex' alignItems='center' justifyContent='center' flexDir='column'>
@@ -170,7 +187,7 @@ export const GenerationImage = React.memo(({
         </Box>
       </Box>
       <Box textAlign='center'>
-        <Button rightIcon={<IoIosArrowForward />} onClick={onClickToGallery} mr='1rem'>go to gallery</Button>
+        <Button rightIcon={<IoIosArrowForward />} onClick={onClickToGalleryFromGenerate} mr='1rem'>go to gallery</Button>
         <Button variant='link' onClick={onOpen}><Text textStyle='downMenu'>Leave contacts</Text></Button>
         <Modal isOpen={isOpen} onClose={onClose} size={isSmallerThan400 ? 'xs' : 'md'} initialFocusRef={initialRef} >
           <ModalOverlay />

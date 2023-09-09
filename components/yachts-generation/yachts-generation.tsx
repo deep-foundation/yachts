@@ -181,8 +181,13 @@ export const YachtsGeneration = React.memo(({ onClick }:{ onClick?: () => void; 
               saveToGalleryHandler={saveToGalleryHandler}
               onWriteNewDescription={() => setStartGen(false)}
               containerProps={{gridColumn: isSmallerThan800 ? '1 / 4' : '2/3'}} 
-              onClickToGallery={() => {
+              onClickToGalleryAfterSave={() => {
+                setStartGen(false);
+                console.log('startGen1', startGen);
+              }} 
+              onClickToGalleryFromGenerate={() => {
                 setImgGen(true);
+                console.log('startGen2', startGen);
               }} 
               sendMail={sendMailHandler}
             />
@@ -196,7 +201,10 @@ export const YachtsGeneration = React.memo(({ onClick }:{ onClick?: () => void; 
                 }
               })
             }
-            onWriteNewDescription={() => setImgGen(true)} 
+            onWriteNewDescription={() => {
+              setStartGen(false);
+              console.log('startGen1', startGen);
+            }} 
           />
         }
       </Box>

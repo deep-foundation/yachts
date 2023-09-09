@@ -66,7 +66,9 @@ const themeChakra = extendTheme({
   colors: {
     blue: {
       100: '#acadaf',
-      300: '#91C9E0'
+      300: '#91C9E0',
+      500: '#0029ff',
+      900: '#004c6b',
     },
     button: {
       100: '#91C9E0',
