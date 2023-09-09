@@ -14,6 +14,7 @@ export const GenerationButton = React.memo(({
   textProps = {},
   rightIcon = null,
   as,
+  disabled = false,
 }:{ 
   onClick?: () => void;
   variant?: string; 
@@ -22,12 +23,14 @@ export const GenerationButton = React.memo(({
   textProps?: {};
   rightIcon?: any;
   as?: any;
+  disabled?: boolean;
 }) => {
   return (<Button 
     as={as}
     variant={variant}
     w='100%'
     onClick={onClick} 
+    isDisabled={disabled}
     size='sm'
     rightIcon={rightIcon}
     {...buttonProps}
@@ -130,6 +133,7 @@ export const GenerationImage = React.memo(({
               <GenerationButton 
                 buttonProps={{isDisabled: isSaved}} 
                 variant='grayBgSolid' text='save to our gallery' 
+                disabled={ progress<100 ? true : false }
                 onClick={() => {
                   saveToGalleryHandler(); 
                   setIsSaved(true); 
@@ -143,7 +147,7 @@ export const GenerationImage = React.memo(({
                 as={Box}
                 variant='grayBgSolid' 
                 buttonProps={{ mr: '0.5rem' }} 
-                onClick={() => console.log(true)} 
+                // onClick={() => console.log(true)} 
                 rightIcon={<TelegramShareButton
                     url={src}
                   >

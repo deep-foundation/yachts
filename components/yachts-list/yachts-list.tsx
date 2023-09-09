@@ -37,7 +37,7 @@ export const YachtsList = React.memo(({setPage}:{setPage?: (value) => void}) => 
       >
         {yachtsList.map((yacht, index) => (
           <Box key={yacht.id}>
-            <AspectRatio ratio={4 / 3} gridArea={`foto${index + 1}`} maxH={isSmallerThan800 ? '30vmax' : '20vmax'} mb={isSmallerThan800 ? '0.8rem' : 0}>
+            <AspectRatio ratio={4 / 3} gridArea={`foto${index + 1}`} maxH={isSmallerThan800 ? '30vmax' : '20vmax'} mb={isSmallerThan800 ? '0.8rem' : '1rem'}>
               <Img src={yacht.src} alt={yacht.alt} width='100%' objectFit='scale-down' />
             </AspectRatio>
             <Box gridArea={`desc${index + 1}`} display='flex' alignItems='center' mb={isSmallerThan800 ? '2rem' : 0}>

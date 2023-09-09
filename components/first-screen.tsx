@@ -22,8 +22,7 @@ const Poster = React.memo(() => {
           <Image src='/main.svg' alt='logo crystal yacht' width='max-content' height='max-content' mb='2rem'/>
           {isSmallerThan800 
           ? null 
-          : <><Text as='h2' textStyle='upperMenu' color='whiteText' width='max-content'>Crystal Yachts - Future is here</Text>
-          <IconButton aria-label='down button' variant='ghost' icon={<Arrow />} /></>}
+          : <Text as='h2' textStyle='upperMenu' color='whiteText' width='max-content'>Crystal Yachts - Future is here</Text>}
         </Flex>
       </SimpleGrid>
     </Box>
