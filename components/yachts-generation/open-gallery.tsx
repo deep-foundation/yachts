@@ -48,6 +48,10 @@ export const OpenGallery = React.memo(({
     ssr: true,
     fallback: false,
   });
+  const [isSmallerThan590] = useMediaQuery('(max-width: 590px)', {
+    ssr: true,
+    fallback: false,
+  });
   const [[photo, direction], setPhoto] = useState([0, 0]);
 
   const paginate = (newDirection: number) => {
@@ -82,19 +86,19 @@ export const OpenGallery = React.memo(({
         <Box as={motion.div}
           sx={{
             zIndex: 1,
-            width: '500px',
+            width: '70vmax',
             maxWidth: '100%',
-            height: '281px',
+            height: '60vmin',
             position: 'fixed',
-            top: 'calc(50% - 140px)',
-            left: 'calc(50% - 250px)',
+            top: 'calc(50% - 30vh)',
+            left: isSmallerThan590 ? 0 : 'calc(50% - 35vw)',
             cursor: 'zoom-out',
             borderRadius: '0.5rem',
             border: 'thin solid #E5E5E5',
             overflow: 'hidden',
           }}
         >
-          <motion.img
+          <Box as={motion.img}
             key={props.id}
             src={photos[photo].src}
             custom={direction}
@@ -102,6 +106,10 @@ export const OpenGallery = React.memo(({
             initial="enter"
             animate="center"
             exit="exit"
+            width='100%'
+            height='100%'
+            loading='lazy'
+            //@ts-ignore
             transition={{
               x: { type: "spring", stiffness: 300, damping: 30 },
               opacity: { duration: 0.2 }

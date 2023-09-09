@@ -107,7 +107,7 @@ export const GenerationImage = React.memo(({
                 value={progress} 
                 size='5rem' 
                 isIndeterminate 
-                color='blue.500' 
+                color='blue.200' 
                 trackColor='#656565' 
                 thickness='0.2rem'
               >
