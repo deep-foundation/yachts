@@ -16,7 +16,7 @@ export function ProvidersAndLoginOrContent({ children }: { children?: JSX.Elemen
     <>
       <ChakraProvider theme={themeChakra}>
         <Box w='100vw' h='100vh' position='relative' display='grid' gridTemplateRows='0.1fr 1fr 0.1fr'>
-          <Navbar setPage={setPage} />
+          <Navbar setPage={setPage} page={page} />
           {/* <PageContent /> */}
           <Box as='main' h='100%' w='100%'>
             {page === '/' && <FirstScreen display='flex' />}
@@ -26,7 +26,7 @@ export function ProvidersAndLoginOrContent({ children }: { children?: JSX.Elemen
             {page === 'yachts/navigator 160' && <Crystal160 />}
             {page === 'yachts/navigator 130' && <Crystal130 />}
           </Box>
-          <Footer setPage={setPage} />
+          <Footer setPage={setPage} page={page} />
         </Box>
       </ChakraProvider>
     </>

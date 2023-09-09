@@ -18,6 +18,7 @@ export const NavigationButton = React.memo(({
   underline = null,
   onHoverStart = () => {},
   onHoverEnd = () => {},
+  selected = false,
 }:{ 
   ariaLabel: string; 
   href?: string; 
@@ -32,6 +33,7 @@ export const NavigationButton = React.memo(({
   underline?: React.ReactNode;
   onHoverStart?: () => void;
   onHoverEnd?: () => void;
+  selected?: boolean;
 }) => {
   
   return (<Button
@@ -69,7 +71,10 @@ export const NavigationButton = React.memo(({
             damping: 20,
           }}
           color='text'
-          sx={styles}
+          sx={{
+            textDecoration: selected ? 'underline' : 'none', 
+            ...styles
+          }}
           textStyle={textStyle}
 
         >
@@ -81,7 +86,7 @@ export const NavigationButton = React.memo(({
   )
 })
 
-export const Navbar = React.memo(({setPage}:{setPage?: (value) => void}) => {
+export const Navbar = React.memo(({page, setPage}:{page?: string; setPage?: (value) => void}) => {
   const [selected, setSelected] = useState(1);
   const [hover, setHover] = useState(1);
   const [isSmallerTha600] = useMediaQuery('(max-width: 600px)');
@@ -139,7 +144,7 @@ export const Navbar = React.memo(({setPage}:{setPage?: (value) => void}) => {
                 }}
                 onHoverEnd={() => setHover(0)}
                 underline={
-                  (button.id === selected) || (button.id === hover) ? 
+                  (button.href === page) ? 
                     <Box
                       as={motion.div}
                       layoutId="underline"

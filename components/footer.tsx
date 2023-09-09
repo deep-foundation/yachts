@@ -5,7 +5,7 @@ import { NavigationButton } from './navigation';
 import { motion } from 'framer-motion';
 
 
-export const Footer = React.memo(({setPage}:{setPage?: (value) => void}) => {
+export const Footer = React.memo(({page, setPage}:{page?: string; setPage?: (value) => void}) => {
   const [selected, setSelected] = useState(1);
   const [hover, setHover] = useState(1);
   const [isSmallerThan945] = useMediaQuery('(max-width: 945px)');
@@ -41,9 +41,10 @@ export const Footer = React.memo(({setPage}:{setPage?: (value) => void}) => {
                 onClick={(page) => {
                   setSelected(button.id);
                   setPage(button.href);
-                }}  
+                }} 
                 onKeyDown={(event: { key: string }) => event.key === 'Enter' ? setSelected(button.id) : null} 
                 tabIndex={button.id}
+                selected={(button.href === page)}
                 styles={{
                   fontWeight: button.id === selected ? '800' : '600',
                 }}
