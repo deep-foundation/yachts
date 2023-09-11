@@ -187,7 +187,6 @@ export const YachtsGeneration = React.memo(({ onClick }:{ onClick?: () => void; 
               }} 
               onClickToGalleryFromGenerate={() => {
                 setImgGen(true);
-                console.log('startGen2', startGen);
               }} 
               sendMail={sendMailHandler}
             />
