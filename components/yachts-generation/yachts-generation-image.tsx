@@ -4,6 +4,7 @@ import { IoIosArrowForward, IoIosShareAlt } from "react-icons/io";
 import { Backdrop } from './backdrop';
 import { TelegramShareButton } from 'next-share'
 import { useDebounceCallback } from "@react-hook/debounce";
+import FileSaver from 'file-saver';
 
 
 export const GenerationButton = React.memo(({ 
@@ -76,6 +77,10 @@ export const GenerationImage = React.memo(({
 
   const [isSmallerThan400] = useMediaQuery('(max-width: 400px)');
 
+  function save() {
+    FileSaver.saveAs(src, "image.png");
+  }
+
   return (<Box 
       display='flex' flexDir='column' 
       alignItems='center' 
@@ -146,7 +151,7 @@ export const GenerationImage = React.memo(({
           </Skeleton>
           <Box w='100%' display='flex' alignItems='center' justifyContent='center' flexDir='column'>
             <Box display='flex' flexDir='row' mb='0.5rem'>
-              {/* <GenerationButton variant='grayBgSolid' text='download on your device' textProps={{ px: isSmallerThan500 ? '2rem' : '3rem', mr: '0.5rem' }} buttonProps={{ mr: '0.5rem' }} onClick={() => console.log(true)} /> */}
+              <GenerationButton variant='grayBgSolid' text='download on your device' textProps={{ px: isSmallerThan500 ? '2rem' : '3rem', mr: '0.5rem' }} buttonProps={{ mr: '0.5rem' }} onClick={save} />
               <GenerationButton 
                 buttonProps={{isDisabled: isSaved}} 
                 variant='grayBgSolid' text='save to our gallery' 

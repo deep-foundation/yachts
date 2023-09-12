@@ -82,6 +82,7 @@
     "dotenv": "^16.0.3",
     "dotenv-load": "^2.0.1",
     "events": "^3.3.0",
+    "file-saver": "^2.0.5",
     "firebase": "^9.19.1",
     "framer-motion": "^6.5.1",
     "generate-schema": "^2.6.0",
