@@ -1,4 +1,4 @@
-import { Box, Center, Image, useMediaQuery } from '@chakra-ui/react';
+import { Box, Button, Center, Image, useMediaQuery } from '@chakra-ui/react';
 import React, { useState, useMemo, useEffect} from 'react';
 import { GenerationForm } from './yachts-generation-form';
 import { GenerationButton, GenerationImage } from './yachts-generation-image';
@@ -135,20 +135,24 @@ export const YachtsGeneration = React.memo(({ onClick }:{ onClick?: () => void; 
       <Box display='grid' gridTemplateColumns='0.1fr 1fr 0.1fr' w='100%' justifyItems='center' mb={isSmallerThan800 ? 0 : '4rem'}>
         {
           startCreate === false
-          ? <><GenerationButton 
-              onClick={() => {
-                setStartCreate(true);
-              }} 
-              buttonProps={{ 
-                gridColumn: '2/3', 
-                width:isSmallerThan500 ? '65%' : isSmallerThan945 ? '100%' : '30%', 
-                height: isSmallerThan500 ? '2rem' : '5rem',
-                mb: isSmallerThan800 ? '2rem' : '4rem' 
-              }}
-              textProps={{
-                fontSize: isSmallerThan500 ? 'sm' : 'md',
-              }}
-            />
+          ? <>
+              <Box sx={{gridColumn: '2/3', display: 'flex', flexDir: 'column'}}>
+                <GenerationButton 
+                  onClick={() => {
+                    setStartCreate(true);
+                  }} 
+                  buttonProps={{  
+                    // width:isSmallerThan500 ? '65%' : isSmallerThan945 ? '100%' : '30%', 
+                    // height: isSmallerThan500 ? '2rem' : '5rem',
+                    width: '100%',
+                    mb: isSmallerThan800 ? '2rem' : '4rem' 
+                  }}
+                  textProps={{
+                    fontSize: isSmallerThan500 ? 'sm' : 'md',
+                  }}
+                />
+                {isSmallerThan800 === false ? <Button onClick={() => setImgGen(true)} mr='1rem'>Show examples gallery</Button> : null}
+              </Box>
             {isSmallerThan800 === true
             ? <GenerationImageGallery 
                 hidden={true}
