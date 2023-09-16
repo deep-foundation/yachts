@@ -97,8 +97,9 @@ export const Crystal160 = React.memo(() => {
         <Img src='/first2.webp' alt='crystal160' />
       </AspectRatio>
       <Text textStyle='technologiesUppercaseText' as='h4' mb={isSmallerThan500 ? '0.8rem' : '1.5rem'}>VIDEO REVIEW</Text>
+      
       <AspectRatio ratio={16 / 9} maxW='100%' mb={isSmallerThan500 ? '0.8rem' : '1.5rem'}>
-        <Img src='/first2.webp' alt='crystal160' />
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/W_CA-39p-5Y?si=r-fz_J7sW0VkLrgW" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
       </AspectRatio>
       <Text textStyle='yachtsBlueTitle' as='h4' align='right' mb={isSmallerThan900 ? '2rem' : '5rem'}>crystal 160</Text>
 

@@ -26,7 +26,7 @@ export const technologies = [
   },
   {
     id: 6,
-    title: 'Electric engines:',
+    title: 'Electric motors:',
     description: 'Electric engines can be powered by batteries, which can be recharged using solar panels or other renewable energy sources. Electric engines are quieter and cleaner than diesel engines, although they typically have a shorter range',
   },
 ]
@@ -53,18 +53,14 @@ export const text = [
 export const text2 = [
   {
     id: 1,
-    text: 'Autonomous Navigation Systems: Incorporate advanced autonomous navigation systems that utilize sensors, radar, GPS, and artificial intelligence algorithms. These systems can enable the yacht to navigate autonomously, avoiding obstacles, maintaining safe distances from other vessels, and following pre-programmed routes',
-  },
-  {
-    id: 2,
     text: 'Responsible Yachting Practices: The project promotes responsible yachting by adhering to strict guidelines for marine life protection, waste disposal, and respecting fragile ecosystems. It supports local communities and collaborates with conservation organizations to ensure sustainable interactions with marine environments',
   },
   {
-    id: 3,
+    id: 2,
     text: 'In the face of growing environmental concerns and regulations, the yachting industry is actively exploring these and other "green" technologies. However, the adoption of wind propulsion systems is dependent on various factors, including the feasibility of integrating these technologies into yacht designs, the routes a yacht usually operates on (which affects wind conditions), and the relative costs and benefits compared to traditional propulsion systems',
   },
   {
-    id: 4,
+    id: 3,
     text: 'By incorporating these innovative and sustainable features, the Crystal Yacht projects aims to set new standards for luxury yachts, demonstrating that environmental consciousness and opulence can coexist harmoniously. The project seeks to inspire people and industry to embrace sustainability, contributing to the preservation of our oceans for future generations',
   },
 ]
