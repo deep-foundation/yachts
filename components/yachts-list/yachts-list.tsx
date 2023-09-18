@@ -1,7 +1,8 @@
-import { AspectRatio, Box, Img, Text, useMediaQuery } from "@chakra-ui/react";
+import { AspectRatio, Box, Img, Link, Text, useMediaQuery } from "@chakra-ui/react";
 import React from "react";
 import { TextBlockYachtDescription } from "../text-block";
 import { yachtsList } from "./list";
+import DynamicShadowImage from "../dynamic-shadow-image";
 
 export const YachtsList = React.memo(({setPage}:{setPage?: (value) => void}) => {
   const [isSmallerThan800] = useMediaQuery('(max-width: 800px)');
@@ -37,9 +38,14 @@ export const YachtsList = React.memo(({setPage}:{setPage?: (value) => void}) => 
       >
         {yachtsList.map((yacht, index) => (
           <Box key={yacht.id}>
-            <AspectRatio ratio={4 / 3} gridArea={`foto${index + 1}`} maxH={isSmallerThan800 ? '30vmax' : '20vmax'} mb={isSmallerThan800 ? '0.8rem' : '1rem'}>
-              <Img src={yacht.src} alt={yacht.alt} width='100%' objectFit='scale-down' />
-            </AspectRatio>
+            
+              <AspectRatio ratio={4 / 3} gridArea={`foto${index + 1}`} maxH={isSmallerThan800 ? '30vmax' : '20vmax'} mb={isSmallerThan800 ? '0.8rem' : '1rem'}>
+                <Link>
+                    <Img filter="blur(16px)" src={yacht.src} alt={yacht.alt} width='100%' objectFit='scale-down' onClick={() => setPage(yacht.href)} />
+                    <Img src={yacht.src} alt={yacht.alt} width='100%' objectFit='scale-down' onClick={() => setPage(yacht.href)} />
+                </Link>
+              </AspectRatio>
+            
             <Box gridArea={`desc${index + 1}`} display='flex' alignItems='center' mb={isSmallerThan800 ? '2rem' : 0}>
               <TextBlockYachtDescription title={yacht.name} text={yacht.description} onClick={() => setPage(`yachts/${yacht.name}`)} />
             </Box>

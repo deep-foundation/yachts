@@ -6,9 +6,10 @@ import { Navbar } from "../components/navigation";
 import { Technologies } from "../components/technologies/technologies";
 import { YachtsGeneration } from "../components/yachts-generation/yachts-generation";
 import { YachtsList } from "../components/yachts-list/yachts-list";
-import { Crystal160 } from "../components/yachts/crystal-160";
 import themeChakra from "./theme";
-import { Crystal130 } from "../components/yachts/crystal-130";
+import { Crystal80 } from "../components/yachts/crystal-80";
+import { Crystal100 } from "../components/yachts/crystal-100";
+import { Crystal160Ark } from "../components/yachts/crystal-160-ark";
 
 export function ProvidersAndLoginOrContent({ children }: { children?: JSX.Element }) {
   const [page, setPage] = useQueryStore('page', '/');
@@ -23,8 +24,9 @@ export function ProvidersAndLoginOrContent({ children }: { children?: JSX.Elemen
             {page === 'yachts-generation' && <YachtsGeneration />}
             {page === 'yachts' && <YachtsList setPage={setPage} />}
             {page === 'technologies' && <Technologies />}
-            {page === 'yachts/navigator 160' && <Crystal160 />}
-            {page === 'yachts/navigator 130' && <Crystal130 />}
+            {page === 'yachts/crystal-80' && <Crystal80 />}
+            {page === 'yachts/crystal-100' && <Crystal100 />}
+            {page === 'yachts/crystal-160-ark' && <Crystal160Ark />}
           </Box>
           <Footer setPage={setPage} page={page} />
         </Box>

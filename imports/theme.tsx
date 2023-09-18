@@ -248,6 +248,32 @@ const themeChakra = extendTheme({
       color: 'text',
       textTransform: 'uppercase',
     },
+    yachtDetailUppercaseTitleText: {
+      fontWeight: 'bold',
+      fontSize: 'md',
+      lineHeight: '1.5',
+      color: 'text',
+      textTransform: 'uppercase',
+    },
+    yachtDetailSemiboldText: {
+      fontWeight: 'semiBold',
+      fontSize: 'sm',
+      lineHeight: '1.1',
+      color: 'text',
+    },
+    yachtDetailRegularText: {
+      fontWeight: 'regular',
+      fontSize: 'sm',
+      lineHeight: '1.2',
+      color: 'text',
+    },
+    yachtDetailUppercaseTitleS48Text: {
+      fontWeight: 'medium',
+      fontSize: '4xl',
+      lineHeight: '1.5',
+      color: 'text',
+      textTransform: 'uppercase',
+    },
   },
   components: {
     Button: {
