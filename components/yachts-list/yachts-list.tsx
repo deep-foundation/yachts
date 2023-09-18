@@ -40,17 +40,8 @@ export const YachtsList = React.memo(({setPage}:{setPage?: (value) => void}) => 
           <Box key={yacht.id}>
             <Box position="relative" mb='1rem'>
               <Link>
-                    <Img position="absolute"
-                        inset={0}
-                        filter="blur(16px)"
-                        zIndex={0} src="black.jpg"
-                        transform="translate(5px, -5px);"
-                        width='100%' objectFit="cover"/>
-                    <Img src={yacht.src} zIndex={100} alt={yacht.alt} width='100%' 
-                      objectFit="cover"
-                      position="relative"
-                      onClick={() => setPage(yacht.href)} />
-                </Link>
+                <DynamicShadowImage src={yacht.src}  onClick={() => setPage(yacht.href)}  alt={yacht.alt}/>
+              </Link>
             </Box>
             <Box gridArea={`desc${index + 1}`} display='flex' alignItems='center' mb={isSmallerThan800 ? '2rem' : 0}>
               <TextBlockYachtDescription title={yacht.name} text={yacht.description} onClick={() => setPage(`yachts/${yacht.name}`)} />

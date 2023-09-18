@@ -1,33 +1,20 @@
-import { Box, Image } from "@chakra-ui/react";
+import { Box, Image, Img } from "@chakra-ui/react";
 
-type Props = {
-  src: string;
-};
 
-const DynamicShadowImage = ({ src }: Props) => {
+const DynamicShadowImage = ( {src, ...props}) => {
   return (
     <Box position="relative">
-      <Image
-        src={src}
-        w={80}
-        h={80}
-        rounded="lg"
-        objectFit="cover"
-        position="absolute"
-        inset={0}
-        filter="blur(16px)"
-        zIndex={0}
-        transform="scale(1.1, 1.1)"
-      />
-      <Image
-        zIndex={100}
-        position="relative"
-        src={src}
-        w={80}
-        h={80}
-        rounded="lg"
-        objectFit="cover"
-      />
+        <Img position="absolute"
+                        inset={0}
+                        filter="blur(16px)"
+                        zIndex={0} src="black.jpg"
+                        transform="translate(5px, -5px);"
+                        width='100%' objectFit="cover"
+                        {...props} />
+        <Img src={src} zIndex={100} width='100%' 
+                        objectFit="cover"
+                        position="relative"
+                        {...props} />
     </Box>
   );
 };
