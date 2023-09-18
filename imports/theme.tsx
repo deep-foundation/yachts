@@ -96,7 +96,7 @@ const themeChakra = extendTheme({
   // },
   textStyles: {
     h1: {
-      fontSize: '4xl',
+      fontSize: '6xl',
       fontWeight: 'medium',
       textTransform: 'uppercase',
       lineHeight: '1.2',
@@ -220,10 +220,11 @@ const themeChakra = extendTheme({
       textTransform: 'uppercase',
     },
     technologiesUppercaseText: {
-      fontWeight: 'medium',
-      fontSize: 'sm',
-      lineHeight: '1.5',
+      fontWeight: 'regular',
+      fontSize: 'xs',
+      lineHeight: '1.4',
       color: 'text',
+      textAlign: 'justify',
       textTransform: 'uppercase',
     },
     technologiesUppercaseSB24Text: {
@@ -236,6 +237,13 @@ const themeChakra = extendTheme({
     technologiesUppercaseSB36Text: {
       fontWeight: 'semiBold',
       fontSize: 'md',
+      lineHeight: '1.5',
+      color: 'text',
+      textTransform: 'uppercase',
+    },
+    technologiesUppercaseSB48Text: {
+      fontWeight: 'medium',
+      fontSize: '4xl',
       lineHeight: '1.5',
       color: 'text',
       textTransform: 'uppercase',

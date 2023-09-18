@@ -6,8 +6,8 @@ export const technologies = [
   },
   {
     id: 2,
-    title: 'Energy Storage System:',
-    description: "Installing solar panels on the yacht's surface can harness the power of the sun to generate electricity. Solar energy can be used to power onboard systems, reducing the reliance on traditional power sources and charging batteries",
+    title: 'Responsibly Materials:',
+    description: 'Yacht can be constructed using sustainable and recyclable materials. This includes using lightweight composites, eco-friendly paints and responsibly sourced wood. By opting for sustainable materials, the environmental impact of yacht construction and maintenance can be reduced',
   },
   {
     id: 3,
@@ -22,7 +22,7 @@ export const technologies = [
   {
     id: 5,
     title: 'Solar Power:',
-    description: 'Yacht can be constructed using sustainable and recyclable materials. This includes using lightweight composites, eco-friendly paints and responsibly sourced wood. By opting for sustainable materials, the environmental impact of yacht construction and maintenance can be reduced',
+    description: "Installing solar panels on the yacht's surface can harness the power of the sun to generate electricity. Solar energy can be used to power onboard systems, reducing the reliance on traditional power sources and charging batteries",
   },
   {
     id: 6,

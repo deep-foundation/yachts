@@ -26,8 +26,9 @@ export const Technologies = React.memo(() => {
         p={isSmallerThan800 ? '1.5rem 1rem' : '3rem 3rem'}
       >
         <Box p={isSmallerThan800 ? 0 : '1rem 2rem'} mb={isSmallerThan500 ? '1rem' : isSmallerThan800 ? '2rem' : '4rem'}>
-        <Text textStyle='technologiesUppercaseSB24Text' align='center' mb={isSmallerThan800 ? '2rem' : '5rem'} px={isSmallerThan800 ? 0 : '4rem'}>Responsible Luxury</Text> 
+          <Text textStyle='technologiesUppercaseSB24Text' align='left' mb={isSmallerThan800 ? '2rem' : '5rem'}>Responsible Luxury</Text> 
           <Text textStyle='technologiesUppercaseText' mb={isSmallerThan800 ? '2rem' : '5rem'} align='justify'>In the luxury world of yachting, opulence and splendor are often synonymous with excess. However, recent advancements in marine engineering, technology, and an increasing environmental awareness have spurred a paradigm shift in the industry, promoting the concept of sustainable yachting. Today's luxury vessels are no longer solely defined by their size and extravagance but also by their environmental footprint and adherence to sustainability principles</Text> 
+          
           <Text textStyle='technologiesUppercaseSB24Text' align='center' mb={isSmallerThan800 ? '2rem' : '5rem'} px={isSmallerThan800 ? 0 : '4rem'}>Embrace the future of propulsion with electric and hybrid systems for cleaner, quieter, and more efficient cruising</Text> 
           <Box display='flex' flexDirection={isSmallerThan500 ? 'column-reverse' : 'column'}>
             <Text textStyle='technologiesUppercaseText' mb={isSmallerThan500 ? 0 : isSmallerThan800 ? '1rem' : '4rem'} align='justify'>Energy efficiency is a crucial component of sustainable yachting. Hydrodynamic hull designs and lightweight materials improve fuel efficiency by reducing drag and weight. In addition, advanced energy management systems can monitor and optimize energy consumption onboard</Text> 
@@ -49,13 +50,13 @@ export const Technologies = React.memo(() => {
         </Box>
 
         <Text 
-          textStyle='technologiesUppercaseSB36Text' 
+          textStyle='technologiesUppercaseSB48Text' 
           align='center' 
           mb={isSmallerThan800 ? '2rem' : '8rem'} 
           px={isSmallerThan800 ? '0.5rem' : '4rem'}
-        >To make project totally carbon neutral offsetting</Text>
+        >To make project <br/>totally carbon neutral offsetting</Text>
 
-        <Text textStyle={isSmallerThan500 ? 'technologiesUppercaseText' : 'technologiesUppercaseSB24Text'} align={isSmallerThan500 ? 'justify' : 'center'} mb={isSmallerThan800 ? '2rem' : '5rem'} px={isSmallerThan800 ? '0.5rem' : '4rem'}>Advanced Energy Management Systems: Implementing advanced energy management systems can optimize the energy consumption of a yacht. These systems use algorithms and sensors to monitor and control the power distribution, reducing energy waste and improving efficiency. Waste heat recovery, could be the option to generate extra electricity using ORC cycle. This solution can increase efficiency by another 6-10%.</Text> 
+        <Text textStyle={isSmallerThan500 ? 'technologiesUppercaseText' : 'technologiesUppercaseSB24Text'} align={isSmallerThan500 ? 'justify' : 'justify'} mb={isSmallerThan800 ? '2rem' : '5rem'} px={isSmallerThan800 ? '0.5rem' : '0rem'}>Advanced Energy Management Systems: Implementing advanced energy management systems can optimize the energy consumption of a yacht. These systems use algorithms and sensors to monitor and control the power distribution, reducing energy waste and improving efficiency. Waste heat recovery, could be the option to generate extra electricity using ORC cycle. This solution can increase efficiency by another 6-10%.</Text> 
 
         <Box 
           display={isSmallerThan500 ? 'flex' : 'grid'} 
