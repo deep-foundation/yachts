@@ -38,14 +38,20 @@ export const YachtsList = React.memo(({setPage}:{setPage?: (value) => void}) => 
       >
         {yachtsList.map((yacht, index) => (
           <Box key={yacht.id}>
-            
-              <AspectRatio ratio={4 / 3} gridArea={`foto${index + 1}`} maxH={isSmallerThan800 ? '30vmax' : '20vmax'} mb={isSmallerThan800 ? '0.8rem' : '1rem'}>
-                <Link>
-                    <Img filter="blur(16px)" src={yacht.src} alt={yacht.alt} width='100%' objectFit='scale-down' onClick={() => setPage(yacht.href)} />
-                    <Img src={yacht.src} alt={yacht.alt} width='100%' objectFit='scale-down' onClick={() => setPage(yacht.href)} />
+            <Box position="relative" mb='1rem'>
+              <Link>
+                    <Img position="absolute"
+                        inset={0}
+                        filter="blur(16px)"
+                        zIndex={0} src="black.jpg"
+                        transform="translate(5px, -5px);"
+                        width='100%' objectFit="cover"/>
+                    <Img src={yacht.src} zIndex={100} alt={yacht.alt} width='100%' 
+                      objectFit="cover"
+                      position="relative"
+                      onClick={() => setPage(yacht.href)} />
                 </Link>
-              </AspectRatio>
-            
+            </Box>
             <Box gridArea={`desc${index + 1}`} display='flex' alignItems='center' mb={isSmallerThan800 ? '2rem' : 0}>
               <TextBlockYachtDescription title={yacht.name} text={yacht.description} onClick={() => setPage(`yachts/${yacht.name}`)} />
             </Box>
