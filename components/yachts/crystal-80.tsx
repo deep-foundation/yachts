@@ -1,8 +1,10 @@
 import { AspectRatio, Box, Img, List, ListItem, Text, UnorderedList, useMediaQuery } from '@chakra-ui/react';
 import React from 'react';
 import { TextBlock, TextBlockYachtDescription } from '../text-block';
-import BearCarousel, {TBearSlideItemDataList, BearSlideCard} from 'bear-react-carousel';
-
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import { Navigation, Pagination } from 'swiper/modules';
 
 export const Crystal80 = React.memo(() => {
   const [isSmallerThan500] = useMediaQuery('(max-width: 500px)');
@@ -15,14 +17,6 @@ export const Crystal80 = React.memo(() => {
     {id: 3, src:'/yachts/crystal_80/2.jpg'},
     {id: 4, src:'/yachts/crystal_80/3.jpg'},
   ]
-  const bearSlideItemData: TBearSlideItemDataList = images.map(row => {
-    return {
-        key: row.id,
-        children: 
-            <Img src={row.src} alt='crystal80' />
-       
-    };
-});
 
   return (<Box display='flex' flexDirection='column' p={isSmallerThan900 ? '2rem 2rem' : '4rem 8rem'}>
       <Text as='h1' textStyle='yachtBlueTitle' align='left'  mb={isSmallerThan900 ? '2rem' : '4rem'}>CRYSTAL 80</Text>
@@ -157,11 +151,15 @@ export const Crystal80 = React.memo(() => {
       </Box>
       
       <AspectRatio ratio={16 / 9} maxW='100%' mb={isSmallerThan900 ? '2rem' : '5rem'}>
-      <BearCarousel
-        data={bearSlideItemData} 
-        isEnableNavButton
-        isEnablePagination
-    />
+        <Swiper navigation={true} modules={[Navigation, Pagination]} className="mySwiper">
+          {
+            images.map(image => {
+              return (<SwiperSlide>
+                  <Img src={image.src} alt='crystal80' />
+                </SwiperSlide>)
+            })
+          }
+        </Swiper>
       </AspectRatio>
     </Box>
   )

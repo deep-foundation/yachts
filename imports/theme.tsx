@@ -30,6 +30,8 @@ const themeChakra = extendTheme({
         color: mode('#1E1E1E', 'whiteAlpha.900')(props),
         bg: mode('#fff', 'cyDark')(props),
       },
+      '.swiper-button-next': { color: 'blue.300' },
+      '.swiper-button-prev': { color: 'blue.300' },
     }),
   },
   fonts: {
