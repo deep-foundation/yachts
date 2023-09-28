@@ -1,10 +1,11 @@
-import { Box, Button, Center, Image, useMediaQuery } from '@chakra-ui/react';
+import { Box, Button, Center, Image, useMediaQuery, Text } from '@chakra-ui/react';
 import React, { useState, useMemo, useEffect} from 'react';
 import { GenerationForm } from './yachts-generation-form';
 import { GenerationButton, GenerationImage } from './yachts-generation-image';
 import { GenerationImageGallery } from './yachts-generation-image-gallery';
 import { useDeep, useDeepSubscription } from "@deep-foundation/deeplinks/imports/client";
 import { Link } from '@deep-foundation/deeplinks/imports/minilinks';
+import { TextBlock } from '../text-block';
 
 
 export const YachtsGeneration = React.memo(({ onClick }:{ onClick?: () => void; }) => {
@@ -14,7 +15,10 @@ export const YachtsGeneration = React.memo(({ onClick }:{ onClick?: () => void; 
 
   const [isSmallerThan500] = useMediaQuery('(max-width: 500px)');
   const [isSmallerThan800] = useMediaQuery('(max-width: 800px)');
+  const [isSmallerThan900] = useMediaQuery('(max-width: 900px)');
   const [isSmallerThan945] = useMediaQuery('(max-width: 945px)');
+  const [isSmallerThan1200] = useMediaQuery('(max-width: 1200px)');
+
 
   // deep types
   const [drawResultTypeId, setDrawResultTypeId] = useState(0);
@@ -136,7 +140,10 @@ export const YachtsGeneration = React.memo(({ onClick }:{ onClick?: () => void; 
         {
           startCreate === false
           ? <>
-              <Box sx={{gridColumn: '2/3', display: 'flex', flexDir: 'column'}}>
+              <Box sx={{gridColumn: '2/3', display: 'flex', flexDir: 'column'}}
+                alignItems='center'
+                justifyContent='center'
+                textAlign={'center'} >
                 <GenerationButton 
                   onClick={() => {
                     setStartCreate(true);
@@ -144,14 +151,34 @@ export const YachtsGeneration = React.memo(({ onClick }:{ onClick?: () => void; 
                   buttonProps={{  
                     // width:isSmallerThan500 ? '65%' : isSmallerThan945 ? '100%' : '30%', 
                     // height: isSmallerThan500 ? '2rem' : '5rem',
-                    width: '100%',
-                    mb: isSmallerThan800 ? '2rem' : '4rem' 
+                    width:isSmallerThan500 ? '65%' : isSmallerThan945 ? '100%' : '30%',
+                    mb: '2rem' 
                   }}
                   textProps={{
                     fontSize: isSmallerThan500 ? 'sm' : 'md',
                   }}
                 />
-                {isSmallerThan800 === false ? <Button onClick={() => {/*setStartCreate(true); setStartGen(true); setImgGen(true);*/ }} mr='1rem'>Show examples gallery</Button> : null}
+                  <Box width='25%' height='0.05rem' alignSelf='center' bg='text' mb='1.5rem' />
+                  <Box alignSelf='center' 
+                        width={isSmallerThan945 ? '100%' : '75%'}>
+                  <Text textStyle='semiBoldText' align='center' mb='1.5rem' >
+                    Here you can generate an image of a yacht using advanced AI tools. <br/> We made it extremely simple 
+                  </Text>
+                  <Text textStyle='generationBlueText' align='center' mb='1.5rem' >
+                    Based on your ideas and requirements we can create 3D model of your future yacht, as a first step to your dream
+                  </Text>
+                  </Box>
+                  <Box width='25%' height='0.05rem' alignSelf='center' bg='text' mb='2rem' />
+                {
+                  isSmallerThan800 === false ? 
+                    <Button 
+                      onClick={() => {/*setStartCreate(true); setStartGen(true); setImgGen(true);*/ }} 
+                      mb='1rem'
+                      width='30%'
+                      >
+                      Show examples gallery
+                    </Button> : null
+                }
               </Box>
             {isSmallerThan800 === true
             ? <GenerationImageGallery 

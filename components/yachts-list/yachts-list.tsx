@@ -44,7 +44,7 @@ export const YachtsList = React.memo(({setPage}:{setPage?: (value) => void}) => 
               </Link>
             </Box>
             <Box gridArea={`desc${index + 1}`} display='flex' alignItems='center' mb={isSmallerThan800 ? '2rem' : 0}>
-              <TextBlockYachtDescription title={yacht.name} text={yacht.description} onClick={() => setPage(`yachts/${yacht.name}`)} />
+              <TextBlockYachtDescription title={yacht.name} text={yacht.description} />
             </Box>
           </Box>
         ))}

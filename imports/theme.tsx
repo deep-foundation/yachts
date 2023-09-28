@@ -129,6 +129,13 @@ const themeChakra = extendTheme({
       fontSize: 'xs',
       color: 'text',
     },
+    technologiesCard: {
+      fontWeight: 'light',
+      lineHeight: '1.1',
+      // textTransform: 'uppercase',
+      fontSize: 'sm',
+      color: 'text',
+    },
     h2Generator: {
       fontSize: 'md',
       fontWeight: 'regular',
@@ -207,12 +214,18 @@ const themeChakra = extendTheme({
       color: 'blue.300',
       textTransform: 'uppercase',
     },
-    yachtsDescription: {
+    generationBlueText: {
       fontWeight: 'regular',
-      fontSize: 'xs',
-      lineHeight: '1.5',
+      fontSize: 'xl',
+      lineHeight: '1.2',
+      color: 'blue.400',
+    },
+    yachtsDescription: {
+      fontWeight: 'light',
+      fontSize: 'sm',
+      lineHeight: '1.3',
       color: 'text',
-      textTransform: 'uppercase',
+      // textTransform: 'uppercase',
       textAlign: 'justify',
     },
     yachtBlueTitle: {
@@ -244,12 +257,27 @@ const themeChakra = extendTheme({
       textAlign: 'justify',
       textTransform: 'uppercase',
     },
+    technologiesNotUppercaseText: {
+      fontWeight: 'light',
+      fontSize: 'sm',
+      lineHeight: '1.1',
+      color: 'text',
+      textAlign: 'justify',
+      // textTransform: 'uppercase',
+    },
     technologiesUppercaseSB24Text: {
       fontWeight: 'bold',
       fontSize: 'sm',
       lineHeight: '1.5',
       color: 'text',
       textTransform: 'uppercase',
+    },
+    technologiesNotUppercaseSB24Text: {
+      fontWeight: 'bold',
+      fontSize: 'md',
+      lineHeight: '1.2',
+      color: 'text',
+      // textTransform: 'uppercase',
     },
     technologiesUppercaseSB36Text: {
       fontWeight: 'semiBold',

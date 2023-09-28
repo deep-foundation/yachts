@@ -82,7 +82,7 @@ export const Crystal100 = React.memo(() => {
       </Box>
 
       <Box display='flex' flexDirection='column' px={isSmallerThan900 ? '2rem' : isSmallerThan1200 ? '3rem' : '5rem'} mb={isSmallerThan900 ? '2rem' : '7rem'}>
-        <Box width='25%' height='0.03rem' alignSelf='center' bg='text' mb='1.5rem' />
+        <Box width='25%' height='0.05rem' alignSelf='center' bg='text' mb='1.5rem' />
         <TextBlock
           textStyles='semiBoldText' 
           propsText={{
@@ -96,7 +96,7 @@ export const Crystal100 = React.memo(() => {
             <br/>,
             'Its innovative design, spacious interiors, and cutting-edge technology set a new benchmark for superyachts. Whether sailing the open seas or anchored in an exclusive marina, the Crystal 100 promises an unforgettable yachting experience for those seeking the ultimate in comfort, elegance, and adventure. For those fortunate enough to step aboard this magnificent vessel, it is truly a journey into the world of unparalleled luxury and maritime excellence.',
            ]} />
-        <Box width='25%' height='0.03rem' alignSelf='center' bg='text'  />
+        <Box width='25%' height='0.05rem' alignSelf='center' bg='text'  />
       </Box>
       
       <Text textStyle='yachtDetailUppercaseTitleText' align='left' mb={isSmallerThan900 ? '0.5rem' : '1rem'}>Video Review</Text>

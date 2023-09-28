@@ -199,7 +199,7 @@ export const GenerationForm = React.memo((
       >
         <VStack>
           <InputGeneration title="height" value={yachtHeight} handleChange={(event) => setYachtHeight(event.target.value)} select /> {/* bind select to yacht{WLH}Type value */}
-          <InputGeneration title="width" value={yachtWidth} handleChange={(event) => setYachtWidth(event.target.value)} select textProps={{ pr: '0.4rem' }} />
+          <InputGeneration title="beam" value={yachtWidth} handleChange={(event) => setYachtWidth(event.target.value)} select textProps={{ pr: '0.4rem' }} />
           <InputGeneration title="length" value={yachtLength} handleChange={(event) => setYachtLength(event.target.value)} select />
           <SelectGeneration value={yachtDeckCnt} handleChange={(event) => setYachtDeckCnt(event.target.value)}/>
         </VStack>

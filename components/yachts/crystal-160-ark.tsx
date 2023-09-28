@@ -95,7 +95,7 @@ export const Crystal160Ark = React.memo(() => {
       </Box>
 
       <Box display='flex' flexDirection='column' px={isSmallerThan900 ? '2rem' : isSmallerThan1200 ? '3rem' : '5rem'} mb={isSmallerThan900 ? '2rem' : '7rem'}>
-        <Box width='25%' height='0.03rem' alignSelf='center' bg='text' mb='1.5rem' />
+        <Box width='25%' height='0.05rem' alignSelf='center' bg='text' mb='1.5rem' />
         <TextBlock
           textStyles='semiBoldText' 
           propsText={{
@@ -105,7 +105,7 @@ export const Crystal160Ark = React.memo(() => {
             }
           }}
           text="This catamaran is a large autonomous yacht that is ready to move you anywhere in the world in comfort." />
-        <Box width='25%' height='0.03rem' alignSelf='center' bg='text'  />
+        <Box width='25%' height='0.05rem' alignSelf='center' bg='text'  />
       </Box>
       
       <Text textStyle='yachtDetailUppercaseTitleText' align='left' mb={isSmallerThan900 ? '0.5rem' : '1rem'}>Video Review</Text>
