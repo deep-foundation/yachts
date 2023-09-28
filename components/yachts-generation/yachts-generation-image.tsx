@@ -1,5 +1,5 @@
 import { AspectRatio, Box, Button, Checkbox, CircularProgress, CircularProgressLabel, HStack, Img, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Skeleton, Text, useDisclosure, useMediaQuery } from '@chakra-ui/react';
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { IoIosArrowForward, IoIosShareAlt } from "react-icons/io";
 import { Backdrop } from './backdrop';
 import { TelegramShareButton } from 'next-share'
@@ -48,12 +48,14 @@ export const GenerationImage = React.memo(({
   onClickToGalleryFromGenerate,
   onClickToGalleryAfterSave,
   progress,
+  error,
   saveToGalleryHandler,
   onWriteNewDescription,
   sendMail,
 }:{
   src?: string;
   containerProps?: {};
+  error?: string;
   onClickToGalleryFromGenerate?: () => void;
   onClickToGalleryAfterSave?: () => void;
   progress: number;
@@ -77,6 +79,13 @@ export const GenerationImage = React.memo(({
 
   const [isSmallerThan400] = useMediaQuery('(max-width: 400px)');
 
+  useEffect(() => {
+    if(error){
+      setIsLoaded(true);
+    }
+  }, [error]);
+  
+  
   function save() {
     FileSaver.saveAs(src, "image.png");
   }
@@ -107,7 +116,7 @@ export const GenerationImage = React.memo(({
               left:'calc(50% - 2.5rem)',
               zIndex: 2,
             }}>
-            {progress<100 ?
+            { !isLoaded ?
               <CircularProgress 
                 value={progress} 
                 size='5rem' 
@@ -131,16 +140,26 @@ export const GenerationImage = React.memo(({
             speed={2}
             mb={isSmallerThan800 ? '0.5rem' : '1.5rem'}
           >
-            <AspectRatio ratio={16 / 9} w='100%' h='100%' overflow='hidden'>
-              <Img
-                src={src} 
-                alt='generation image' 
-                w='100%' 
-                sx={{opacity: isLoaded ? 1 : 0}}
-                onLoad={() => setIsLoaded(progress===100)}
-                borderRadius='0.2rem'
-              />
-            </AspectRatio>
+            { error === undefined ?
+              <AspectRatio ratio={16 / 9} w='100%' h='100%' overflow='hidden'>
+                <Img
+                  src={src} 
+                  alt='generation image' 
+                  w='100%' 
+                  sx={{opacity: isLoaded ? 1 : 0}}
+                  onLoad={() => setIsLoaded(progress===100)}
+                  borderRadius='0.2rem'
+                />
+              </AspectRatio> :
+              <Box display='flex' flexDirection='column' width="100%" justifyContent='center' alignItems='center'>
+                <Text textStyle='errorTextTitle' align='center' mx='25%' >
+                  Due to high load, the server was unable to process your request. Please try again
+                </Text>
+                <Text  textStyle='errorTextBlock' align='center' mx='30%'>
+                  {`Error: ${error}`}
+                </Text>
+              </Box>
+            }
             <Backdrop onClosePortal={() => setPortal(false)} portalOpen={portalOpen}>
               <>
               <Box w='100%' h='100%' display='flex' alignItems='center' justifyContent='center' bg='blue.300' p='1rem 1.5rem' overflow='hidden' borderRadius='0.2rem'>
@@ -187,7 +206,7 @@ export const GenerationImage = React.memo(({
               />
               
               <GenerationButton 
-                disabled={ progress<100 ? true : false }
+                disabled={ !isLoaded ? true : false }
                 variant='blackBgSolid' 
                 text='write a new description' 
                 textProps={{ 

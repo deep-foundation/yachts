@@ -90,6 +90,7 @@ const themeChakra = extendTheme({
       300: '#1E1E1E',
     },
     text: '#1E1E1E',
+    error: '#ff5555',
     textGray: '#D7D7D7',
     whiteText: '#ffffff',
   },
@@ -146,6 +147,20 @@ const themeChakra = extendTheme({
       fontSize: 'xs',
       lineHeight: '1.7',
       color: 'text',
+      textTransform: 'uppercase',
+    },
+    errorTextBlock: {
+      fontWeight: 'extraLight',
+      fontSize: '2xs',
+      lineHeight: '1',
+      color: 'textGray',
+      textAlign: 'justify',
+    },
+    errorTextTitle: {
+      fontWeight: 'semiBold',
+      fontSize: 'xs',
+      lineHeight: '1.7',
+      color: 'error',
       textTransform: 'uppercase',
     },
     bold: {

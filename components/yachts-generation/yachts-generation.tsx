@@ -182,6 +182,7 @@ export const YachtsGeneration = React.memo(({ onClick }:{ onClick?: () => void; 
           ? <GenerationImage 
               src={getDrawResultLink()?.value?.value.img_url} 
               progress={getDrawResultLink()?.value?.value.progress}
+              error={getDrawResultLink()?.value?.value.error}
               saveToGalleryHandler={saveToGalleryHandler}
               onWriteNewDescription={() => setStartGen(false)}
               containerProps={{gridColumn: isSmallerThan800 ? '1 / 4' : '2/3'}} 
