@@ -66,7 +66,7 @@ export const GenerationImageGallery = React.memo(({
 
               {selected 
               ? (<OpenGallery 
-                    key={photo.id}
+                    key={`galery ${photo.id}`}
                     photos={photos}
                     selectedImage={selected} 
                     onClose={() => setSelected(null)} 

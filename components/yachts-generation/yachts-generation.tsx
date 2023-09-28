@@ -151,7 +151,7 @@ export const YachtsGeneration = React.memo(({ onClick }:{ onClick?: () => void; 
                     fontSize: isSmallerThan500 ? 'sm' : 'md',
                   }}
                 />
-                {isSmallerThan800 === false ? <Button onClick={() => setImgGen(true)} mr='1rem'>Show examples gallery</Button> : null}
+                {isSmallerThan800 === false ? <Button onClick={() => {/*setStartCreate(true); setStartGen(true); setImgGen(true);*/ }} mr='1rem'>Show examples gallery</Button> : null}
               </Box>
             {isSmallerThan800 === true
             ? <GenerationImageGallery 
