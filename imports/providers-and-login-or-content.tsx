@@ -10,6 +10,7 @@ import themeChakra from "./theme";
 import { Crystal80 } from "../components/yachts/crystal-80";
 import { Crystal100 } from "../components/yachts/crystal-100";
 import { Crystal160Ark } from "../components/yachts/crystal-160-ark";
+import { Nexus } from "../components/yachts/nexus";
 
 export function ProvidersAndLoginOrContent({ children }: { children?: JSX.Element }) {
   const [page, setPage] = useQueryStore('page', '/');
@@ -27,6 +28,7 @@ export function ProvidersAndLoginOrContent({ children }: { children?: JSX.Elemen
             {page === 'yachts/crystal-80' && <Crystal80 />}
             {page === 'yachts/crystal-100' && <Crystal100 />}
             {page === 'yachts/crystal-160-ark' && <Crystal160Ark />}
+            {page === 'yachts/nexus' && <Nexus />}
           </Box>
           <Footer setPage={setPage} page={page} />
         </Box>

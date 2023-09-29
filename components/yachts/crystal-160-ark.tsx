@@ -13,16 +13,23 @@ export const Crystal160Ark = React.memo(() => {
   const [isSmallerThan1200] = useMediaQuery('(max-width: 1200px)');
 
   const images = [
-    {id: 4, src:'/yachts/crystal_160_ark/1.webp'},
-    {id: 5, src:'/yachts/crystal_160_ark/2.webp'},
-    {id: 6, src:'/yachts/crystal_160_ark/3.webp'},
+    {id: 3, src:'/yachts/crystal_160_ark/1.jpg'},
+    {id: 4, src:'/yachts/crystal_160_ark/2.jpg'},
+    {id: 5, src:'/yachts/crystal_160_ark/3.jpg'},
+    {id: 6, src:'/yachts/crystal_160_ark/4.jpg'},
+    {id: 7, src:'/yachts/crystal_160_ark/5.jpg'},
   ]
 
 
-  return (<Box display='flex' flexDirection='column' p={isSmallerThan900 ? '2rem 2rem' : '4rem 8rem'}>
+  return (<Box display='flex' flexDirection='column' p={isSmallerThan900 ? '2rem 2rem' : '4rem 8rem'} >
       <Text as='h1' textStyle='yachtBlueTitle' align='left'  mb={isSmallerThan900 ? '2rem' : '4rem'}>CRYSTAL 160 The Ark</Text>
 
-      <Box display='grid' gridTemplateColumns={isSmallerThan500 ? '1fr' : '1fr 1fr'} columnGap={isSmallerThan500 ? 0 : isSmallerThan900 ? '2rem' : '4rem'} mb={isSmallerThan900 ? '2rem' : '4rem'}>
+      <Box display='grid' 
+          justify-items="center"
+          align-items="center"
+          gridTemplateColumns={isSmallerThan500 ? '1fr' : '1fr 1fr'} 
+          columnGap={isSmallerThan500 ? 0 : isSmallerThan900 ? '2rem' : '4rem'} 
+          mb={isSmallerThan900 ? '2rem' : '4rem'}>
         <Box mb={isSmallerThan500 ? '1rem' : 0}>
           <TextBlock 
             mb={isSmallerThan900 ? '0.5rem' : '1.5rem'}
@@ -34,9 +41,9 @@ export const Crystal160Ark = React.memo(() => {
             text="This will waste less energy in keeping the catamaran on course in headwinds and maneuvering, allowing for more precise and efficient steering. Such a solution reduces the noise created by strong winds. All external ladders are hidden as much as possible for better visibility and cleaner design. The stern consists of three open decks which give the impression of solidity and comfort at the same time."
           />
         </Box>
-        <Box>
-          <AspectRatio ratio={isSmallerThan900 ? 1.5 : 1.8} maxW='100%' mb={isSmallerThan900 ? '1.5rem' : '2rem'}>
-            <Img src='/yachts/crystal_160_ark/1.webp' alt='crystal160ark' />
+        <Box display="grid">
+          <AspectRatio ratio={isSmallerThan900 ? 1.5 : 1.8} maxW='100%' my={isSmallerThan900 ? '1.5rem' : '2rem'}>
+            <Img loading="lazy" src='/yachts/crystal_160_ark/5.jpg' alt='crystal160ark' />
           </AspectRatio>
           </Box>
       </Box>
@@ -48,7 +55,7 @@ export const Crystal160Ark = React.memo(() => {
           height={isSmallerThan500 ? '100%' : 'auto'}
           mr={isSmallerThan500 ? 0 : isSmallerThan900 ? '2rem' : '4rem'}
         >
-          <Img src='/yachts/crystal_160_ark/2.webp' alt='crystal160ark' />
+          <Img loading="lazy" src='/yachts/crystal_160_ark/2.jpg' alt='crystal160ark' />
         </AspectRatio>
         <Box mt={isSmallerThan500 ? '1rem' : 0}>
           <TextBlock 
@@ -87,9 +94,9 @@ export const Crystal160Ark = React.memo(() => {
             text="In addition, the large beam makes it possible to integrate 400 m2 of solar panels and 150 m2 of retractable panels into the aerodynamic silhouette, and at the same time has huge open decks for recreation. This large number of solar panels makes it perfectly possible to do without a generator and even to store energy for night use. The Skysail system will allow you to sail at 3-6 knots in favorable weather. The catamaran is technologically and structurally suitable for the installation of hydrogen-based fuel cells. The ventilation system allows a significant reduction of energy consumption for air conditioning, as well as improved air quality in all interior spaces. The use of these energy systems, and the optimization of energy consumption on yacht, gives enormous autonomy. You will be able to travel and live aboard in remote parts of the world without having to worry about where to refuel or dock." 
             />
         </Box>
-        <Box>
+        <Box display="grid" my={isSmallerThan900 ? '0rem' : '2.5rem'}>
           <AspectRatio ratio={isSmallerThan900 ? 1.5 : 1.8} maxW='100%'>
-            <Img src='/yachts/crystal_160_ark/3.webp' alt='crystal160ark' />
+            <Img loading="lazy" src='/yachts/crystal_160_ark/4.jpg' alt='crystal160ark' />
           </AspectRatio>
         </Box>
       </Box>
@@ -104,7 +111,7 @@ export const Crystal160Ark = React.memo(() => {
               mb: '1.5rem',
             }
           }}
-          text="This catamaran is a large autonomous yacht that is ready to move you anywhere in the world in comfort." />
+          text="This catamaran is a large autonomous yacht that is ready to move you anywhere in the world in comfort" />
         <Box width='25%' height='0.05rem' alignSelf='center' bg='text'  />
       </Box>
       
@@ -158,7 +165,7 @@ export const Crystal160Ark = React.memo(() => {
             {
                 images.map(image => {
                 return (<SwiperSlide>
-                    <Img src={image.src} alt='crystal160ark' />
+                    <Img loading="lazy" src={image.src} alt='crystal160ark' />
                     </SwiperSlide>)
                 })
             }

@@ -66,16 +66,21 @@ export const Crystal100 = React.memo(() => {
       </Box>
 
       <Box display='grid' gridTemplateColumns={isSmallerThan500 ? '1fr' : '1fr 1fr'} columnGap={isSmallerThan500 ? 0 : isSmallerThan900 ? '2rem' : '4rem'} mb={isSmallerThan900 ? '2rem' : '7rem'}>
-        <Box mb={isSmallerThan500 ? '1rem' : 0}>
+        <Box mb={isSmallerThan500 ? '1rem' : 0}
+          display="inline-grid"
+          justify-items="center"
+          margin="auto"
+          align-items="center"
+        >
           <TextBlock 
-            mb={isSmallerThan900 ? '1.5rem' : '2rem'}
+            mb={isSmallerThan900 ? '1.5rem' : '1rem'}
             title='TECHNOLOGIES' 
             textStylesTitle='yachtBlockTitle'
             text="The Crystal 100 is equipped with the latest technology to enhance its performance, safety, and energy efficiency. Its advanced navigation and control systems make operating the yacht a breeze for the crew, allowing for smooth sailing and precise maneuvering. The hybrid propulsion system further reduces not only maintenance costs but also fuel consumption and carbon emissions, aligning with the growing demand for eco-friendly yachting solutions." 
             />
         </Box>
         <Box>
-          <AspectRatio ratio={isSmallerThan900 ? 1.5 : 1.8} maxW='100%'>
+          <AspectRatio ratio={isSmallerThan900 ? 1.5 : 1.9} maxW='100%'>
             <Img src='/yachts/crystal_100/3.png' alt='crystal100' />
           </AspectRatio>
         </Box>
@@ -94,7 +99,7 @@ export const Crystal100 = React.memo(() => {
           text={[
             'The Crystal 100 is the epitome of luxury, style, and performance.',
             <br/>,
-            'Its innovative design, spacious interiors, and cutting-edge technology set a new benchmark for superyachts. Whether sailing the open seas or anchored in an exclusive marina, the Crystal 100 promises an unforgettable yachting experience for those seeking the ultimate in comfort, elegance, and adventure. For those fortunate enough to step aboard this magnificent vessel, it is truly a journey into the world of unparalleled luxury and maritime excellence.',
+            'Its innovative design, spacious interiors, and cutting-edge technology set a new benchmark for superyachts. Whether sailing the open seas or anchored in an exclusive marina, the Crystal 100 promises an unforgettable yachting experience for those seeking the ultimate in comfort, elegance, and adventure. For those fortunate enough to step aboard this magnificent vessel, it is truly a journey into the world of unparalleled luxury and maritime excellence',
            ]} />
         <Box width='25%' height='0.05rem' alignSelf='center' bg='text'  />
       </Box>

@@ -19,12 +19,18 @@ export const Crystal80 = React.memo(() => {
   ]
 
   return (<Box display='flex' flexDirection='column' p={isSmallerThan900 ? '2rem 2rem' : '4rem 8rem'}>
-      <Text as='h1' textStyle='yachtBlueTitle' align='left'  mb={isSmallerThan900 ? '2rem' : '4rem'}>CRYSTAL 80</Text>
+      <Text as='h1' textStyle='yachtBlueTitle' align='left'  mb={isSmallerThan900 ? '2rem' : '2rem'}>CRYSTAL 80</Text>
 
-      <Box display='grid' gridTemplateColumns={isSmallerThan500 ? '1fr' : '1fr 1fr'} columnGap={isSmallerThan500 ? 0 : isSmallerThan900 ? '2rem' : '4rem'} mb={isSmallerThan900 ? '2rem' : '4rem'}>
-        <Box mb={isSmallerThan500 ? '1rem' : 0}>
+      <Box display='grid' gridTemplateColumns={isSmallerThan500 ? '1fr' : '1fr 1fr'} columnGap={isSmallerThan500 ? 0 : isSmallerThan900 ? '2rem' : '4rem'} mb={isSmallerThan900 ? '2rem' : '0rem'}>
+        <Box mb={isSmallerThan500 ? '1rem' : 0}
+          display="inline-grid"
+          justify-items="center"
+          margin="auto"
+          align-items="center"
+          // border="2px solid black"
+        >
           <TextBlock 
-            mb={isSmallerThan900 ? '0.5rem' : '1.5rem'}
+            mb={isSmallerThan900 ? '0.5rem' : '3.5rem'}
             title='EXTERIOR' 
             textStylesTitle='yachtBlockTitle'
             text="The exterior features wide deck spaces, perfect for outdoor relaxation and entertainment. There's a flybridge with helm controls and seating, an aft deck for dining, and forward trampolines for lounging. The stern often includes hydraulic platforms for easy water access or launching tenders and water toys." 
@@ -46,7 +52,13 @@ export const Crystal80 = React.memo(() => {
         >
           <Img src='/yachts/crystal_80/2.jpg' alt='crystal80' />
         </AspectRatio>
-        <Box mt={isSmallerThan500 ? '1rem' : 0}>
+        <Box mt={isSmallerThan500 ? '1rem' : 0}
+          
+          display="inline-grid"
+          justify-items="center"
+          margin="auto"
+          align-items="center"
+        >
           <TextBlock 
             title='INTERIOR' 
             textStylesTitle='yachtBlockTitle'
