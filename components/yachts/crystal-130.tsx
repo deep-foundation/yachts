@@ -29,7 +29,7 @@ export const Crystal130 = React.memo(() => {
           />
         </Box>
         <AspectRatio ratio={isSmallerThan900 ? 1.5 : 1.8} maxW='100%'>
-          <Img src='/first2.webp' alt='crystal160' />
+          <Img loading="lazy"src='/first2.webp' alt='crystal160' />
         </AspectRatio>
       </Box>
 
@@ -45,7 +45,7 @@ export const Crystal130 = React.memo(() => {
           height={isSmallerThan500 ? '100%' : 'auto'}
           mr={isSmallerThan500 ? 0 : isSmallerThan900 ? '2rem' : '4rem'}
         >
-          <Img src='/first2.webp' alt='crystal160' />
+          <Img loading="lazy"src='/first2.webp' alt='crystal160' />
         </AspectRatio>
         <Box 
           display='grid'
@@ -121,7 +121,7 @@ export const Crystal130 = React.memo(() => {
         </Box>
         <Box>
           <AspectRatio ratio={isSmallerThan900 ? 1.5 : 1.8} maxW='100%'>
-            <Img src='/first2.webp' alt='crystal160' />
+            <Img loading="lazy"src='/first2.webp' alt='crystal160' />
           </AspectRatio>
         </Box>
       </Box>
@@ -133,7 +133,7 @@ export const Crystal130 = React.memo(() => {
         mb={isSmallerThan900 ? '2rem' : '4rem'}
       >
         <AspectRatio ratio={isSmallerThan900 ? 1.5 : 1.8} maxW='100%' mb={isSmallerThan500 ? '1rem' : 0}>
-          <Img src='/first2.webp' alt='crystal160' />
+          <Img loading="lazy"src='/first2.webp' alt='crystal160' />
         </AspectRatio>
         <Box>
           <TextBlock 
@@ -167,7 +167,7 @@ export const Crystal130 = React.memo(() => {
       </Box>
       
       <AspectRatio ratio={16 / 9} maxW='100%' mb={isSmallerThan500 ? '0.8rem' : '1.5rem'}>
-        <Img src='/first2.webp' alt='crystal160' />
+        <Img loading="lazy"src='/first2.webp' alt='crystal160' />
       </AspectRatio>
       <Text textStyle='yachtsBlueTitle' as='h4' align='right' mb={isSmallerThan900 ? '2rem' : '5rem'}>crystal 130</Text>
 

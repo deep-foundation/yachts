@@ -38,7 +38,7 @@ export const Crystal80 = React.memo(() => {
         </Box>
         <Box>
           <AspectRatio ratio={isSmallerThan900 ? 1.5 : 1.8} maxW='100%' mb={isSmallerThan900 ? '1.5rem' : '2rem'}>
-            <Img src='/yachts/crystal_80/1.jpg' alt='crystal80' />
+            <Img loading="lazy" src='/yachts/crystal_80/1.jpg' alt='crystal80' />
           </AspectRatio>
           </Box>
       </Box>
@@ -50,7 +50,7 @@ export const Crystal80 = React.memo(() => {
           height={isSmallerThan500 ? '100%' : 'auto'}
           mr={isSmallerThan500 ? 0 : isSmallerThan900 ? '2rem' : '4rem'}
         >
-          <Img src='/yachts/crystal_80/2.jpg' alt='crystal80' />
+          <Img loading="lazy" src='/yachts/crystal_80/2.jpg' alt='crystal80' />
         </AspectRatio>
         <Box 
           pt={isSmallerThan500 ? '1rem' : 0}
@@ -83,7 +83,7 @@ export const Crystal80 = React.memo(() => {
         </Box>
         <Box>
           <AspectRatio ratio={isSmallerThan900 ? 1.5 : 1.8} maxW='100%'>
-            <Img src='/yachts/crystal_80/3.jpg' alt='crystal80' />
+            <Img loading="lazy" src='/yachts/crystal_80/3.jpg' alt='crystal80' />
           </AspectRatio>
         </Box>
       </Box>
@@ -167,7 +167,7 @@ export const Crystal80 = React.memo(() => {
           {
             images.map(image => {
               return (<SwiperSlide>
-                  <Img src={image.src} alt='crystal80' />
+                  <Img loading="lazy" src={image.src} alt='crystal80' />
                 </SwiperSlide>)
             })
           }

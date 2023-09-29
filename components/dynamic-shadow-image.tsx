@@ -13,6 +13,7 @@ const DynamicShadowImage = ( {src, ...props}) => {
                         {...props} />
         <Img src={src} zIndex={1} width='100%' 
                         objectFit="cover"
+                        loading="lazy"
                         position="relative"
                         {...props} />
     </Box>

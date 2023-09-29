@@ -30,7 +30,7 @@ export const Crystal160 = React.memo(() => {
         </Box>
         <Box>
           <AspectRatio ratio={isSmallerThan900 ? 1.5 : 1.8} maxW='100%' mb={isSmallerThan900 ? '1.5rem' : '2rem'}>
-            <Img src='/first2.webp' alt='crystal160' />
+            <Img loading="lazy"src='/first2.webp' alt='crystal160' />
           </AspectRatio>
           <TextBlock
             text="This will waste less energy in keeping the catamaran on course in headwinds and maneuvering, allowing for more precise and efficient steering. Such a solution reduces the noise created by strong winds. All external ladders are hidden as much as possible for better visibility and cleaner design. The stern consists of three open decks which give the impression of solidity and comfort at the same time" />
@@ -44,7 +44,7 @@ export const Crystal160 = React.memo(() => {
           height={isSmallerThan500 ? '100%' : 'auto'}
           mr={isSmallerThan500 ? 0 : isSmallerThan900 ? '2rem' : '4rem'}
         >
-          <Img src='/first2.webp' alt='crystal160' />
+          <Img loading="lazy"src='/first2.webp' alt='crystal160' />
         </AspectRatio>
         <Box mt={isSmallerThan500 ? '1rem' : 0}>
           <TextBlock 
@@ -74,7 +74,7 @@ export const Crystal160 = React.memo(() => {
         </Box>
         <Box>
           <AspectRatio ratio={isSmallerThan900 ? 1.5 : 1.8} maxW='100%'>
-            <Img src='/first2.webp' alt='crystal160' />
+            <Img loading="lazy"src='/first2.webp' alt='crystal160' />
           </AspectRatio>
         </Box>
       </Box>
@@ -94,7 +94,7 @@ export const Crystal160 = React.memo(() => {
       </Box>
       
       <AspectRatio ratio={16 / 9} maxW='100%' mb={isSmallerThan900 ? '2rem' : '5rem'}>
-        <Img src='/first2.webp' alt='crystal160' />
+        <Img loading="lazy"src='/first2.webp' alt='crystal160' />
       </AspectRatio>
       <Text textStyle='technologiesUppercaseText' as='h4' mb={isSmallerThan500 ? '0.8rem' : '1.5rem'}>VIDEO REVIEW</Text>
       
