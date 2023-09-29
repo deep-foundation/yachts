@@ -40,7 +40,7 @@ export const Nexus = React.memo(() => {
           gridTemplateColumns={isSmallerThan500 ? '1fr' : '1fr 1fr'} 
           columnGap={isSmallerThan500 ? 0 : isSmallerThan900 ? '2rem' : '4rem'} 
           mb={isSmallerThan900 ? '2rem' : '4rem'}>
-        <Box mb={isSmallerThan500 ? '1rem' : 0}
+        <Box mb={isSmallerThan500 ? '2rem' : 0}
           display="inline-grid"
           justify-items="center"
           margin="auto"
@@ -78,7 +78,8 @@ export const Nexus = React.memo(() => {
         >
           <Img loading="lazy" src='/yachts/nexus/7.png' alt='nexus' />
         </AspectRatio>
-        <Box mt={isSmallerThan500 ? '1rem' : 0}
+        <Box
+          pt={isSmallerThan500 ? '1rem' : 0}
           display="inline-grid"
           justify-items="center"
           margin="auto"

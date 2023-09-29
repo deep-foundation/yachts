@@ -52,8 +52,8 @@ export const Crystal80 = React.memo(() => {
         >
           <Img src='/yachts/crystal_80/2.jpg' alt='crystal80' />
         </AspectRatio>
-        <Box mt={isSmallerThan500 ? '1rem' : 0}
-          
+        <Box 
+          pt={isSmallerThan500 ? '1rem' : 0}
           display="inline-grid"
           justify-items="center"
           margin="auto"
