@@ -2,7 +2,7 @@ import { Box, IconButton, Img, useMediaQuery } from '@chakra-ui/react';
 import { AnimatePresence, MotionConfig, motion, useScroll } from 'framer-motion';
 import React, { useRef, useState } from 'react';
 import { TbArrowBigLeft, TbArrowBigRight } from "react-icons/tb"; 
-import { DetailView } from './yachts-generation-image-gallery';
+// import { DetailView } from './yachts-generation-image-gallery';
 
 
 const variants = {

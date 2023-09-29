@@ -190,27 +190,31 @@ export const GenerationImage = React.memo(({
             </Box>
             <Box display='flex' flexDir='row'>
 
-              <GenerationButton 
-                as={Box}
-                variant='grayBgSolid' 
-                disabled={ progress<100 ? true : false }
-                buttonProps={{ mr: '0.5rem' }} 
-                // onClick={() => console.log(true)} 
-                rightIcon={<TelegramShareButton
+              <TelegramShareButton
                     url={src}
                   >
-                    <IoIosShareAlt size={16} />
+                <GenerationButton 
+                  as={Box}
+                  variant='grayBgSolid' 
+                  disabled={ progress<100 ? true : false }
+                  buttonProps={{ px: isSmallerThan500 ? '2.5rem' : '5rem' }} 
+                  // onClick={() => console.log(true)} 
+                  rightIcon={
+                    <IoIosShareAlt size={16} />}
+                    text='share'
+                  />
+                    
                   </TelegramShareButton>
-                } 
-                text='share'
-              />
+                 
+                
+              
               
               <GenerationButton 
                 disabled={ !isLoaded ? true : false }
                 variant='blackBgSolid' 
                 text='write a new description' 
                 textProps={{ 
-                  px: isSmallerThan500 ? '2.5rem' : '5rem' 
+                  px: isSmallerThan500 ? '2.5rem' : '1rem'
                 }} 
                 onClick={onWriteNewDescription} 
               />

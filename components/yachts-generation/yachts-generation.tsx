@@ -172,7 +172,7 @@ export const YachtsGeneration = React.memo(({ onClick }:{ onClick?: () => void; 
                 {
                   isSmallerThan800 === false ? 
                     <Button 
-                      onClick={() => {/*setStartCreate(true); setStartGen(true); setImgGen(true);*/ }} 
+                      onClick={() => {setStartCreate(true); setStartGen(true); setImgGen(true); }} 
                       mb='1rem'
                       width='30%'
                       >

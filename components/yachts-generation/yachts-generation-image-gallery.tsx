@@ -32,7 +32,6 @@ export const GenerationImageGallery = React.memo(({
   const controls = useAnimation();
   const [selected, setSelected] = useState(null);
   const [isSmallerThan800] = useMediaQuery('(max-width: 800px)');
-
   useEffect(() => {
     controls.start("visible");
   }, []);
@@ -49,11 +48,16 @@ export const GenerationImageGallery = React.memo(({
           }} 
           onClick={onWriteNewDescription} 
         /> : null}
-        <Box overflowY='scroll' height='100%'>
+        <Box 
+          overflowY='scroll' 
+          height='100%'
+          display="flex" 
+          flexWrap="wrap" 
+          justifyContent={"center"}>
           {photos.map((photo, i) => {
-            return (<>
-              <Thumbnail 
-                key={photo.id} 
+            return (<Box key={photo.id}>
+              {<Thumbnail 
+              display="flex"
                 setSelected={setSelected} 
                 i={i}
                 originIndex={26}
@@ -62,9 +66,9 @@ export const GenerationImageGallery = React.memo(({
                 id={photo.id}
                 src={photo.src}
                 alt={photo.alt}
-              />
+              /> }
 
-              {selected 
+              {/* {selected 
               ? (<OpenGallery 
                     key={`galery ${photo.id}`}
                     photos={photos}
@@ -73,7 +77,7 @@ export const GenerationImageGallery = React.memo(({
                     src={photo.src}
                     alt={photo.alt}
                   />) 
-              : null}
+              : null} */}
               {/* {selected 
               ? (<DetailView 
                     photos={photos}
@@ -83,7 +87,7 @@ export const GenerationImageGallery = React.memo(({
                     alt={photo.alt}
                   />) 
               : null} */}
-            </>)
+            </Box>)
           })}
         </Box>
       </Box>
@@ -102,7 +106,7 @@ const Thumbnail = React.memo(({
   i: number;
   originIndex: number;
   originOffset: any;
-  [key:string]: any;
+  [x:string]: any;
 }) => {
   const delayRef = useRef(0);
   const offset = useRef({ top: 0, left: 0 });
@@ -129,13 +133,12 @@ const Thumbnail = React.memo(({
     delayRef.current = d * delayPerPixel;
   }, [delayPerPixel]);
 
-  useEffect(() => {
-    const img = new Image();
-    img.src = props.src;
-  }, []);
+  // useEffect(() => {
+  //   const img = new Image();
+  //   img.src = props.src;
+  // }, []);
 
   const [isSmallerThan650] = useMediaQuery('(max-width: 650px)');
-
   return (<Box as={motion.div}
       sx={{
         margin: '0.5rem',
@@ -144,13 +147,15 @@ const Thumbnail = React.memo(({
         width: isSmallerThan650 ? '40vw' : '20vmax',
         backgroundColor: 'blue.100',
         borderRadius: '0.5rem',
+        // borderWidth: '4px',
         overflow: 'hidden',
       }}
       ref={ref} 
-      variants={itemVariants} 
-      custom={delayRef} 
+      // variants={itemVariants} 
+      // custom={delayRef}  
     >
-      <Img as={motion.img}
+      <Img loading="lazy" as={motion.img}
+        // zIndex={1}
         layoutId={props.id}
         src={props.src}
         alt={props.alt}
@@ -166,71 +171,71 @@ const Thumbnail = React.memo(({
   )
 })
 
-export const DetailView = React.memo(({
-  photos, 
-  ...props
-}:{
-  photos?: any;
-  [key:string]: any;
-}) => {
-  const { src, alt } = photos.find(
-    (photo) => photo.id === props.selected
-  );
+// export const DetailView = React.memo(({
+//   photos, 
+//   ...props
+// }:{
+//   photos?: any;
+//   [key:string]: any;
+// }) => {
+//   const { src, alt } = photos.find(
+//     (photo) => photo.id === props.selected
+//   );
 
-  return (<>
-      <Box as={motion.div}
-        sx={{
-          zIndex: 1,
-          width: '100%',
-          background: 'rgba(206 198 198 / 7%)',
-          position: 'fixed',
-          top: 0,
-          bottom: 0,
-          left: '50%',
-          transform: 'translateX(-50%)',
-          willChange: 'opacity',
-          pointerEvents: 'auto',
-        }}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        //@ts-ignore
-        transition={{ delay: 0.15 }}
-        onTap={props.onClose}
-      />
+//   return (<>
+//       <Box as={motion.div}
+//         sx={{
+//           zIndex: 1,
+//           width: '100%',
+//           background: 'rgba(206 198 198 / 7%)',
+//           position: 'fixed',
+//           top: 0,
+//           bottom: 0,
+//           left: '50%',
+//           transform: 'translateX(-50%)',
+//           willChange: 'opacity',
+//           pointerEvents: 'auto',
+//         }}
+//         initial={{ opacity: 0 }}
+//         animate={{ opacity: 1 }}
+//         //@ts-ignore
+//         transition={{ delay: 0.15 }}
+//         onTap={props.onClose}
+//       />
 
-      <Box as={motion.div}
-        sx={{
-          zIndex: 1,
-          width: '500px',
-          maxWidth: '100%',
-          height: '281px',
-          position: 'fixed',
-          top: 'calc(50% - 140px)',
-          left: 'calc(50% - 250px)',
-          cursor: 'zoom-out',
-          borderRadius: '0.5rem',
-          border: 'thin solid #E5E5E5',
-          overflow: 'hidden',
-        }}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        //@ts-ignore
-        transition={{ delay: 0.15 }}
-        onTap={props.onClose}
-      >
-        <Img as={motion.img}
-          layoutId={props.selected}
-          src={src}  //`https://picsum.photos/id/${i}/800`
-          alt={alt}
-          onTap={() => props.onClose}
-          sx={{
-            width: '100%',
-            height: '100%',
-            margin: '0 1rem 1rem 0',
-            cursor: 'pointer',
-          }}
-        />
-      </Box>
-    </>
-  );
-})
+//       <Box as={motion.div}
+//         sx={{
+//           zIndex: 1,
+//           width: '500px',
+//           maxWidth: '100%',
+//           height: '281px',
+//           position: 'fixed',
+//           top: 'calc(50% - 140px)',
+//           left: 'calc(50% - 250px)',
+//           cursor: 'zoom-out',
+//           borderRadius: '0.5rem',
+//           border: 'thin solid #E5E5E5',
+//           overflow: 'hidden',
+//         }}
+//         initial={{ opacity: 0 }}
+//         animate={{ opacity: 1 }}
+//         //@ts-ignore
+//         transition={{ delay: 0.15 }}
+//         onTap={props.onClose}
+//       >
+//         <Img loading="lazy" as={motion.img}
+//           layoutId={props.selected}
+//           src={src}  //`https://picsum.photos/id/${i}/800`
+//           alt={alt}
+//           onTap={() => props.onClose}
+//           sx={{
+//             width: '100%',
+//             height: '100%',
+//             margin: '0 1rem 1rem 0',
+//             cursor: 'pointer',
+//           }}
+//         />
+//       </Box>
+//     </>
+//   );
+// })
