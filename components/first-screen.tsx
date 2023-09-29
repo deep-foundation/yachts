@@ -15,7 +15,7 @@ const Poster = React.memo(() => {
 
   return (<Box w='100%' position='relative' height='100%'>
       <AspectRatio maxW='100%' ratio={16 / 8} height='100%'>
-        <Img src='/first.webp' alt='yacht' width='100%' height='calc(100% - 7rem)' />
+        <Img loading="lazy" src='/first.webp' alt='yacht' width='100%' height='calc(100% - 7rem)' />
       </AspectRatio>
       <SimpleGrid templateColumns='0.5fr 1fr' spacing={10} position='absolute' top={0} left={0} pl='5%' pt='5%' width='calc(100% - 5%)'>
         <Flex direction='column' align='center' justify='center' w='100%' textAlign='center'>
@@ -51,7 +51,7 @@ export const FirstScreen = React.memo(({
           p={isSmallerThan800 ? '1rem 1rem' : isSmallerThan1350 ? '3rem 4rem' : '7rem 12rem'}
          >
           <Flex direction='column' align='center' justify='flex-start'>
-            {isSmallerThan800 ? null : <Img src='/first1.png' alt='yacht' width='100%' sx={{mb: '3rem'}} />}
+            {isSmallerThan800 ? null : <Img loading="lazy" src='/first1.png' alt='yacht' width='100%' sx={{mb: '3rem'}} />}
             <Show breakpoint='(max-width: 800px)'>
               <Flex direction='column' align='center' justify='flex-start' mb='2rem'>
                 <TextBlock 
@@ -63,7 +63,7 @@ export const FirstScreen = React.memo(({
                     }
                   }}
                   text='Discover a new era of responsible luxury, where cutting-edge technology meets environmental consciousness' />
-                <Img src='/line.svg' alt='line' sx={{mb: '1.5rem'}} />
+                <Img loading="lazy" src='/line.svg' alt='line' sx={{mb: '1.5rem'}} />
                 <TextBlock 
                   textStyles='semiBoldText' 
                   propsText={{
@@ -73,7 +73,7 @@ export const FirstScreen = React.memo(({
                     }
                   }}
                   text='We envisioned yacht to be a blend of cutting-edge technology, innovative design, and sustainable features' />
-                <Img src='/line.svg' alt='line' sx={{mb: '1.5rem'}} />
+                <Img loading="lazy" src='/line.svg' alt='line' sx={{mb: '1.5rem'}} />
                 <TextBlock 
                   textStyles='semiBoldText' 
                   propsText={{
@@ -83,7 +83,7 @@ export const FirstScreen = React.memo(({
                     }
                   }}
                   text='Advanced Propulsion Systems Autonomous Navigation Interactive Interfaces' />
-                <Img src='/first2.png' alt='yacht' width='100%' />
+                <Img loading="lazy" src='/first2.png' alt='yacht' width='100%' />
               </Flex>
             </Show>
             <TextBlock text='Crystal Yachts is committed to introducing innovative ideas and technology to meet both the technical and aesthetic needs of our customers. We pay close attention to project design and technical perfection, so each of our yachts is unique and exceptional' mb='2rem' />
@@ -102,7 +102,7 @@ export const FirstScreen = React.memo(({
                   }
                 }}
                 text='Discover a new era of responsible luxury, where cutting-edge technology meets environmental consciousness' />
-              <Img src='/line.svg' alt='line' sx={{mb: '1.5rem'}} />
+              <Img loading="lazy" src='/line.svg' alt='line' sx={{mb: '1.5rem'}} />
               <TextBlock 
                 textStyles='semiBoldText' 
                 propsText={{
@@ -112,7 +112,7 @@ export const FirstScreen = React.memo(({
                   }
                 }}
                 text='We envisioned yacht to be a blend of cutting-edge technology, innovative design, and sustainable features' />
-              <Img src='/line.svg' alt='line' sx={{mb: '1.5rem'}} />
+              <Img loading="lazy" src='/line.svg' alt='line' sx={{mb: '1.5rem'}} />
               <TextBlock 
                 textStyles='semiBoldText' 
                 propsText={{
@@ -122,7 +122,7 @@ export const FirstScreen = React.memo(({
                   }
                 }}
                 text='Advanced Propulsion Systems Autonomous Navigation Interactive Interfaces' />
-              <Img src='/first2.png' alt='yacht' width='100%' />
+              <Img loading="lazy" src='/first2.png' alt='yacht' width='100%' />
             </Flex>
           </Hide>
         </SimpleGrid>
@@ -145,14 +145,14 @@ export const FirstScreen = React.memo(({
 
           <Flex direction='column' align='center' justify='flex-start'>
             <AspectRatio w='100%' ratio={isSmallerThan800 ? 4 / 3 : 3 / 4} height='100%'>
-              <Img src='/first3.png' alt='yacht' width='100%' height='100%' />
+              <Img loading="lazy" src='/first3.png' alt='yacht' width='100%' height='100%' />
             </AspectRatio>
           </Flex>
         </SimpleGrid>
       </Flex>
 
       <Flex direction='column' align='center' justify='center' width='100%'>
-        <Img src='/first4.svg' alt='yacht' width='100%' height='100%' p={isSmallerThan800 ? '3rem 1.5rem' : '3rem 14.5rem'} />
+        <Img loading="lazy" src='/first4.svg' alt='yacht' width='100%' height='100%' p={isSmallerThan800 ? '3rem 1.5rem' : '3rem 14.5rem'} />
       </Flex>
     </Box>
   )
