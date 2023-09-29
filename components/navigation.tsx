@@ -104,7 +104,7 @@ export const Navbar = React.memo(({page, setPage}:{page?: string; setPage?: (val
         <Show below='sm'>
           <Menu>
             <MenuButton>menu</MenuButton>
-            <MenuList>
+            <MenuList zIndex={100}>
             {buttonArray.map((button) => (
               <MenuItem as='button' 
                 key={button.id}

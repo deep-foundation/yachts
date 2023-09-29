@@ -11,7 +11,7 @@ export const YachtsList = React.memo(({setPage}:{setPage?: (value) => void}) => 
   return (<Box display='flex' flexDir='column' p={isSmallerThan945 ? '1rem' : '5rem'}>
       {isSmallerThan800 
       ? <Box>
-          <Text as='h1' textStyle='h1' p='1rem' color='text' align='center'>Yachts</Text>
+          <Text as='h1'  textStyle={isSmallerThan800 ? 'h2' : 'h1'} p='1rem' color='text' align='center'>Yachts</Text>
         </Box>
       : <AspectRatio ratio={16 / 2} mb='2rem' position='relative'>
         <>

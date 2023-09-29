@@ -16,7 +16,7 @@ export const Technologies = React.memo(() => {
 
   return (<Box display='flex' flexDir='column' p={isSmallerThan1200 ? '1rem' : '5rem'} mb={isSmallerThan500 ? '2rem' : '4rem'}>
       <Box>
-        <Text as='h1' textStyle='h1' p='1rem' color='text' align={isSmallerThan800 ? 'center' : 'left'}>Technologies</Text>
+        <Text as='h1' textStyle={isSmallerThan800 ? 'h2' : 'h1'} p='1rem' color='text' align={isSmallerThan800 ? 'center' : 'left'}>Technologies</Text>
       </Box>
 
       <Box 
@@ -33,7 +33,7 @@ export const Technologies = React.memo(() => {
           <Box display='flex' flexDirection={isSmallerThan500 ? 'column-reverse' : 'column'}>
             <Text textStyle='technologiesNotUppercaseText' mb={isSmallerThan500 ? 0 : isSmallerThan800 ? '1rem' : '4rem'} align='justify'>Energy efficiency is a crucial component of sustainable yachting. Hydrodynamic hull designs and lightweight materials improve fuel efficiency by reducing drag and weight. In addition, advanced energy management systems can monitor and optimize energy consumption onboard</Text> 
             <AspectRatio ratio={16 / 9} maxH={isSmallerThan800 ? '30vmax' : '100%'} mb={isSmallerThan500 ? '1.5rem' : 0}>
-              <Img src='/tech1.webp' alt='technologies yacht photo' width='100%' objectFit='scale-down' />
+              <Img src='/tech1.png' alt='technologies yacht photo' width='100%' objectFit='scale-down' />
             </AspectRatio>
           </Box>
         </Box>
@@ -81,13 +81,13 @@ export const Technologies = React.memo(() => {
             w='100%' 
             mb={isSmallerThan500 ? '1.5rem' : 0}
           >
-            <Img src='/tech2.webp' alt='technologies yacht photo' width='100%' objectFit='scale-down' />
+            <Img src='/tech2.png' alt='technologies yacht photo' width='100%' objectFit='scale-down' />
           </AspectRatio>
         </Box>
 
         <Box display='grid' gridTemplateColumns={isSmallerThan500 ? '1fr' : '1fr 1fr'} columnGap={isSmallerThan800 ? '2rem' : '4rem'}>
           <AspectRatio ratio={isSmallerThan500 ? 16 / 9 : 2 / 3} maxH={isSmallerThan500 ? '30vmax' : '100%'} w='100%' mb={isSmallerThan500 ? '1.5rem' : 0}>
-            <Img src='/tech3.webp' alt='technologies yacht photo' width='100%' objectFit='scale-down' />
+            <Img src='/tech3.png' alt='technologies yacht photo' width='100%' objectFit='scale-down' />
           </AspectRatio>
           <Box display='flex' flexDirection='column'
             ref={refText2}

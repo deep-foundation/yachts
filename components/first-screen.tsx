@@ -51,7 +51,7 @@ export const FirstScreen = React.memo(({
           p={isSmallerThan800 ? '1rem 1rem' : isSmallerThan1350 ? '3rem 4rem' : '7rem 12rem'}
          >
           <Flex direction='column' align='center' justify='flex-start'>
-            {isSmallerThan800 ? null : <Img src='/first1.webp' alt='yacht' width='100%' sx={{mb: '3rem'}} />}
+            {isSmallerThan800 ? null : <Img src='/first1.png' alt='yacht' width='100%' sx={{mb: '3rem'}} />}
             <Show breakpoint='(max-width: 800px)'>
               <Flex direction='column' align='center' justify='flex-start' mb='2rem'>
                 <TextBlock 
@@ -83,7 +83,7 @@ export const FirstScreen = React.memo(({
                     }
                   }}
                   text='Advanced Propulsion Systems Autonomous Navigation Interactive Interfaces' />
-                <Img src='/first2.webp' alt='yacht' width='100%' />
+                <Img src='/first2.png' alt='yacht' width='100%' />
               </Flex>
             </Show>
             <TextBlock text='Crystal Yachts is committed to introducing innovative ideas and technology to meet both the technical and aesthetic needs of our customers. We pay close attention to project design and technical perfection, so each of our yachts is unique and exceptional' mb='2rem' />
@@ -122,7 +122,7 @@ export const FirstScreen = React.memo(({
                   }
                 }}
                 text='Advanced Propulsion Systems Autonomous Navigation Interactive Interfaces' />
-              <Img src='/first2.webp' alt='yacht' width='100%' />
+              <Img src='/first2.png' alt='yacht' width='100%' />
             </Flex>
           </Hide>
         </SimpleGrid>
@@ -145,7 +145,7 @@ export const FirstScreen = React.memo(({
 
           <Flex direction='column' align='center' justify='flex-start'>
             <AspectRatio w='100%' ratio={isSmallerThan800 ? 4 / 3 : 3 / 4} height='100%'>
-              <Img src={isSmallerThan800 ? 'mob.png' : '/first3.webp'} alt='yacht' width='100%' height='100%' />
+              <Img src='/first3.png' alt='yacht' width='100%' height='100%' />
             </AspectRatio>
           </Flex>
         </SimpleGrid>

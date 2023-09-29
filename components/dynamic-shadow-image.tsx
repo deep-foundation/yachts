@@ -11,7 +11,7 @@ const DynamicShadowImage = ( {src, ...props}) => {
                         transform="translate(5px, -5px);"
                         width='100%' objectFit="cover"
                         {...props} />
-        <Img src={src} zIndex={100} width='100%' 
+        <Img src={src} zIndex={1} width='100%' 
                         objectFit="cover"
                         position="relative"
                         {...props} />
