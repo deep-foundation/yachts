@@ -52,7 +52,7 @@ export const OpenGallery = React.memo(({
     ssr: true,
     fallback: false,
   });
-  const [[photo, direction], setPhoto] = useState([0, 0]);
+  const [[photo, direction], setPhoto] = useState([selectedImage, 0]);
 
   const paginate = (newDirection: number) => {
     setPhoto([photo + newDirection, newDirection]);
@@ -80,7 +80,7 @@ export const OpenGallery = React.memo(({
       animate={{ opacity: 1 }}
       //@ts-ignore
       transition={{ delay: 0.15 }}
-      onTap={props.onClose}
+      onClick={(e) => {props.onClose();}}
     />
       <AnimatePresence initial={false} custom={direction}>
         <Box as={motion.div}
@@ -88,9 +88,9 @@ export const OpenGallery = React.memo(({
             zIndex: 1,
             width: '70vmax',
             maxWidth: '100%',
-            height: '60vmin',
+            // height: '60vmin',
             position: 'fixed',
-            top: 'calc(50% - 30vh)',
+            top: isSmallerThan590 ? 'calc(50% - 30vh)' : 'calc(40% - 30vh)',
             left: isSmallerThan590 ? 0 : 'calc(50% - 35vw)',
             cursor: 'zoom-out',
             borderRadius: '0.5rem',
@@ -99,8 +99,8 @@ export const OpenGallery = React.memo(({
           }}
         >
           <Box as={motion.img}
-            key={props.id}
-            src={photos[photo].src}
+            key={photos[photo]?.id}
+            src={photos[photo]?.src}
             custom={direction}
             variants={variants}
             initial="enter"
@@ -108,7 +108,7 @@ export const OpenGallery = React.memo(({
             exit="exit"
             width='100%'
             height='100%'
-            loading='lazy'
+            // loading='lazy'
             //@ts-ignore
             transition={{
               x: { type: "spring", stiffness: 300, damping: 30 },

@@ -4,6 +4,7 @@ import { GenerationForm } from './yachts-generation-form';
 import { GenerationButton, GenerationImage } from './yachts-generation-image';
 import { GenerationImageGallery } from './yachts-generation-image-gallery';
 import { useDeep, useDeepSubscription } from "@deep-foundation/deeplinks/imports/client";
+import {useMinilinksSubscription} from "@deep-foundation/deeplinks/imports/minilinks";
 import { Link } from '@deep-foundation/deeplinks/imports/minilinks';
 import { TextBlock } from '../text-block';
 
@@ -99,7 +100,11 @@ export const YachtsGeneration = React.memo(({ onClick }:{ onClick?: () => void; 
     return add;
   }
   async function saveToGalleryHandler() {
-    const drawResultLinkId = getDrawResultLink()?.id;
+    const drawResultLink = getDrawResultLink();
+    if(drawResultLink) {
+      gallery_data.push(drawResultLink);
+    }
+    const drawResultLinkId = drawResultLink?.id;
 
     const isPublishedLink = deep.minilinks.query({
       _and: [
@@ -117,16 +122,32 @@ export const YachtsGeneration = React.memo(({ onClick }:{ onClick?: () => void; 
       });
   }
 
-  function getPublishedLinks(): Link<number>[]{
-    const links = deep.minilinks.query(
-      { 
-        _and: [
+  // function getPublishedLinks(): Link<number>[]{
+  //   // console.log('getting')
+  //   const links = deep.minilinks.query(
+  //     { 
+  //       _and: [
+  //         {type_id: {_eq: drawResultTypeId }},
+  //         {in: {type_id: {_eq: isPublishedTypeId}}}
+  //       ]
+  //     }); 
+  //   // console.log('getted', links.length)
+  //   return links;
+  // }
+  const {data: gallery_data} = deep.useDeepQuery({
+    _and: [
           {type_id: {_eq: drawResultTypeId }},
           {in: {type_id: {_eq: isPublishedTypeId}}}
         ]
-      }); 
-    return links;
-  }
+  })
+  // console.log(gallery_data)
+  // const gallery_data = deep.useMinilinksSubscription(useMemo(() => ({
+  //   _and: [
+  //     {type_id: {_eq: drawResultTypeId }},
+  //     {in: {type_id: {_eq: isPublishedTypeId}}}
+  //   ]
+  // }),[drawResultTypeId, isPublishedTypeId]));
+  // console.log('render', gallery_data)
 
   async function sendMailHandler(msg: string): Promise<void> {
     
@@ -152,7 +173,7 @@ export const YachtsGeneration = React.memo(({ onClick }:{ onClick?: () => void; 
       }
     ]
   }),[drawResultTypeId, settingsId]));
-
+  // console.log('deep subscription', loading, data)
   return (<Center display='flex' flexDir='column' p={isSmallerThan945 ? '2rem 1rem' : '5.6rem'}>
       <Box 
         display='flex' 
@@ -215,11 +236,12 @@ export const YachtsGeneration = React.memo(({ onClick }:{ onClick?: () => void; 
             ? <GenerationImageGallery 
                 hidden={true}
                 photos={
-                  getPublishedLinks().map((item) => {
+                  gallery_data.map((item) => {
                     return {
+                      key: item.id,
                       id: item.id,
                       src: item.value.value.img_url,
-                      alt: item.value.value.error
+                      alt: item.value.value.error ?? 'yacht'
                     }
                   })
                 }
@@ -254,12 +276,12 @@ export const YachtsGeneration = React.memo(({ onClick }:{ onClick?: () => void; 
               sendMail={sendMailHandler}
             />
           : <GenerationImageGallery photos={
-              getPublishedLinks().map((item) => {
+            gallery_data.map((item) => {
                 return {
                   key: item.id,
                   id: item.id,
                   src: item.value.value.img_url,
-                  alt: item.value.value.error
+                  alt: item.value.value.error ?? 'yacht',
                 }
               })
             }

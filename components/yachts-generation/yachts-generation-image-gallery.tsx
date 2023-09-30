@@ -7,7 +7,7 @@ import { OpenGallery } from "./open-gallery";
 
 const itemVariants = {
   hidden: {
-    opacity: 0,
+    opacity: 0.0,
     scale: 0.5
   },
   visible: delayRef => ({
@@ -33,11 +33,14 @@ export const GenerationImageGallery = React.memo(({
   const [selected, setSelected] = useState(null);
   const [isSmallerThan800] = useMediaQuery('(max-width: 800px)');
   useEffect(() => {
-    controls.start("visible");
+    controls.start({
+      opacity: 1,
+      scale: 1,
+    });
   }, []);
-
+  // console.log('galery', photos)
   return (<>
-      <Box as={motion.div} initial="hidden" animate={controls} variants={{}} gridColumn={isSmallerThan800 ? '1 / 4' : '2 / 3'} textAlign='center' overflowY={isSmallerThan800 ? 'hidden' : 'unset'} height='60vh'
+      <Box as={motion.div} initial={{opacity: 0,scale: 0.5}} animate={controls} gridColumn={isSmallerThan800 ? '1 / 4' : '2 / 3'} textAlign='center' overflowY={isSmallerThan800 ? 'hidden' : 'unset'} height='60vh'
       >
        {hidden === false ? <GenerationButton 
           variant='blackBgSolid' 
@@ -68,16 +71,7 @@ export const GenerationImageGallery = React.memo(({
                 alt={photo.alt}
               /> }
 
-              {/* {selected 
-              ? (<OpenGallery 
-                    key={`galery ${photo.id}`}
-                    photos={photos}
-                    selectedImage={selected} 
-                    onClose={() => setSelected(null)} 
-                    src={photo.src}
-                    alt={photo.alt}
-                  />) 
-              : null} */}
+             
               {/* {selected 
               ? (<DetailView 
                     photos={photos}
@@ -89,6 +83,15 @@ export const GenerationImageGallery = React.memo(({
               : null} */}
             </Box>)
           })}
+          {selected !==null 
+            ? (<OpenGallery 
+                  photos={photos}
+                  selectedImage={selected} 
+                  onClose={() => setSelected(null)} 
+                  // src={photo.src}
+                  // alt={photo.alt}
+                />) 
+            : null}
         </Box>
       </Box>
     </>
@@ -132,7 +135,7 @@ const Thumbnail = React.memo(({
     const d = Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2));
     delayRef.current = d * delayPerPixel;
   }, [delayPerPixel]);
-
+  
   // useEffect(() => {
   //   const img = new Image();
   //   img.src = props.src;
@@ -151,15 +154,15 @@ const Thumbnail = React.memo(({
         overflow: 'hidden',
       }}
       ref={ref} 
-      // variants={itemVariants} 
-      // custom={delayRef}  
+      variants={itemVariants} 
+      custom={delayRef}  
     >
       <Img loading="lazy" as={motion.img}
         // zIndex={1}
         layoutId={props.id}
         src={props.src}
         alt={props.alt}
-        onTap={() => props.setSelected(props.id)}
+        onTap={(e) => {props.setSelected(i)}}
         sx={{
           width: '100%',
           height: '100%',
