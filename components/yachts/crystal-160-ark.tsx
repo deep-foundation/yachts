@@ -123,10 +123,10 @@ export const Crystal160Ark = React.memo(() => {
 
       <Text textStyle='yachtDetailUppercaseTitleS48Text' align={ isSmallerThan500 ? 'center':'left'}  mb={isSmallerThan500 ? '0.8rem' : '1.5rem'}>MAIN SPECIFICATION</Text>
       <Box display='grid' gridTemplateColumns={isSmallerThan500 ? '1fr' : '1fr 1fr'} columnGap={isSmallerThan500 ? 0 : isSmallerThan1200 ? '2rem' : '4rem'} mb={isSmallerThan900 ? '2rem' : '4rem'}>
-        <TextBlock 
-          mb={isSmallerThan500 ? '0.8rem' : '0'}
-          textStyles="yachtDetailRegularText"
-          text={
+        <Box 
+            mb={isSmallerThan500 ? '0.8rem' : '0'}
+            textStyle="yachtDetailRegularText"
+            >
             <List spacing={3}>
               <ListItem>
                 Type: Catamaran
@@ -141,13 +141,12 @@ export const Crystal160Ark = React.memo(() => {
                 Guest cabins: 6 (12 guests)
               </ListItem>
             </List>
-          } 
-        />
+          </Box>
 
-        <TextBlock 
-          propsText={{align: isSmallerThan500 ? 'left' : 'right'}}
-          textStyles="yachtDetailSemiboldText"
-          text={
+          <Box 
+            textAlign={isSmallerThan500 ? 'left' : 'right'}
+            textStyle="yachtDetailSemiboldText"
+            >
             <List spacing={3}>
               <ListItem>
                 Solar panels: 400+ sq.m.
@@ -162,8 +161,7 @@ export const Crystal160Ark = React.memo(() => {
                 Range: 10000+ NM
               </ListItem>
             </List>
-          } 
-        />
+         </Box>
       </Box>
       
       <AspectRatio ratio={16 / 9} maxW='100%' mb={isSmallerThan900 ? '2rem' : '5rem'}>
