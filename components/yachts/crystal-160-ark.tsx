@@ -132,10 +132,13 @@ export const Crystal160Ark = React.memo(() => {
                 Type: Catamaran
               </ListItem>
               <ListItem>
-                Length: 
+                Length: 50 m 
               </ListItem>
               <ListItem>
-                Beam: 
+                Beam: 18 m
+              </ListItem>
+              <ListItem>
+                Guest cabins: 6 (12 guests)
               </ListItem>
             </List>
           } 
@@ -147,13 +150,16 @@ export const Crystal160Ark = React.memo(() => {
           text={
             <List spacing={3}>
               <ListItem>
-                Number of cabins: 
+                Solar panels: 400+ sq.m.
               </ListItem>
               <ListItem>
-                Water: 
+                Batteries: 1000+ kWh
               </ListItem>
               <ListItem>
-                Hull material: Aluminum
+                Hybrid propulsion
+              </ListItem>
+              <ListItem>
+                Range: 10000+ NM
               </ListItem>
             </List>
           } 

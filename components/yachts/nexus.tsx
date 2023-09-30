@@ -156,10 +156,13 @@ export const Nexus = React.memo(() => {
                 Type: Catamaran
               </ListItem>
               <ListItem>
-                Length: 
+                Length: 30.5 m / 100ft
               </ListItem>
               <ListItem>
-                Beam: 
+                Beam: 13.7 m / 45ft
+              </ListItem>
+              <ListItem>
+                Number of cabins: up to 6 cabins
               </ListItem>
             </List>
           } 
@@ -171,13 +174,16 @@ export const Nexus = React.memo(() => {
           text={
             <List spacing={3}>
               <ListItem>
-                Number of cabins: 
-              </ListItem>
-              <ListItem>
-                Water: 
-              </ListItem>
-              <ListItem>
                 Hull material: Aluminum
+              </ListItem>
+              <ListItem>
+                Hybrid propulsion
+              </ListItem>
+              <ListItem>
+                Transatlantic
+              </ListItem>
+              <ListItem>
+                Oceanwings
               </ListItem>
             </List>
           } 
