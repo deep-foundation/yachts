@@ -19,43 +19,74 @@ export const YachtsGeneration = React.memo(({ onClick }:{ onClick?: () => void; 
   const [isSmallerThan945] = useMediaQuery('(max-width: 945px)');
   const [isSmallerThan1200] = useMediaQuery('(max-width: 1200px)');
 
-
+  /*
+    Use constants instead useEffect link loads, because useEffect not eval on server-side.
+    If we will loading links in useEffect, we need to rerender page after each await operation complete.
+    If we want to evaluate useDeepSubscription due server-side-render we need to set all variables as constants.
+  */
   // deep types
-  const [drawResultTypeId, setDrawResultTypeId] = useState(0);
-  const [drawRequestTypeId, setDrawRequestTypeId] = useState(0);
-  const [midjourneyRequestTypeId, setMidjourneyRequestTypeId] = useState(0);
-  const [isPublishedTypeId, setIsPublishedTypeId] = useState(0);
-  const [sendEmailTypeId, setSendEmailTypeId] = useState(0);
+  const drawResultTypeId = 1202;
+  const drawRequestTypeId = 1200;
+  const midjourneyRequestTypeId = 1151;
+  const isPublishedTypeId = 1204;
+  const sendEmailTypeId = 1265;
   // deep links
   const [requestId, setRequestId] = useState(0);
-  const [settingsId, setSettingsId] = useState(0);
-  const [sendToId, setSendToId] = useState(0);
-  const [letterSubjectId, setLetterSubjectId] = useState(0);
-  const [letterTextId, setLetterTextId] = useState(0);
+  const settingsId = 1438;
+  const sendToId = 1458;
+  const letterSubjectId = 1462;
+  const letterTextId = 1486;
 
   const deep = useDeep();
-  
-  useEffect(() => {
-    // load deep types
-    const f = async () => {
-      setDrawResultTypeId(await deep.id("@agsagds/yacht-co", "DrawResult"));
-      setDrawRequestTypeId(await deep.id("@agsagds/yacht-co", "DrawRequest"));
-      setIsPublishedTypeId(await deep.id("@agsagds/yacht-co", "IsPublished"));
-      const settingsTypeId = await deep.id("@agsagds/yacht-co", "MidjourneySettings");
-      setSettingsId((await deep.select({type_id: {_eq: settingsTypeId}})).data[0]?.id);
-      setMidjourneyRequestTypeId(await deep.id("@agsagds/midjourney", "MidjourneyRequest"));
-      
-      setSendEmailTypeId(await deep.id("@suenot/mail-sender", "SendEmail"));
-      const sendToTypeId = await deep.id("@suenot/mail-sender", "SendTo");
-      const letterSubjectTypeId = await deep.id("@suenot/mail-sender", "LetterSubject");
-      const letterTextTypeId = await deep.id("@suenot/mail-sender", "LetterText");
-      setSendToId((await deep.select({type_id: {_eq: sendToTypeId}})).data[0]?.id);
-      setLetterSubjectId((await deep.select({type_id: {_eq: letterSubjectTypeId}})).data[0]?.id);
-      setLetterTextId((await deep.select({type_id: {_eq: letterTextTypeId}})).data[0]?.id);
-    }
+  // console.log('render')
 
-    f();
-  }, []);
+  /*
+    Save this part for collect links data for new deep deployments
+  */
+  // // deep types
+  // const [drawResultTypeId, setDrawResultTypeId] = useState(0);
+  // const [drawRequestTypeId, setDrawRequestTypeId] = useState(0);
+  // const [midjourneyRequestTypeId, setMidjourneyRequestTypeId] = useState(0);
+  // const [isPublishedTypeId, setIsPublishedTypeId] = useState(0);
+  // const [sendEmailTypeId, setSendEmailTypeId] = useState(0);
+  // // deep links
+  // const [requestId, setRequestId] = useState(0);
+  // const [settingsId, setSettingsId] = useState(0);
+  // const [sendToId, setSendToId] = useState(0);
+  // const [letterSubjectId, setLetterSubjectId] = useState(0);
+  // const [letterTextId, setLetterTextId] = useState(0);
+
+  // console.log(`drawResultTypeId ${drawResultTypeId}`);
+  // console.log(`drawRequestTypeId ${drawRequestTypeId}`);
+  // console.log(`midjourneyRequestTypeId ${midjourneyRequestTypeId}`);
+  // console.log(`isPublishedTypeId ${isPublishedTypeId}`);
+  // console.log(`sendEmailTypeId ${sendEmailTypeId}`);
+  // console.log(`settingsId ${settingsId}`);
+  // console.log(`sendToId ${sendToId}`);
+  // console.log(`letterSubjectId ${letterSubjectId}`);
+  // console.log(`letterTextId ${letterTextId}`);
+  
+  // useEffect(() => {
+  //   // load deep types
+  //   const f = async () => {
+  //     setDrawResultTypeId(await deep.id("@agsagds/yacht-co", "DrawResult"));
+  //     setDrawRequestTypeId(await deep.id("@agsagds/yacht-co", "DrawRequest"));
+  //     setIsPublishedTypeId(await deep.id("@agsagds/yacht-co", "IsPublished"));
+  //     const settingsTypeId = await deep.id("@agsagds/yacht-co", "MidjourneySettings");
+  //     setSettingsId((await deep.select({type_id: {_eq: settingsTypeId}})).data[0]?.id);
+  //     setMidjourneyRequestTypeId(await deep.id("@agsagds/midjourney", "MidjourneyRequest"));
+      
+  //     setSendEmailTypeId(await deep.id("@suenot/mail-sender", "SendEmail"));
+  //     const sendToTypeId = await deep.id("@suenot/mail-sender", "SendTo");
+  //     const letterSubjectTypeId = await deep.id("@suenot/mail-sender", "LetterSubject");
+  //     const letterTextTypeId = await deep.id("@suenot/mail-sender", "LetterText");
+  //     setSendToId((await deep.select({type_id: {_eq: sendToTypeId}})).data[0]?.id);
+  //     setLetterSubjectId((await deep.select({type_id: {_eq: letterSubjectTypeId}})).data[0]?.id);
+  //     setLetterTextId((await deep.select({type_id: {_eq: letterTextTypeId}})).data[0]?.id);
+  //   }
+
+  //   f();
+  // }, []);
 
   function getDrawResultLink() : Link<number> | undefined {
     const add = deep.minilinks.query({

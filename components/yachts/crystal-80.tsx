@@ -12,10 +12,10 @@ export const Crystal80 = React.memo(() => {
   const [isSmallerThan1200] = useMediaQuery('(max-width: 1200px)');
 
   const images = [
-    {id: 1, src:'/yachts/crystal_80/4.jpg'},
-    {id: 2, src:'/yachts/crystal_80/1.jpg'},
-    {id: 3, src:'/yachts/crystal_80/2.jpg'},
-    {id: 4, src:'/yachts/crystal_80/3.jpg'},
+    {id: 1, src:'/yachts/crystal_80/4.webp'},
+    {id: 2, src:'/yachts/crystal_80/1.webp'},
+    {id: 3, src:'/yachts/crystal_80/2.webp'},
+    {id: 4, src:'/yachts/crystal_80/3.webp'},
   ]
 
   return (<Box display='flex' flexDirection='column' p={isSmallerThan900 ? '2rem 2rem' : '4rem 8rem'}>
@@ -38,7 +38,7 @@ export const Crystal80 = React.memo(() => {
         </Box>
         <Box>
           <AspectRatio ratio={isSmallerThan900 ? 1.5 : 1.8} maxW='100%' mb={isSmallerThan900 ? '1.5rem' : '2rem'}>
-            <Img loading="lazy" src='/yachts/crystal_80/1.jpg' alt='crystal80' />
+            <Img loading="lazy" src='/yachts/crystal_80/1.webp' alt='crystal80' />
           </AspectRatio>
           </Box>
       </Box>
@@ -50,7 +50,7 @@ export const Crystal80 = React.memo(() => {
           height={isSmallerThan500 ? '100%' : 'auto'}
           mr={isSmallerThan500 ? 0 : isSmallerThan900 ? '2rem' : '4rem'}
         >
-          <Img loading="lazy" src='/yachts/crystal_80/2.jpg' alt='crystal80' />
+          <Img loading="lazy" src='/yachts/crystal_80/2.webp' alt='crystal80' />
         </AspectRatio>
         <Box 
           pt={isSmallerThan500 ? '1rem' : 0}
@@ -83,7 +83,7 @@ export const Crystal80 = React.memo(() => {
         </Box>
         <Box>
           <AspectRatio ratio={isSmallerThan900 ? 1.5 : 1.8} maxW='100%'>
-            <Img loading="lazy" src='/yachts/crystal_80/3.jpg' alt='crystal80' />
+            <Img loading="lazy" src='/yachts/crystal_80/3.webp' alt='crystal80' />
           </AspectRatio>
         </Box>
       </Box>

@@ -13,21 +13,21 @@ export const Nexus = React.memo(() => {
   const [isSmallerThan1200] = useMediaQuery('(max-width: 1200px)');
 
   const images = [
-    {id: 1, src:'/yachts/nexus/1.png'},
-    {id: 2, src:'/yachts/nexus/2.png'},
-    {id: 3, src:'/yachts/nexus/3.png'},
-    {id: 4, src:'/yachts/nexus/4.png'},
-    {id: 5, src:'/yachts/nexus/5.png'},
-    {id: 6, src:'/yachts/nexus/6.png'},
-    {id: 7, src:'/yachts/nexus/7.png'},
-    {id: 8, src:'/yachts/nexus/8.png'},
-    {id: 9, src:'/yachts/nexus/9.png'},
-    {id: 10, src:'/yachts/nexus/10.png'},
-    // {id: 11, src:'/yachts/nexus/11.png'},
-    {id: 12, src:'/yachts/nexus/12.png'},
-    {id: 13, src:'/yachts/nexus/13.png'},
-    {id: 14, src:'/yachts/nexus/14.png'},
-    {id: 15, src:'/yachts/nexus/15.png'},
+    {id: 1, src:'/yachts/nexus/1.webp'},
+    {id: 2, src:'/yachts/nexus/2.webp'},
+    {id: 3, src:'/yachts/nexus/3.webp'},
+    {id: 4, src:'/yachts/nexus/4.webp'},
+    {id: 5, src:'/yachts/nexus/5.webp'},
+    {id: 6, src:'/yachts/nexus/6.webp'},
+    {id: 7, src:'/yachts/nexus/7.webp'},
+    {id: 8, src:'/yachts/nexus/8.webp'},
+    {id: 9, src:'/yachts/nexus/9.webp'},
+    {id: 10, src:'/yachts/nexus/10.webp'},
+    // {id: 11, src:'/yachts/nexus/11.webp'},
+    {id: 12, src:'/yachts/nexus/12.webp'},
+    {id: 13, src:'/yachts/nexus/13.webp'},
+    {id: 14, src:'/yachts/nexus/14.webp'},
+    {id: 15, src:'/yachts/nexus/15.webp'},
   ]
 
 
@@ -64,7 +64,7 @@ export const Nexus = React.memo(() => {
         </Box>
         <Box display="grid">
           <AspectRatio ratio={isSmallerThan900 ? 1.5 : 1.8} maxW='100%' my={isSmallerThan900 ? '1.5rem' : '2rem'}>
-            <Img loading="lazy" src='/yachts/nexus/10.png' alt='nexus' />
+            <Img loading="lazy" src='/yachts/nexus/10.webp' alt='nexus' />
           </AspectRatio>
           </Box>
       </Box>
@@ -76,7 +76,7 @@ export const Nexus = React.memo(() => {
           height={isSmallerThan500 ? '100%' : 'auto'}
           mr={isSmallerThan500 ? 0 : isSmallerThan900 ? '2rem' : '4rem'}
         >
-          <Img loading="lazy" src='/yachts/nexus/7.png' alt='nexus' />
+          <Img loading="lazy" src='/yachts/nexus/7.webp' alt='nexus' />
         </AspectRatio>
         <Box
           pt={isSmallerThan500 ? '1rem' : 0}
@@ -120,7 +120,7 @@ export const Nexus = React.memo(() => {
         </Box>
         <Box display="grid">
           <AspectRatio ratio={isSmallerThan900 ? 1.5 : 1.8} maxW='100%'>
-            <Img loading="lazy" src='/yachts/nexus/13.png' alt='nexus' />
+            <Img loading="lazy" src='/yachts/nexus/13.webp' alt='nexus' />
           </AspectRatio>
         </Box>
       </Box>

@@ -13,11 +13,11 @@ export const Crystal160Ark = React.memo(() => {
   const [isSmallerThan1200] = useMediaQuery('(max-width: 1200px)');
 
   const images = [
-    {id: 3, src:'/yachts/crystal_160_ark/1.jpg'},
-    {id: 4, src:'/yachts/crystal_160_ark/2.jpg'},
-    {id: 5, src:'/yachts/crystal_160_ark/3.jpg'},
-    {id: 6, src:'/yachts/crystal_160_ark/4.jpg'},
-    {id: 7, src:'/yachts/crystal_160_ark/5.jpg'},
+    {id: 3, src:'/yachts/crystal_160_ark/1.webp'},
+    {id: 4, src:'/yachts/crystal_160_ark/2.webp'},
+    {id: 5, src:'/yachts/crystal_160_ark/3.webp'},
+    {id: 6, src:'/yachts/crystal_160_ark/4.webp'},
+    {id: 7, src:'/yachts/crystal_160_ark/5.webp'},
   ]
 
 
@@ -43,7 +43,7 @@ export const Crystal160Ark = React.memo(() => {
         </Box>
         <Box display="grid">
           <AspectRatio ratio={isSmallerThan900 ? 1.5 : 1.8} maxW='100%' my={isSmallerThan900 ? '1.5rem' : '2rem'}>
-            <Img loading="lazy" src='/yachts/crystal_160_ark/5.jpg' alt='crystal160ark' />
+            <Img loading="lazy" src='/yachts/crystal_160_ark/5.webp' alt='crystal160ark' />
           </AspectRatio>
           </Box>
       </Box>
@@ -55,7 +55,7 @@ export const Crystal160Ark = React.memo(() => {
           height={isSmallerThan500 ? '100%' : 'auto'}
           mr={isSmallerThan500 ? 0 : isSmallerThan900 ? '2rem' : '4rem'}
         >
-          <Img loading="lazy" src='/yachts/crystal_160_ark/2.jpg' alt='crystal160ark' />
+          <Img loading="lazy" src='/yachts/crystal_160_ark/2.webp' alt='crystal160ark' />
         </AspectRatio>
         <Box mt={isSmallerThan500 ? '1rem' : 0}>
           <TextBlock 
@@ -96,7 +96,7 @@ export const Crystal160Ark = React.memo(() => {
         </Box>
         <Box display="grid" my={isSmallerThan900 ? '0rem' : '2.5rem'}>
           <AspectRatio ratio={isSmallerThan900 ? 1.5 : 1.8} maxW='100%'>
-            <Img loading="lazy" src='/yachts/crystal_160_ark/4.jpg' alt='crystal160ark' />
+            <Img loading="lazy" src='/yachts/crystal_160_ark/4.webp' alt='crystal160ark' />
           </AspectRatio>
         </Box>
       </Box>

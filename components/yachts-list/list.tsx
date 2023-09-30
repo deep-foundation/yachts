@@ -2,7 +2,7 @@ export const yachtsList = [
   {
     id: '1',
     name: 'CRYSTAL 80',
-    src: '/yachts/crystal_80/1.jpg',
+    src: '/yachts/crystal_80/1.webp',
     alt: 'CRYSTAL 80',
     href: 'yachts/crystal-80',
     description: 'The hybrid 80-foot catamaran is a cutting-edge, luxury marine vessel designed for both performance, sustainability and long cruising. Its hybrid status means that it is powered by a combination of traditional diesel engines and electric motors, allowing for increased fuel efficiency and decreased environmental impact.',
@@ -12,7 +12,7 @@ export const yachtsList = [
   {
     id: '2',
     name: 'CRYSTAL 100',
-    src: '/yachts/crystal_100/1.png',
+    src: '/yachts/crystal_100/1.webp',
     alt: 'CRYSTAL 100',
     href: 'yachts/crystal-100',
     description: 'The Crystal 100 is a masterpiece of engineering, design, and craftsmanship that redefines the concept of luxury yachting. Crystal 100 sets new standards in the world of superyachts. From its sleek lines and spacious interiors to its cutting-edge technology and performance capabilities, this extraordinary vessel is a true icon of modern luxury.',
@@ -22,7 +22,7 @@ export const yachtsList = [
   {
     id: '3',
     name: 'CRYSTAL 160 The Ark',
-    src: '/yachts/crystal_160_ark/1.jpg',
+    src: '/yachts/crystal_160_ark/1.webp',
     alt: 'CRYSTAL 160 The Ark',
     href: 'yachts/crystal-160-ark',
     description: 'We went further in size and created a 50-meter concept. Super catamaran, which by its internal and external areas is comparable to a 70-80-meter yacht.',
@@ -32,7 +32,7 @@ export const yachtsList = [
   {
     id: '4',
     name: 'Nexus',
-    src: '/yachts/nexus/3.png',
+    src: '/yachts/nexus/3.webp',
     alt: 'Nexus',
     href: 'yachts/nexus',
     description: 'We went further in size and created a 50-meter concept. Super catamaran, which by its internal and external areas is comparable to a 70-80-meter yacht.',

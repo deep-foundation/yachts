@@ -13,12 +13,12 @@ export const Crystal100 = React.memo(() => {
   const [isSmallerThan1200] = useMediaQuery('(max-width: 1200px)');
 
   const images = [
-    {id: 1, src:'/yachts/crystal_100/4.png'},
-    {id: 2, src:'/yachts/crystal_100/5.png'},
-    {id: 3, src:'/yachts/crystal_100/6.png'},
-    {id: 4, src:'/yachts/crystal_100/1.png'},
-    {id: 5, src:'/yachts/crystal_100/2.png'},
-    {id: 6, src:'/yachts/crystal_100/3.png'},
+    {id: 1, src:'/yachts/crystal_100/4.webp'},
+    {id: 2, src:'/yachts/crystal_100/5.webp'},
+    {id: 3, src:'/yachts/crystal_100/6.webp'},
+    {id: 4, src:'/yachts/crystal_100/1.webp'},
+    {id: 5, src:'/yachts/crystal_100/2.webp'},
+    {id: 6, src:'/yachts/crystal_100/3.webp'},
   ]
 
   return (<Box display='flex' flexDirection='column' p={isSmallerThan900 ? '2rem 2rem' : '4rem 8rem'}>
@@ -38,7 +38,7 @@ export const Crystal100 = React.memo(() => {
         </Box>
         <Box>
           <AspectRatio ratio={isSmallerThan900 ? 1.5 : 1.8} maxW='100%' mb={isSmallerThan900 ? '1.5rem' : '2rem'}>
-            <Img loading="lazy"src='/yachts/crystal_100/1.png' alt='crystal100' />
+            <Img loading="lazy"src='/yachts/crystal_100/1.webp' alt='crystal100' />
           </AspectRatio>
           </Box>
       </Box>
@@ -50,7 +50,7 @@ export const Crystal100 = React.memo(() => {
           height={isSmallerThan500 ? '100%' : 'auto'}
           mr={isSmallerThan500 ? 0 : isSmallerThan900 ? '2rem' : '4rem'}
         >
-          <Img loading="lazy"src='/yachts/crystal_100/2.png' alt='crystal100' />
+          <Img loading="lazy"src='/yachts/crystal_100/2.webp' alt='crystal100' />
         </AspectRatio>
         <Box mt={isSmallerThan500 ? '1rem' : 0}>
           <TextBlock 
@@ -81,7 +81,7 @@ export const Crystal100 = React.memo(() => {
         </Box>
         <Box>
           <AspectRatio ratio={isSmallerThan900 ? 1.5 : 1.9} maxW='100%'>
-            <Img loading="lazy"src='/yachts/crystal_100/3.png' alt='crystal100' />
+            <Img loading="lazy"src='/yachts/crystal_100/3.webp' alt='crystal100' />
           </AspectRatio>
         </Box>
       </Box>
