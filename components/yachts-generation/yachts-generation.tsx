@@ -287,7 +287,7 @@ export const YachtsGeneration = React.memo(({ onClick }:{ onClick?: () => void; 
             }
             onWriteNewDescription={() => {
               setStartGen(false);
-              console.log('startGen1', startGen);
+              setImgGen(false); 
             }} 
           />
         }
