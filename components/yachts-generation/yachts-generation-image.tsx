@@ -271,7 +271,6 @@ export const GenerationImage = React.memo(({
                 }} 
                 onClick={
                   async () => {
-                    console.log('click');
                     if(name.trim() ==='' || accountSocialNetwork.trim()=== '') 
                       return;
                     
