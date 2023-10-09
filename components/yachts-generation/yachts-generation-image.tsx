@@ -172,7 +172,7 @@ export const GenerationImage = React.memo(({
             <Box display='flex' flexDir='row' mb='0.5rem'>
               <GenerationButton 
                 variant='grayBgSolid' 
-                disabled={ progress<100 ? true : false }
+                disabled={ progress<100 }
                 text='download on your device' 
                 textProps={{ px: isSmallerThan500 ? '2rem' : '3rem', mr: '0.5rem' }} 
                 buttonProps={{ mr: '0.5rem' }} 
@@ -180,7 +180,7 @@ export const GenerationImage = React.memo(({
               />
               <GenerationButton 
                 variant='grayBgSolid' text='save to our gallery' 
-                disabled={ progress<100 ? true : false }
+                disabled={ !progress || progress<100 }
                 onClick={() => {
                   saveToGalleryHandler(); 
                   setIsSaved(true); 
@@ -192,25 +192,25 @@ export const GenerationImage = React.memo(({
 
               <TelegramShareButton
                     url={src}
+                    disabled={  !progress || progress < 100 }
                   >
                 <GenerationButton 
                   as={Box}
                   variant='grayBgSolid' 
-                  disabled={ progress<100 ? true : false }
                   buttonProps={{ px: isSmallerThan500 ? '2.5rem' : '5rem' }} 
+                  disabled={  !progress || progress < 100 }
                   // onClick={() => console.log(true)} 
                   rightIcon={
                     <IoIosShareAlt size={16} />}
                     text='share'
                   />
                     
-                  </TelegramShareButton>
-                 
+                </TelegramShareButton>
                 
               
               
               <GenerationButton 
-                disabled={ !isLoaded ? true : false }
+                disabled={ !isLoaded }
                 variant='blackBgSolid' 
                 text='write a new description' 
                 textProps={{ 
