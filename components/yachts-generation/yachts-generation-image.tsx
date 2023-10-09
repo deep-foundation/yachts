@@ -70,9 +70,9 @@ export const GenerationImage = React.memo(({
   const [isSmallerThan500] = useMediaQuery('(max-width: 500px)');
 
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [youtube, setYoutube] = useState('');
-  const [telegram, setTelegram] = useState('');
-  const [instagram, setInstagram] = useState('');
+  const [name, setName] = useState('');
+  const [accountSocialNetwork, setAccountSocialNetwork] = useState('');
+  const [allowProcessPersonalData, setAllowProcessPersonalData] = useState(false);
   
 
   const initialRef = useRef(null);
@@ -242,52 +242,44 @@ export const GenerationImage = React.memo(({
               }}
             >
               <HStack>
-                <Text textStyle='contactsDownMenu'>YouTube</Text>
-                <Input focusBorderColor='button.100' variant='outline' ref={initialRef} fontSize='1rem' placeholder='@youTubeNickName' value={youtube} 
-                  onChange={(event) => setYoutube(event.target.value)} size='sm' />
+                <Text textStyle='contactsDownMenu'>Name</Text>
+                <Input focusBorderColor='button.100' variant='outline' ref={initialRef} fontSize='1rem' placeholder='Your name' value={name} 
+                  onChange={(event) => setName(event.target.value)} size='sm' />
               </HStack>
               <HStack>
-                <Text textStyle='contactsDownMenu'>Telegram</Text>
-                <Input focusBorderColor='button.100' variant='outline' fontSize='1rem' placeholder='@telegramNickName' value={telegram} onChange={(event) => setTelegram(event.target.value)} size='sm' />
-              </HStack>
-              <HStack>
-                <Text textStyle='contactsDownMenu'>Instagram</Text>
-                <Input focusBorderColor='button.100' variant='outline' fontSize='1rem' placeholder='@instagramNickName' value={instagram} onChange={(event) => setInstagram(event.target.value)} size='sm' />
+                <Text textStyle='contactsDownMenu'>Contact</Text>
+                <Input focusBorderColor='button.100' variant='outline' fontSize='1rem' placeholder='Email or social:@username' value={accountSocialNetwork} onChange={(event) => setAccountSocialNetwork(event.target.value)} size='sm' />
               </HStack>
             </ModalBody>
 
             <ModalFooter>
               <Checkbox 
-                aria-label='Consent to the processing of personal data' 
                 size='md' 
-                colorScheme='button' 
-                defaultChecked sx={{mr: '2rem'}}
+                colorScheme='telegram' 
+                // sx={{mr: '2rem'}}
+                isChecked={allowProcessPersonalData}
+                onChange={(event) => setAllowProcessPersonalData(event.target.checked)}
               >
                 <Text textStyle='contactsDownMenu'>Consent to the processing of personal data</Text>
               </Checkbox>
               <GenerationButton 
                 variant='blackBgSolid' 
                 text='send' 
+                disabled={!allowProcessPersonalData}
                 buttonProps={{ 
                   width: '30%',
                 }} 
                 onClick={
                   async () => {
-                    if(youtube.trim()+telegram.trim()+instagram.trim()=== '') 
+                    console.log('click');
+                    if(name.trim() ==='' || accountSocialNetwork.trim()=== '') 
                       return;
                     
-                    let msg = " Received contacts for communication:\n"
-                    if (youtube.trim()) {
-                      msg += ` YouTube: ${youtube.trim()}\n`
-                    }
-                    if (telegram.trim()) {
-                      msg += ` Telegram: ${telegram.trim()}\n`
-                    }
-                    if (instagram.trim()) {
-                      msg += ` Instagram: ${instagram.trim()}\n`
-                  }
-                  await sendMail(msg);
-                  onClose();
+                    let msg = "Received contacts for communication:\n"
+                    msg += ` Name: ${name.trim()}\n`
+                    msg += ` Contact: ${accountSocialNetwork.trim()}\n`
+                    await sendMail(msg);
+                    onClose();
                 } 
               }
               />
