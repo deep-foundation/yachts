@@ -145,7 +145,7 @@ export const FirstScreen = React.memo(({
 
           <Flex direction='column' align='center' justify='flex-start'>
             <AspectRatio w='100%' ratio={isSmallerThan800 ? 4 / 3 : 3 / 4} height='100%'>
-              <Img loading="lazy" src='/first3.webp' alt='yacht' width='100%' height='100%' />
+              <Img src='/first3.webp' alt='yacht' width='100%' height='100%' />
             </AspectRatio>
           </Flex>
         </SimpleGrid>
