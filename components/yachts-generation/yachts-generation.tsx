@@ -236,7 +236,7 @@ export const YachtsGeneration = React.memo(({ onClick }:{ onClick?: () => void; 
             ? <GenerationImageGallery 
                 hidden={true}
                 photos={
-                  gallery_data.map((item) => {
+                  gallery_data.sort((a,b) => -(a.id - b.id)).map((item) => {
                     return {
                       key: item.id,
                       id: item.id,
@@ -276,7 +276,7 @@ export const YachtsGeneration = React.memo(({ onClick }:{ onClick?: () => void; 
               sendMail={sendMailHandler}
             />
           : <GenerationImageGallery photos={
-            gallery_data.map((item) => {
+            gallery_data.sort((a,b) => -(a.id - b.id)).map((item) => {
                 return {
                   key: item.id,
                   id: item.id,
