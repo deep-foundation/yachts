@@ -1,4 +1,4 @@
-import { Box, Img, Skeleton, useMediaQuery } from "@chakra-ui/react";
+import { Box, Img, Skeleton,SkeletonCircle, useMediaQuery } from "@chakra-ui/react";
 import { motion, useAnimation } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
 import { GenerationButton } from "./yachts-generation-image";
@@ -166,7 +166,10 @@ const Thumbnail = React.memo(({
   // }, []);
 
   const [isSmallerThan650] = useMediaQuery('(max-width: 650px)');
-  return (<Box as={motion.div}
+  const [isLoaded, setIsLoaded] = useState(false);
+  return (
+  
+    <Box as={motion.div}
       sx={{
         margin: '0.5rem',
         display: 'inline-block',
@@ -181,19 +184,28 @@ const Thumbnail = React.memo(({
       variants={itemVariants} 
       custom={delayRef}  
     >
-      <Img loading="lazy" as={motion.img}
-        // zIndex={1}
-        layoutId={props.id}
-        src={props.src}
-        alt={props.alt}
-        onTap={(e) => {props.setSelected(i)}}
-        sx={{
-          width: '100%',
-          height: '100%',
-          margin: '0 1rem 1rem 0',
-          cursor: 'pointer',
-        }}
-      />
+    <Skeleton isLoaded={isLoaded}
+    sx={{
+      width: '100%',
+      height: '100%',
+      margin: '0 1rem 1rem 0',
+      cursor: 'pointer',
+    }}>
+        <Img loading="lazy" as={motion.img}
+          // zIndex={1}
+          layoutId={props.id}
+          src={props.src}
+          alt={props.alt}
+          onLoad={() => setIsLoaded(true)}
+          onTap={(e) => {props.setSelected(i)}}
+          sx={{
+            width: '100%',
+            height: '100%',
+            margin: '0 1rem 1rem 0',
+            cursor: 'pointer',
+          }}
+        />
+      </Skeleton>
     </Box>
   )
 })
