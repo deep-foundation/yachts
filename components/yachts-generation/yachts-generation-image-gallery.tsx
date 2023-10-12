@@ -1,8 +1,9 @@
-import { Box, Img, useMediaQuery } from "@chakra-ui/react";
+import { Box, Img, Skeleton, useMediaQuery } from "@chakra-ui/react";
 import { motion, useAnimation } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
 import { GenerationButton } from "./yachts-generation-image";
 import { OpenGallery } from "./open-gallery";
+import { useDeep } from "@deep-foundation/deeplinks/imports/client";
 
 
 const itemVariants = {
@@ -19,12 +20,16 @@ const itemVariants = {
 
 export const GenerationImageGallery = React.memo(({ 
   delayPerPixel = 0.0008, 
-  photos, 
+  // photos, 
+  drawResultTypeId,
+  isPublishedTypeId,
   onWriteNewDescription,
   hidden = false,
 }:{
   delayPerPixel?: number;
-  photos?: any;
+  // photos?: any;
+  drawResultTypeId: number,
+  isPublishedTypeId: number,
   onWriteNewDescription?: () => void;
   hidden?: boolean;
 }) => {
@@ -32,6 +37,25 @@ export const GenerationImageGallery = React.memo(({
   const controls = useAnimation();
   const [selected, setSelected] = useState(null);
   const [isSmallerThan800] = useMediaQuery('(max-width: 800px)');
+
+  const deep = useDeep();
+  const {data: gallery_data} = deep.useDeepQuery({
+    _and: [
+          {type_id: {_eq: drawResultTypeId }},
+          {in: {type_id: {_eq: isPublishedTypeId}}}
+        ]
+  });
+  gallery_data.sort((a,b) => -(a.id - b.id));
+  const photos = gallery_data.map((item) => {
+      return {
+        key: item.id,
+        id: item.id,
+        src: item.value.value.img_url,
+        alt: item.value.value.error ?? 'yacht'
+      }
+    })
+  
+
   useEffect(() => {
     controls.start({
       opacity: 1,

@@ -13,6 +13,7 @@ export const YachtsGeneration = React.memo(({ onClick }:{ onClick?: () => void; 
   const [startCreate, setStartCreate] = useState(false);
   const [startGen, setStartGen] = useState(false);
   const [imgGen, setImgGen] = useState(false);
+  // const [gallery_data, setGaleryData] = useState([]);
 
   const [isSmallerThan500] = useMediaQuery('(max-width: 500px)');
   const [isSmallerThan800] = useMediaQuery('(max-width: 800px)');
@@ -39,6 +40,20 @@ export const YachtsGeneration = React.memo(({ onClick }:{ onClick?: () => void; 
   const letterTextId = 1486;
 
   const deep = useDeep();
+
+
+  // const {data: next_gallery_data} = deep.useDeepQuery({
+  //   _and: [
+  //         {type_id: {_eq: drawResultTypeId }},
+  //         {in: {type_id: {_eq: isPublishedTypeId}}}
+  //       ]
+  // });
+  // next_gallery_data.sort((a,b) => -(a.id - b.id));
+  // if(gallery_data.length !== next_gallery_data.length) {
+  //   setGaleryData(next_gallery_data);
+  // }
+
+
   // console.log('render')
 
   /*
@@ -88,7 +103,6 @@ export const YachtsGeneration = React.memo(({ onClick }:{ onClick?: () => void; 
 
   //   f();
   // }, []);
-
   function getDrawResultLink() : Link<number> | undefined {
     const add = deep.minilinks.query({
 
@@ -101,9 +115,10 @@ export const YachtsGeneration = React.memo(({ onClick }:{ onClick?: () => void; 
   }
   async function saveToGalleryHandler() {
     const drawResultLink = getDrawResultLink();
-    if(drawResultLink) {
-      gallery_data.push(drawResultLink);
-    }
+    // if(drawResultLink) {
+    //   const next_gallery_data = [drawResultLink,...gallery_data];
+    //   setGaleryData(next_gallery_data);
+    // }
     const drawResultLinkId = drawResultLink?.id;
 
     const isPublishedLink = deep.minilinks.query({
@@ -134,12 +149,7 @@ export const YachtsGeneration = React.memo(({ onClick }:{ onClick?: () => void; 
   //   // console.log('getted', links.length)
   //   return links;
   // }
-  const {data: gallery_data} = deep.useDeepQuery({
-    _and: [
-          {type_id: {_eq: drawResultTypeId }},
-          {in: {type_id: {_eq: isPublishedTypeId}}}
-        ]
-  })
+
   // console.log(gallery_data)
   // const gallery_data = deep.useMinilinksSubscription(useMemo(() => ({
   //   _and: [
@@ -235,16 +245,8 @@ export const YachtsGeneration = React.memo(({ onClick }:{ onClick?: () => void; 
             {isSmallerThan800 === true
             ? <GenerationImageGallery 
                 hidden={true}
-                photos={
-                  gallery_data.sort((a,b) => -(a.id - b.id)).map((item) => {
-                    return {
-                      key: item.id,
-                      id: item.id,
-                      src: item.value.value.img_url,
-                      alt: item.value.value.error ?? 'yacht'
-                    }
-                  })
-                }
+                drawResultTypeId={drawResultTypeId}
+                isPublishedTypeId={isPublishedTypeId}
               /> : null}</>
           : startGen === false 
           ? <GenerationForm 
@@ -268,23 +270,15 @@ export const YachtsGeneration = React.memo(({ onClick }:{ onClick?: () => void; 
               containerProps={{gridColumn: isSmallerThan800 ? '1 / 4' : '2/3'}} 
               onClickToGalleryAfterSave={() => {
                 setStartGen(false);
-                console.log('startGen1', startGen);
               }} 
               onClickToGalleryFromGenerate={() => {
                 setImgGen(true);
               }} 
               sendMail={sendMailHandler}
             />
-          : <GenerationImageGallery photos={
-            gallery_data.sort((a,b) => -(a.id - b.id)).map((item) => {
-                return {
-                  key: item.id,
-                  id: item.id,
-                  src: item.value.value.img_url,
-                  alt: item.value.value.error ?? 'yacht',
-                }
-              })
-            }
+          : <GenerationImageGallery 
+            drawResultTypeId={drawResultTypeId}
+            isPublishedTypeId={isPublishedTypeId}
             onWriteNewDescription={() => {
               setStartGen(false);
               setImgGen(false); 
