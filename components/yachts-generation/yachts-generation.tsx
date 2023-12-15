@@ -27,17 +27,17 @@ export const YachtsGeneration = React.memo(({ onClick }:{ onClick?: () => void; 
     If we want to evaluate useDeepSubscription due server-side-render we need to set all variables as constants.
   */
   // deep types
-  const drawResultTypeId = 1202;
-  const drawRequestTypeId = 1200;
-  const midjourneyRequestTypeId = 1151;
-  const isPublishedTypeId = 1204;
-  const sendEmailTypeId = 1265;
+  const drawResultTypeId = 1272;
+  const drawRequestTypeId = 1270;
+  const midjourneyRequestTypeId = 1214;
+  const isPublishedTypeId = 1274;
+  const sendEmailTypeId = 1340;
   // deep links
   const [requestId, setRequestId] = useState(0);
-  const settingsId = 1438;
-  const sendToId = 1458;
-  const letterSubjectId = 1462;
-  const letterTextId = 1486;
+  const settingsId = 1556;
+  const sendToId = 1572;
+  const letterSubjectId = 1576;
+  const letterTextId = 1580;
 
   const deep = useDeep();
 
